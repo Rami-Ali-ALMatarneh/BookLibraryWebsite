@@ -5,47 +5,105 @@
     <environment include="Development">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </environment>
+    <link href="~/cssfile/navbarCss.css" rel="stylesheet" />
+    <link href="~/cssfile/AnimationCssFile.css" rel="stylesheet" />
+    <link href="~/font-awesome/css/all.min.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <div class="navbar1 mt-3">
+        <div class="container">
+
+            <div class="nav1Logo d-flex align-items-center justify-content-between">
+                <a class="logo navbar-brand d-flex" href="#">
+                    <img src="~/ImagePage/logo.png" /><span class="logoP1">Kita</span><span class="logoP2">B</span>
+                </a>
+                <div class="dropListIcon d-flex justify-content-evenly align-items-center flex-column" id="dropListIcon">
+                    <span class=""></span>
+                    <span class=""></span>
+                    <span class=""></span>
+                </div>
+            </div>
+            <div class="nav1Info d-flex align-items-center justify-content-between">
+                <form class="searchBox">
+                    <select class="form-select ">
+                        <option selected>select menu</option>
+                    </select>
+
+                    <input class="form-control me-2" type="search" placeholder="Search Books here" aria-label="Search">
+                    <button class="btn" type="submit">Search</button>
+                </form>
+                <div class="iconNav  iconNavAdmin1">
+                    <div class="iconNavs d-flex">
+                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                        <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    <a class="Admin d-flex justify-content-between" href="#">
+                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" />
+                        <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
+                            <span class="adminName">Name</span>
+                            <span class="adminEmail">Email@gmail.com</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">Kitab</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="iconNav iconNavAdmin2">
+                <div class="iconNavs d-flex">
+                    <a href="#"><i class="fa-solid fa-heart"></i></a>
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+                <a class="Admin d-flex justify-content-between" href="#">
+                    <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" />
+                    <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
+                        <span class="adminName">Name</span>
+                        <span class="adminEmail">Email@gmail.com</span>
+                    </div>
+                </a>
+            </div>
+            <div class="nav2 d-flex justify-content-between">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#">Store</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">All Books</a></li>
+
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="#">Blog</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <a class="btn">Upload Book</a>
             </div>
         </div>
     </nav>
     <div>
         @RenderBody()
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="~/font-awesome/js/all.min.js"></script>
+    <script src="~/jquery/jquery.js"></script>
+    <script src="~/jsFile/dropDownJs.js"></script>
 </body>
 </html>

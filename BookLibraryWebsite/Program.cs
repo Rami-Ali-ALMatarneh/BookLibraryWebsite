@@ -32,6 +32,7 @@ if(app.Environment.IsDevelopment())
     {
     app.UseDeveloperExceptionPage();
     }
+app.UseStaticFiles();
 app.UseMvcWithDefaultRoute();
 app.Run();
 #endregion
