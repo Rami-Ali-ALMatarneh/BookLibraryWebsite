@@ -8,6 +8,19 @@
     <link href="~/cssfile/navbarCss.css" rel="stylesheet" />
     <link href="~/cssfile/AnimationCssFile.css" rel="stylesheet" />
     <link href="~/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="~/splidejs/css/splide.min.css" rel="stylesheet" />
+    <link href="~/cssfile/landing.css" rel="stylesheet" />
+
+    @* start font  *@
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+    @* end font  *@
+
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -51,7 +64,7 @@
     </div>
 
 
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg navbarToLeft">
         <div class="container">
             <div class="iconNav iconNavAdmin2">
                 <div class="iconNavs d-flex">
@@ -76,7 +89,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
+                            Library
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">All Books</a></li>
@@ -105,5 +118,14 @@
     <script src="~/font-awesome/js/all.min.js"></script>
     <script src="~/jquery/jquery.js"></script>
     <script src="~/jsFile/dropDownJs.js"></script>
+    <script src="~/splidejs/js/splide.min.js"></script>
+    <script type="text/javascript">
+        var splide = new Splide('.splide', {
+            type: 'fade',
+            rewind: true,
+        });
+
+        splide.mount();
+    </script>
 </body>
 </html>
