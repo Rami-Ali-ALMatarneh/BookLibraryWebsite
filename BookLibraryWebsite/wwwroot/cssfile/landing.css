@@ -57,7 +57,6 @@
     .landingimg {
         width: 100%;
     }
-
     .splide .landingInfo {
         width: 100%;
         display: flex;
@@ -109,8 +108,22 @@
         justify-content:space-between;
     }
 }
+
 @media (max-width:991px) {
     .silde {
         justify-content: center;
+    }
+    .landingInfo h3 {
+        font-size: 25px;
+        text-align: center;
+    }
+    .navbar-nav{
+        width:100%;
+    }
+    .landingInfo h1 {
+        font-size: 30px;
+    }
+    .landingInfo p{
+        font-size:16px;
     }
 }

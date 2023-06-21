@@ -116,3 +116,22 @@
     }
     /****************************/
 }
+/*******start animation Img*******/
+@keyframes imgLanding {
+    0% {
+        transform: translate3d(0,-15px,0);
+    }
+
+    50% {
+        transform: translate3d(0,15px,0);
+    }
+
+    100% {
+        transform: translate3d(0,-15px,0);
+    }
+}
+
+.landingimg {
+    animation: imgLanding 4s ease-in-out infinite;
+}
+/*******end animation Img*******/
