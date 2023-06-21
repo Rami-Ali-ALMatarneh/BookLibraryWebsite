@@ -1,7 +1,14 @@
-﻿namespace BookLibraryWebsite.Models
+﻿using BookLibraryWebsite.Data;
+
+namespace BookLibraryWebsite.Models
     {
     public class SqlBookRepository : IBookRepository
         {
+        private readonly AppDbContext _context;
+        public SqlBookRepository( AppDbContext _context )
+        {
+            this._context = _context;
+        }
         Book IBookRepository.AddBook( Book book )
             {
             throw new NotImplementedException();

@@ -1,5 +1,7 @@
 
+using BookLibraryWebsite.Data;
 using BookLibraryWebsite.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,13 @@ builder.Services.AddMvc(options =>
 {
     options.EnableEndpointRouting = false;
 }).AddXmlSerializerFormatters();
+/*******************/
+
+/*********DbContext Pool ConnectionString**********/
+builder.Services.AddDbContextPool<AppDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BookLibraryWebsite"));
+});
 /*******************/
 
 /*********Dependency Injection**********/
