@@ -25,21 +25,22 @@ namespace BookLibraryWebsite.Models
 
         IEnumerable<Book> IBookRepository.getAllBooks()
             {
-            throw new NotImplementedException();
+            return _context.Book;
             }
 
         /***************************************************/
 
         Book IBookRepository.GetBook( string title )
             {
-            throw new NotImplementedException();
+                return _context.Book.Find(title);
+      
             }
 
         /***************************************************/
 
         IEnumerable<Book> IBookRepository.GetBookByKindOfBooks( KindOfBooks books )
             {
-            throw new NotImplementedException();
+            return _context.Book.Where(b =>b.KindOfBooks == books ) ;
             }
 
         /***************************************************/
