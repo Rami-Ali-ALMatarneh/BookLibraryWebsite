@@ -9,6 +9,6 @@ namespace BookLibraryWebsite.Models
         public IEnumerable<Book> getAllBooks();
         public Book AddBook( Book book );
         public Book UpdateBook( Book book );
-        public Book DeleteBook( Book book );
+        public Book DeleteBook( string title );
         }
     }
