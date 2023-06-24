@@ -1,55 +1,138 @@
-﻿@{ 
+﻿@model ListOfBook
+@{
     ViewBag.Title = "Home";
-} 
+}
+@* start landing *@
 <div class="landing">
-        <div class="splide" role="group" aria-label="Splide Basic HTML Example">
-            <div class="splide__track">
-                <div class="splide__list">
-                    <div class="splide__slide d-flex justify-content-center align-items-center">
-                        <div class="silde d-flex align-items-center">
-                            <div class="landingInfo  mb-2">
-                                <h1>WELCOME TO KitaB</h1>
-                                <h1>Online Library</h1>
-                                <p>
-                                    Enjoy reading books from our amazing library that contains hundreds of books
-                                </p>
-                                <a class="btn Btnborder" href="#">Go Library</a>
-                            </div>
-                            <div class="landingimg imgLanding">
-                                <img src="~/ImagePage/landing.png" />
-                            </div>
+    <div class="splide" id="carousel1" role="group" aria-label="Splide Basic HTML Example">
+        <div class="splide__track">
+            <div class="splide__list">
+                <div class="splide__slide d-flex justify-content-center align-items-center">
+                    <div class="silde d-flex align-items-center">
+                        <div class="landingInfo  mb-2">
+                            <h1>WELCOME TO KitaB</h1>
+                            <h1>Online Library</h1>
+                            <p>
+                                Enjoy reading books from our amazing library that contains hundreds of books
+                            </p>
+                            <a class="btn Btnborder" href="#">Go Library</a>
+                        </div>
+                        <div class="landingimg imgLanding">
+                            <img src="~/ImagePage/landing.png" />
                         </div>
                     </div>
-                    <div class="splide__slide d-flex justify-content-center align-items-center">
-                        <div class="silde d-flex  align-items-center">
-                            <div class="landingInfo  mb-2">
-                                <h1>Digital</h1>
-                                <h1>Book Store</h1>
-                                <p>With KitaB, you can buy books or sell books you have written. Our website features a book borrow service</p>
-                                <a class="btn Btnborder" href="#">GET Started</a>
-                            </div>
-                            <div class="landingimg imgLanding">
-                                <img src="~/ImagePage/17987-removebg-preview (1).png" />
-                            </div>
+                </div>
+                <div class="splide__slide d-flex justify-content-center align-items-center">
+                    <div class="silde d-flex  align-items-center">
+                        <div class="landingInfo  mb-2">
+                            <h1>Digital</h1>
+                            <h1>Book Store</h1>
+                            <p>With KitaB, you can buy books or sell books you have written. Our website features a book borrow service</p>
+                            <a class="btn Btnborder" href="#">GET Started</a>
+                        </div>
+                        <div class="landingimg imgLanding">
+                            <img src="~/ImagePage/17987-removebg-preview (1).png" />
                         </div>
                     </div>
-                    <div class="splide__slide d-flex justify-content-center align-items-center">
-                        <div class="silde d-flex align-items-center">
-                            <div class="landingInfo mb-2">
-                                <h1>Time to Read</h1>
-                                <h3>
-                                    How to Determine a Reading Schedule
-                                </h3>
-                                <p>You can organize your reading time by signing a schedule. Our website provides this service. We send you an alert message to remind you of the exact date.</p>
-                                <a class="btn Btnborder" href="#">Schedule Now</a> 
+                </div>
+                <div class="splide__slide d-flex justify-content-center align-items-center">
+                    <div class="silde d-flex align-items-center">
+                        <div class="landingInfo mb-2">
+                            <h1>Time to Read</h1>
+                            <h3>
+                                How to Determine a Reading Schedule
+                            </h3>
+                            <p>You can organize your reading time by signing a schedule. Our website provides this service. We send you an alert message to remind you of the exact date.</p>
+                            <a class="btn Btnborder" href="#">Schedule Now</a>
 
-                            </div>
-                            <div class="landingimg imgLanding">
-                                <img src="~/ImagePage/2012.i602.006_online_library_flat-removebg-preview (1).png" />
-                            </div>
+                        </div>
+                        <div class="landingimg imgLanding">
+                            <img src="~/ImagePage/2012.i602.006_online_library_flat-removebg-preview (1).png" />
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 </div>
+@* end landing *@
+
+@* start services *@
+<div class="Services pt-3 pb-3">
+    <div class="container">
+        <div class="listServices">
+            <div class="ServiceBox d-flex justify-content-start align-items-center flex-column">
+                    <div class="ServiceIcon">
+                        <i class="fa-solid fa-book "></i>
+                    </div>
+                    <div class="ServiceInfo text-center">
+                        <h5>READ BOOKS ONLINE</h5>
+                        <p>OVER MILLIONS OF BOOKS</p>
+                </div>
+            </div>
+            <div class="ServiceBox  d-flex justify-content-start align-items-center flex-column">
+                    <div class="ServiceIcon">
+                        <i class="fa-solid fa-truck"></i>
+                    </div>
+                    <div class="ServiceInfo text-center">
+                        <h5>FAST DELIVERY</h5>
+                        <p>transported him anywhere between 24 to 72 hours</p>
+                    </div>
+            </div>
+            <div class="ServiceBox  d-flex justify-content-start align-items-center flex-column">
+                    <div class="ServiceIcon ">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <div class="ServiceInfo text-center">
+                        <h5>Shopping</h5>
+                        <p>You can buy or Sell Book and <a href="#" class="Shopping">more</a></p>
+                    </div>
+            </div>
+            <div class="ServiceBox  d-flex justify-content-start align-items-center flex-column" >
+                    <div class="ServiceIcon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <div class="ServiceInfo text-center">
+                        <h5>Time To Read</h5>
+                        <p>Set the Best Schedule Time To Read</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* end services *@
+
+@* start Latest books *@
+<div class="LatestBooks mt-5 mb-5">
+    <div class="container">
+        <div class="boxLatest d-flex justify-content-center align-items-center flex-column">
+            <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column">
+                <span class="fw-bold">READ NEW</span>
+                <h1 class="headerSection">New Arrivals</h1>
+                <p class="text-center ">Our website is characterized by always downloading the latest books for you. We offer you a collection of the latest book releases or the latest books that have been authored and uploaded to our website.</p>
+            </div>
+            <div class="splide" id="carousel2" role="group" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                    <ul class="splide__list w-100">
+                        @foreach (var newBook in Model.Books)
+                            {
+
+                            var imgBook = "/ImagePage/" + (string.IsNullOrEmpty(newBook.filePath) ? "images.png" : newBook.filePath);
+                            <li class="splide__slide m-2">
+                                <div class="BookImg d-flex justify-content-center align-items-center flex-column">
+                                    <img src="@imgBook" asp-append-version="true" class="card-img-top" alt="Alternate Text" />
+                                </div>
+                                <div class="BookInfo card-body d-flex justify-content-center align-items-center flex-column">
+                                    <h2 class="card-title">@newBook.Title</h2>
+                                    <h5 class="fw-bold card-price">$ @newBook.Price</h5>
+                                    <a href="#" class="btn p-2 shopping"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</a>
+                                </div>
+                            </li>
+                            }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+@* end Latest books *@

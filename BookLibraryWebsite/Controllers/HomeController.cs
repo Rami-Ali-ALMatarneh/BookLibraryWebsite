@@ -1,4 +1,5 @@
 ﻿using BookLibraryWebsite.Models;
+using BookLibraryWebsite.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookLibraryWebsite.Controllers
@@ -13,9 +14,19 @@ namespace BookLibraryWebsite.Controllers
             this._bookRepository = _bookRepository;
             this._webHostEnvironment = _webHostEnvironment;
         }
-        public IActionResult Index()
+        public IActionResult Index( )
             {
-            return View();
+            var getAllBook =_bookRepository.getAllBooks();
+            var kindOfBook = new KindOfBooks();
+            var listOfBooks = new ListOfBook()
+                {
+                Books = getAllBook,
+                KindOfBooks = kindOfBook
+                };
+            return View( listOfBooks );
             }
+        /************************************/
+
+        /************************************/
         }
     }

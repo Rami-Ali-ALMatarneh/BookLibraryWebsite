@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model ListOfBook
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -10,7 +11,8 @@
     <link href="~/font-awesome/css/all.min.css" rel="stylesheet" />
     <link href="~/splidejs/css/splide.min.css" rel="stylesheet" />
     <link href="~/cssfile/landing.css" rel="stylesheet" />
-
+    <link href="~/cssfile/latestBook.css" rel="stylesheet" />
+    <link href="~/cssfile/ServiceCss.css" rel="stylesheet" />
     @* start font  *@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,8 +41,9 @@
             </div>
             <div class="nav1Info d-flex align-items-center justify-content-between">
                 <form class="searchBox">
-                    <select class="form-select ">
-                        <option selected>select menu</option>
+                   
+                    <select class="form-select" asp-for="@Model.KindOfBooks" asp-items="Html.GetEnumSelectList<KindOfBooks>()">
+                        <option></option>
                     </select>
 
                     <input class="form-control me-2" type="search" placeholder="Search Books here" aria-label="Search">
@@ -119,13 +122,40 @@
     <script src="~/jquery/jquery.js"></script>
     <script src="~/jsFile/dropDownJs.js"></script>
     <script src="~/splidejs/js/splide.min.js"></script>
+    <script src="~/jsFile/AnimationJS.js"></script>
     <script type="text/javascript">
-        var splide = new Splide('.splide', {
-            type: 'fade',
-            rewind: true,
+        document.addEventListener('DOMContentLoaded', function () {
+            new Splide('#carousel1', {
+                type: 'fade',
+                rewind: true,
+            }).mount();
+
+            new Splide('#carousel2', {
+                type: 'loop',
+                drag: 'free',
+                focus: 'center',
+                perPage: 5,
+                autoplay: true,
+                interval: 3000,
+                speed: '1000',
+                breakpoints: {
+                    640: {
+                        perPage: 1,
+
+                    },
+                    767: {
+                        perPage: 2,
+
+                    },
+                    1024: {
+                        perPage: 3,
+
+                    },
+                },
+            }).mount();
+
         });
 
-        splide.mount();
     </script>
 </body>
 </html>

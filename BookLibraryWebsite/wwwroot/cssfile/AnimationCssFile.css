@@ -108,7 +108,7 @@
     }
 
     .navbarToLeft {
-        left: -100%;
+        left: -200%;
     }
 
     .navbarToRight {
@@ -135,3 +135,18 @@
     animation: imgLanding 4s ease-in-out infinite;
 }
 /*******end animation Img*******/
+/**************go text down *************/
+.goDownAnimation {
+    animation: textDown 1s ease-in-out forwards;
+}
+@keyframes textDown{
+    0%{
+        transform:translate3d(0,-50px,0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0,0px,0);
+        opacity: 1;
+    }
+}
+/**************end go text down *************/

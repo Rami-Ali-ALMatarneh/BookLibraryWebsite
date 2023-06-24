@@ -1,0 +1,58 @@
+﻿:root {
+    --color1: #1a1668;
+    --color2: #EAA451;
+    --color3: white;
+    --colorGray1: gray;
+    --colorGray: #C5C5C5;
+}
+.ServiceInfo p {
+    color: var(--colorGray1);
+    font-size: 15px;
+}
+.ServiceInfo h5{
+    font-size:18px;
+    color:var(--color1);
+    font-weight:bold;
+}
+.ServiceIcon svg{
+    font-size:20px;
+    color:white;
+}
+.ServiceIcon {
+    background: var(--color2);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .25rem;
+    margin-bottom: 5px;
+    cursor:pointer;
+}
+    
+    .listServices {
+        display: grid;
+    }
+@media(min-width:600px) {
+    .listServices {
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    }
+}
+@media(min-width:768px){
+    .listServices {
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    }
+
+}
+@media(min-width:992px) {
+    .listServices {
+        grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    }
+}
+.Services {
+    background: #f7f7f7;
+}
+.Shopping{
+    text-decoration:underline;
+    color:var(--color1);
+}

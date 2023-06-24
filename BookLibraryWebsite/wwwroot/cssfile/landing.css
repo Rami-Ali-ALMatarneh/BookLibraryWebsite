@@ -8,10 +8,14 @@
     background-image: linear-gradient(to right top, #1a1668, #181472, #15117c, #120d86, #0e0790);
 }
 .splide {
-    height: 78vh;
     display: flex;
     flex-wrap: wrap;
     margin: 0 15px;
+}
+@media (min-width:992px){
+    .splide {
+        height: 78vh;
+    }
 }
     .splide .landingInfo {
         flex: 0 0 auto;
@@ -38,15 +42,12 @@
     padding:0 40px ;
 }
 .landing{
-    padding:5px 0;
+    padding:20px 0;
 }
 .silde {
     height: 100%;
 }
 @media (max-width:991px) {
-    .splide {
-        height: 89vh;
-    }
 
     .silde {
         margin: 0 25px;

@@ -1,4 +1,5 @@
-﻿using BookLibraryWebsite.Models;
+﻿using BookLibraryWebsite.Extensions;
+using BookLibraryWebsite.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookLibraryWebsite.Data
@@ -12,6 +13,7 @@ namespace BookLibraryWebsite.Data
         protected override void OnModelCreating( ModelBuilder modelBuilder )
             {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.SeedBook();
             }
         }
     }

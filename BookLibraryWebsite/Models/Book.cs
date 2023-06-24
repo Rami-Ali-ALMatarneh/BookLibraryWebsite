@@ -7,10 +7,22 @@ namespace BookLibraryWebsite.Models
         [Required]
         [Key]
         public string Title { get; set; }
+        [Required]
         public string Description { get; set; }
-        public decimal Price { get; set; }
-        public decimal discount { get; set; }
-        public string Created { get; set; }
+        [Required]
+
+        public float Price { get; set; }
+
+        public float discount { get; set; }
+        [Required]
+        public DateTime Created { get; set; }
+        [Required]
+        public string author { get; set; }
+        [Required]
+        public string photoPath { get; set; }
+        [Required]
+        public string filePath { get; set; }
+        [Required]
         public KindOfBooks KindOfBooks { get; set; }
         }
     }

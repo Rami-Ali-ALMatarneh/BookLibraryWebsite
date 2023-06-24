@@ -52,9 +52,7 @@ namespace BookLibraryWebsite.Models
             {
             return _context.Book.Where(b => b.KindOfBooks == books);
             }
-
         /***************************************************/
-
         Book IBookRepository.UpdateBook( Book book )
             {
             var Books = _context.Book.Attach(book);

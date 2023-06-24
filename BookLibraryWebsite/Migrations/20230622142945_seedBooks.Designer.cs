@@ -4,6 +4,7 @@ using BookLibraryWebsite.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookLibraryWebsite.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230622142945_seedBooks")]
+    partial class seedBooks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,7 +73,7 @@ namespace BookLibraryWebsite.Migrations
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",
-                            photoPath = ""
+                            photoPath = "images.png"
                         },
                         new
                         {
@@ -82,7 +85,7 @@ namespace BookLibraryWebsite.Migrations
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",
-                            photoPath = ""
+                            photoPath = "images.png"
                         },
                         new
                         {
@@ -94,7 +97,7 @@ namespace BookLibraryWebsite.Migrations
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",
-                            photoPath = ""
+                            photoPath = "images.png"
                         },
                         new
                         {
@@ -106,7 +109,7 @@ namespace BookLibraryWebsite.Migrations
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",
-                            photoPath = ""
+                            photoPath = "images.png"
                         },
                         new
                         {
@@ -118,7 +121,7 @@ namespace BookLibraryWebsite.Migrations
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",
-                            photoPath = ""
+                            photoPath = "images.png"
                         },
                         new
                         {
@@ -130,7 +133,7 @@ namespace BookLibraryWebsite.Migrations
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",
-                            photoPath = ""
+                            photoPath = "images.png"
                         });
                 });
 #pragma warning restore 612, 618

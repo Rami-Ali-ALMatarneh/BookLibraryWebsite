@@ -1,0 +1,42 @@
+﻿:root {
+    --color1: #1a1668;
+    --color2: #EAA451;
+    --color3: white;
+    --colorGray: #C5C5C5;
+}
+.boxLatest .splide {
+    height: fit-content;
+    width: 100%;
+}
+
+    .BookImg img {
+        max-width: 100%;
+    }
+    .LatestBooks .splide__arrow, .LatestBooks .splide__pagination {
+        display: none;
+    }
+.card-title, .card-price {
+    color: var(--color1);
+    font-weight: bold;
+}
+.card-price{
+    color:var(--color2);
+}
+.boxLatestInfo{
+    color:var(--color1);
+}
+.shopping {
+    background: var(--color1);
+}
+    .shopping:hover {
+        background: var(--color2);
+    }
+.headerSection{
+    color:var(--color1);
+    font-weight:bold;
+}
+.boxLatestInfo p{
+    color:gray;
+    padding:0px 25px;
+    font-weight:500;
+}
