@@ -49,9 +49,6 @@
         grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
     }
 }
-.Services {
-    background: #f7f7f7;
-}
 .Shopping{
     text-decoration:underline;
     color:var(--color1);

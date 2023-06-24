@@ -13,6 +13,7 @@
     <link href="~/cssfile/landing.css" rel="stylesheet" />
     <link href="~/cssfile/latestBook.css" rel="stylesheet" />
     <link href="~/cssfile/ServiceCss.css" rel="stylesheet" />
+    <link href="~/cssfile/BestSellerCss.css" rel="stylesheet" />
     @* start font  *@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -153,7 +154,15 @@
                     },
                 },
             }).mount();
-
+            new Splide('#carousel3', {
+                type: 'loop',
+                perPage: 1,
+                autoplay: true,
+                interval: 3000,
+                speed:1500,
+                speed: '1500',
+                focus: 'center',
+            }).mount();
         });
 
     </script>

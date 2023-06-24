@@ -102,8 +102,60 @@
 </div>
 @* end services *@
 
+@* start best Seller *@
+<div class="bestSeller pt-5 pb-5">
+    <div class="container">
+        <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column">
+            <span class="fw-bold">BEST SELLER</span>
+            <h1 class="headerSection">
+                Featured Product
+            </h1>
+            <p class="text-center ">We present to you a group that contains the best-selling and most requested books in the world</p>
+        </div>
+        <div class="splide" id="carousel3" role="group" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                <ul class="splide__list">
+
+                    @{
+                        int Count = 0;
+                        foreach (var best in Model.Books)
+                            {
+                            var imgBook = "/ImagePage/" + (string.IsNullOrEmpty(best.filePath) ? "images.png" : best.filePath);
+                            if (Count < 5)
+                                {
+                                <li class="mt-3 splide__slide d-flex justify-content-center align-items-center" >
+                                <div class="bestImg d-flex justify-content-center align-items-center">
+                                <img src="@imgBook" alt="Alternate Text" />
+                                </div>
+                                <div class="bestInfo d-flex justify-content-between flex-column gap-3">
+                                    <h1>@best.Title</h1>
+                                    <div class="author_kind d-flex gap-4">
+                                        <h4>@best.author</h4>
+                                        <h4>@best.KindOfBooks</h4>
+                                    </div>
+                                    <p>
+                                        @best.Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+
+                                    </p>
+                                    <div class="btnBest d-flex gap-3">
+                                        <a href="#" class="btn p-2 "><i class="fa-solid fa-cart-shopping"></i> Buy Now</a>
+                                        <a href="#" class="btn p-2 shopping detailsColor">See Details</a>
+                                    </div>
+                                </div>
+                                </li>
+                                Count++;
+                                }
+                            }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+@* end best seller *@
+
 @* start Latest books *@
-<div class="LatestBooks mt-5 mb-5">
+<div class="LatestBooks pb-5 pt-5">
     <div class="container">
         <div class="boxLatest d-flex justify-content-center align-items-center flex-column">
             <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column">
