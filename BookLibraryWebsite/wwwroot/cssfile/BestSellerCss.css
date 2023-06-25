@@ -58,3 +58,25 @@ flex-wrap:wrap;
     color: white;
     border: 2px solid var(--color1);
 }
+
+.discount {
+    color: var(--color2);
+font-size:35px;
+}
+.Price{
+    color:var(--color1);
+}
+
+.bestInfo h1{
+    color:var(--color1);
+    font-size:40px;
+    font-weight:bold;
+}
+.author_kind h6{
+    background:var(--gray);
+color:var(--color1);
+
+}
+.bestInfo p{
+    color:gray;
+}

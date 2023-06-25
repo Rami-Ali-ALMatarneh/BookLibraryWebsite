@@ -14,6 +14,9 @@
     <link href="~/cssfile/latestBook.css" rel="stylesheet" />
     <link href="~/cssfile/ServiceCss.css" rel="stylesheet" />
     <link href="~/cssfile/BestSellerCss.css" rel="stylesheet" />
+    <link href="~/cssfile/aboutCSS.css" rel="stylesheet" />
+    <link href="~/cssfile/ourMission.css" rel="stylesheet" />
+    <link href="~/cssfile/CountNumberI.css" rel="stylesheet" />
     @* start font  *@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +45,7 @@
             </div>
             <div class="nav1Info d-flex align-items-center justify-content-between">
                 <form class="searchBox">
-                   
+
                     <select class="form-select" asp-for="@Model.KindOfBooks" asp-items="Html.GetEnumSelectList<KindOfBooks>()">
                         <option></option>
                     </select>
@@ -118,6 +121,9 @@
     <div>
         @RenderBody()
     </div>
+    <div class="toUp toRight">
+        <i class="fa-solid fa-arrow-up fa-beat-fade"></i>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="~/font-awesome/js/all.min.js"></script>
     <script src="~/jquery/jquery.js"></script>
@@ -159,7 +165,7 @@
                 perPage: 1,
                 autoplay: true,
                 interval: 3000,
-                speed:1500,
+                speed: 1500,
                 speed: '1500',
                 focus: 'center',
             }).mount();
