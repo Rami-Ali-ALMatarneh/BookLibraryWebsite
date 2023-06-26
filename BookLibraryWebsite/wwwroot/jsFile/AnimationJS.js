@@ -23,7 +23,7 @@ function setAnimation() {
             toUp.classList.remove("toLeft");
 
         }
-        if (window.scrollY >= CountNumber.offsetTop -300) {
+        if (window.scrollY >= CountNumber.offsetTop -400) {
             if (!flagCount) {
                 countN.forEach((e) => {
                     countingNumber(e);

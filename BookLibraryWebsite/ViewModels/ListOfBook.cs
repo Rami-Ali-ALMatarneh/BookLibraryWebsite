@@ -6,6 +6,5 @@ namespace BookLibraryWebsite.ViewModels
         {
         public IEnumerable<Book> Books { get; set; }
         public KindOfBooks KindOfBooks { get; set; }
-
         }
     }

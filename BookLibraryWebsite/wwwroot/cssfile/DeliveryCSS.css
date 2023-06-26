@@ -1,0 +1,77 @@
+﻿:root {
+    --color1: #1a1668;
+    --color2: #EAA451;
+    --color3: white;
+    --gray: #f7f7f7;
+    --colorGray: #C5C5C5;
+}
+    .imgDelivery img{
+    width:170px;
+    height:170px;
+}
+.imgDelivery{
+    animation:drive 4s ease-in infinite; 
+}
+@keyframes drive{
+    0%{
+        transform:translateX();
+    }
+    25% {
+        transform: translateX(20px);
+    }
+    40% {
+        transform: translateX(7px);
+    }
+    75% {
+        transform: translateX(15px);
+    }
+    90% {
+        transform: translateX(20px);
+    }
+    100% {
+        transform: translateX(15px);
+    }
+}
+@media (max-width:991px) {
+    .boxDelivery{
+        flex-direction:column;
+    }
+}
+.infoDelivery{
+    color:var(--color2);
+}
+    .infoDelivery p {
+        color: var(--colorGray);
+        width:auto;
+    }
+.Call{
+    width:170px;
+    border:2px solid var(--color2);
+    border-radius:20px;
+    transition:0.5s;
+}
+.Call:hover{
+    background:transparent;
+    color:var(--color2);
+}
+.boxDelivery{
+    position:relative;
+    border-top-right-radius:60px;
+    border-bottom-left-radius:60px;
+    overflow:hidden;
+}
+    .boxDelivery::before {
+        content: url(../ImagePage/section_bg9.png);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        opacity:0.5;
+    }
+ 
+.imgDelivery, .infoDelivery, .BtnDelivery{
+    position:relative;
+    z-index:4;
+}

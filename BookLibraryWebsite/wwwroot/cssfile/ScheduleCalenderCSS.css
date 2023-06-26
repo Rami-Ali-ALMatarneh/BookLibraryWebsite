@@ -1,0 +1,100 @@
+﻿:root {
+    --color1: #1a1668;
+    --color2: #EAA451;
+    --color3: white;
+    --gray: #f7f7f7;
+    --colorGray: #C5C5C5;
+}
+.Schedule {
+    background: var(--gray);
+}
+.Schedule1{
+    background:var(--color1);
+    color:var(--color2);
+}
+.Schedule2 {
+    background: white;
+}
+
+.groupDay {
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+}
+    .groupDay span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        width: 45px;
+        height: 45px;
+        padding:5px;
+        font-size:17px;
+    }
+
+.DaysOfWeek{
+    font-size:50px;
+    text-transform:uppercase;
+}
+.DaysOfMonth {
+    font-size: 70px;
+}
+.MonthYear {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: var(--color2);
+    font-size: 35px;
+    text-transform:uppercase;
+    color: white;
+    width: 100%;
+}
+
+.grayColor{
+    color:gray;
+}
+.ScheduleBox{
+    height:350px;
+    height:350px;
+}
+.numberDay{
+    height:100%;
+}
+@media (min-width:992px) {
+    .ScheduleBox {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .Schedule1 {
+        flex: 0 0 auto;
+        width: 50%;
+        height: 100%;
+    }
+    
+    .Schedule2 {
+        flex: 0 0 auto;
+        width: 50%;
+        height: 100%;
+    }
+}
+@media (max-width:991px){
+    .Schedule1 {
+      
+        width: 100%;
+        height: 100%;
+    }
+    .Schedule2 {
+     width:100%;
+    }
+    .ScheduleBox {
+        height: auto;
+        height: auto;
+    }
+}
+.Check{
+   background:var(--color1);
+   color:var(--color2);
+    border:3px solid var(--color2);
+}

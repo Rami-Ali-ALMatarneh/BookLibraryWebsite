@@ -1,0 +1,35 @@
+﻿:root {
+    --color1: #1a1668;
+    --color2: #EAA451;
+    --color3: white;
+    --gray: #f7f7f7;
+    --colorGray: #C5C5C5;
+}
+.KindOfBooks
+{
+    margin :0 auto;
+}
+.KindOfBooks .card{
+    border:none;
+}
+    .KindOfBooks .card .btn{
+        border:none;
+        width: 40%;
+    }
+@media (max-width:991px){
+    .BoxKindOfBooks {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+}
+@media (min-width:992px) {
+    .BoxKindOfBooks {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.boxDelivery {
+    background-image: linear-gradient(to right top, #1a1668, #181472, #15117c, #120d86, #0e0790);
+}

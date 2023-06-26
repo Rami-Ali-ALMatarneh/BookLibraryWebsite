@@ -198,7 +198,7 @@
             <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column">
                 <span class="fw-bold">READ NEW</span>
                 <h1 class="headerSection">New Arrivals</h1>
-                <p class="text-center ">Our website is characterized by always downloading the latest books for you. We offer you a collection of the latest book releases or the latest books that have been authored and uploaded to our website.</p>
+                <p class="text-center ">Our website is characterized by always downloading the latest books for you.<br /> We offer you a collection of the latest book releases or the latest books that have been authored and uploaded to our website.</p>
             </div>
             <div class="splide" id="carousel2" role="group" aria-label="Splide Basic HTML Example">
                 <div class="splide__track">
@@ -234,7 +234,7 @@
             <h1 class="headerSection">
                 Our Mission
             </h1>
-            <p class="text-center ">KitaB offers you high quality products. We are distinguished by honesty. Our library contains many famous books. You can communicate with us or inquire through...</p>
+            <p class="text-center ">KitaB offers you high quality products. We are distinguished by honesty.<br /> Our library contains many famous books. You can communicate with us or inquire through...</p>
         </div>
         <div class="ourMissionBox d-flex justify-content-evenly align-items-center">
             <div class="card">
@@ -272,8 +272,59 @@
 </div>
 @*end  our mission *@
 
+@* start kindOfBooks *@
+<div class="KindOfBooks pt-5 pb-5">
+    <div class="container pt-5 pb-5">
+        <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column mb-4">
+            <span class="fw-bold">BOOKS CATEGORY</span>
+            <h1 class="headerSection">
+                Literary Genres / books
+            </h1>
+            <p class="text-center ">Enjoy the best types, the most famous of which we offer you an impressive collection of distinctive books.<br />You only have to choose from any  category and book and enjoy your time</p>
+        </div>
+        <div class="row BoxKindOfBooks gap-5">
+            @{
+                var sizeKinds = Enum.GetValues(typeof(KindOfBooks)).Length;
+                int count = 0;
+                foreach (var kindsbook in Enum.GetValues(typeof(KindOfBooks)))
+                    {
+                    if (count < sizeKinds)
+                        {
+                        var img = "i" + (count++) + ".jpg";
+                        <div class="card p-0 col-lg-4 col-md-6 col-sm-12" style="width: 18rem;">
+                            <img src="~/ImagePage/@img" class="card-img-top" alt="..." style="height: 16rem; width: 18rem; ">
+                            <div class="card-body">
+                                <h5 class="card-title">@kindsbook.ToString().Replace("_", " ")</h5>
+                                <a href="#" class="btn">More <i class="fa-solid fa-angles-right fa-beat"></i></a>
+                            </div>
+                        </div>
+                        }
+                    }
+            }
+        </div>
+    </div>
+</div>
+@* end kindOfBooks *@
 
-@* start Customer’s  *@
+@* start Customer *@
+<div class="Customer">
+    <div class="container">
+        <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column mb-4">
+            <span class="fw-bold">CUSTOMER FEEDBACK</span>
+            <h1 class="headerSection">
+                What Customer’s Said
+            </h1>
+            <p class="text-center ">You can provide us with your experience while using the site and tell us if you encounter problems during use. We care about all your comments</p>
+        </div>
+        <div class="BoxCustomer">
+
+        </div>
+    </div>
+</div>
+@* end Customer *@
+
+
+@* start CountNumbes  *@
 <div class="CountNumber pt-5 pb-5" id="CountNumbers">
     <div class="container">
         <div class="row ">
@@ -281,7 +332,7 @@
                 <div class="CountNumberIcon">
                     <i class="fa-solid fa-users"></i>
                 </div>
-                <h4 class="numbers" data-numbers="1203" ></h4>
+                <h4 class="numbers" data-numbers="1203"></h4>
                 <span>
                     Happy Customers
                 </span>
@@ -290,7 +341,7 @@
                 <div class="CountNumberIcon">
                     <i class="fa-solid fa-book"></i>
                 </div>
-                <h4 class="numbers" data-numbers="200" ></h4>
+                <h4 class="numbers" data-numbers="200"></h4>
                 <span>
                     Book Collections
                 </span>
@@ -299,7 +350,7 @@
                 <div class="CountNumberIcon">
                     <i class="fa-solid fa-store"></i>
                 </div>
-                <h4 class="numbers" data-numbers="1002" ></h4>
+                <h4 class="numbers" data-numbers="1002"></h4>
                 <span>
                     Our Stores
                 </span>
@@ -308,7 +359,7 @@
                 <div class="CountNumberIcon">
                     <i class="fa-solid fa-leaf"></i>
                 </div>
-                <h4 class="numbers" data-numbers="400" ></h4>
+                <h4 class="numbers" data-numbers="400"></h4>
                 <span>
                     Famous Writers
                 </span>
@@ -316,4 +367,97 @@
         </div>
     </div>
 </div>
-@* end Customer’s  *@
+@* end CountNumber  *@
+
+
+@* start Delivery *@
+<div class="delivery pt-5 pb-5">
+    <div class="container">
+        <div class="boxDelivery d-flex justify-content-center align-items-center gap-5 p-5">
+            <div class="imgDelivery ">
+                <img src="~/ImagePage/PngItem_37779.png" />
+            </div>
+            <div class="infoDelivery">
+                <h2>Get Free Delivery</h2>
+                <p>
+                    As well known and we are very busy all days beforeso we can guarantee your seat.
+                </p>
+            </div>
+            <div class="BtnDelivery">
+                <a href="#" class="btn Call">Call Now </a>
+            </div>
+        </div>
+    </div>
+</div>
+@* end Delivery *@
+
+@* start Schedule *@
+<div class="Schedule pt-5 pb-5">
+    <div class="container pt-5 pb-5">
+        <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column mb-4">
+            <span class="fw-bold">SCHEDULE</span>
+            <h1 class="headerSection">
+                Event Calender
+            </h1>
+            <p class="text-center ">You can provide us with your experience while using the site and tell us if you encounter problems during use. We care about all your comments</p>
+        </div>
+        <div class="ScheduleBox align-items-center flex-sm-column flex-md-column">
+            <div class="Schedule1 d-flex justify-content-center gap-4 align-items-center flex-column">
+                <span class="fw-bold DaysOfWeek"></span>
+                <h1 class="DaysOfMonth "></h1>
+            </div>
+            <div class="Schedule2 text-center ">
+                <span class="fw-bold MonthYear mb-3"></span>
+                <div class="numberDay d-flex align-items-center flex-column">
+                    <div class="groupDay">
+                        <span class="grayColor">01</span>
+                        <span class=" grayColor">02</span>
+                        <span class=" grayColor">03</span>
+                        <span class=" grayColor">04</span>
+                        <span class=" grayColor">05</span>
+                        <span class=" grayColor">06</span>
+                        <span class=" grayColor">07</span>
+                    </div>
+                    <div class=" groupDay">
+                        <span class=" grayColor">08</span>
+                        <span class=" grayColor">09</span>
+                        <span class=" ">10</span>
+                        <span class="">11</span>
+                        <span class="">12</span>
+                        <span class="">13</span>
+                        <span class="">14</span>
+                    </div>
+                    <div class=" groupDay">
+                        <span class="">15</span>
+                        <span class="">16</span>
+                        <span class="">17</span>
+                        <span class="">18</span>
+                        <span class="">19</span>
+                        <span class="">20</span>
+                        <span class="">21</span>
+                    </div>
+                    <div class=" groupDay">
+                        <span class="">22</span>
+                        <span class="">23</span>
+                        <span class="">24</span>
+                        <span class="">25</span>
+                        <span class="">26</span>
+                        <span class="">27</span>
+                        <span class="">28</span>
+                    </div>
+                    <div class=" groupDay">
+                        <span class="">29</span>
+                        <span class="">30</span>
+                        <span class="">31</span>
+                        <span class=""></span>
+                        <span class=""></span>
+                        <span class=""></span>
+                        <span class=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* end Schedule *@
+
