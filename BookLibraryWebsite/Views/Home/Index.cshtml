@@ -1,6 +1,7 @@
 ﻿@model ListOfBook
 @{
     ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @* start landing *@
 <div class="landing">
@@ -460,4 +461,61 @@
     </div>
 </div>
 @* end Schedule *@
+
+@* start Our Pricing*@
+<div class="OurPricing pt-5 pb-5">
+    <div class="container mt-5 mb-5">
+        <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column mb-4">
+            <span class="fw-bold">OUR PRICING</span>
+            <h1 class="headerSection">
+                Subscribe to our services
+            </h1>
+            <p class="text-center ">Subscribe to our services to enjoy many useful features and to receive all new updates</p>
+        </div>
+        <div class=" BoxOurPricing d-flex gap-5">
+            <div class="BoxsOurPricing">
+                <h2 class="text-center">Basic Plan</h2>
+                <h4 class="text-center">$49<span>/Month</span></h4>
+                <p class="text-center">Aliquam dui lacus, lobortis quis sapien non.</p>
+                <div class="lines"></div>
+                <div class="ServicesSections">
+                    <p><span><i class="fa-solid fa-check"></i> </span>Online book sales and shipping</p>
+                    <p><span><i class="fa-solid fa-check"></i> </span>Using Books 3 hours/Day</p>
+                    <p><span><i class="fa-solid fa-check"></i> </span>Upload your 5 Books in Library </p>
+                    <p><span><i class="fa-solid fa-check"></i> </span>Free Delivery</p>
+                </div>
+                <a href="#" class="btn OurPricingBtn">Start Now <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div class=" BoxsOurPricing">
+                <h2 class="text-center">Standard Plan</h2>
+                <h4 class="text-center">$99<span>/Month</span></h4>
+                <p class="text-center">Aliquam dui lacus, lobortis quis sapien non.</p>
+                <div class="lines"></div>
+                <div class=" ServicesSections">
+                    <p><span><i class="fa-solid fa-check"></i> </span>Online book sales and shipping</p>
+                    <p><span><i class="fa-solid fa-check"></i> </span>Using Books 10 hours/Day</p>
+                    <p><span><i class="fa-solid fa-check"></i> </span>Upload your 10 Books in Library</p>
+                    <p><span><i class="fa-solid fa-check"></i> </span>Schedule Time to Read</p>
+                    <p><span><i class="fa-solid fa-check"></i> </span>Free Delivery</p>
+                </div>
+                <a href="#" class="btn OurPricingBtn">Start Now <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div class="BoxsOurPricing">
+                <h2 class="text-center">Premium Plan</h2>
+                <h4 class="text-center">$199<span>/Month</span></h4>
+                <p class="text-center">Aliquam dui lacus, lobortis quis sapien non.</p>
+                <div class="lines"></div>
+                <div class="ServicesSections">
+                    <p><span><i class="fa-solid fa-check"></i> </span>Online book sales and shipping</p>
+                    <p><span><i class="fa-solid fa-check"></i> </span>Using Books 15 hours/Day</p>
+                    <p><span><i class="fa-solid fa-check"></i> </span>Upload your 15 Books in Library</p>
+                    <p><span><i class="fa-solid fa-check"></i> </span>Schedule Time to Read</p>
+                    <p><span><i class="fa-solid fa-check"></i> </span>Free Delivery</p>
+                </div>
+                <a href="#" class="btn OurPricingBtn">Start Now <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+@* end Our Pricing*@
 

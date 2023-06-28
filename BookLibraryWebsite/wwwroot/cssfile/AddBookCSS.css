@@ -1,0 +1,77 @@
+﻿:root {
+    --color1: #1a1668;
+    --color2: #EAA451;
+    --color3: white;
+    --gray: #f7f7f7;
+    --colorGray: #C5C5C5;
+    --boxShadow: 1px 1.732px 60px 0px rgba(0, 0, 0, 0.1);
+}
+.imgAddbook img{
+    max-width:100%;
+}
+.SelectPrice .form-select {
+    width: 100%;
+    margin: 0;
+    border-right: 1px solid #ced4da;
+    border-radius: 20px;
+}
+SelectPrice .form-select option {
+    border-radius: 20px;
+}
+.formBook form .form-control {
+    width: 100%;
+    border-radius: 20px;
+}
+.imgAddbook {
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+    background: url(../ImagePage/addbooks.jpg);
+    background-size: cover;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.addBook {
+    background: var(--gray);
+}
+    .addBook form {
+        background: var(--color3);
+        padding: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+.formBook{
+    border-radius:20px;
+    box-shadow:var(--boxShadow);
+}
+.form-label{
+    color:gray;
+}
+@media (max-width:991px) {
+    .imgAddbook{
+        display:none;
+    }
+    .formBook form {
+        width: 100%;
+        border-radius: 20px;
+    }
+    .addBook .container {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+    .SelectPrice, .imgsFiles {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0;
+    }
+ 
+}
+.formSubmit {
+    width: 170px;
+    padding:5px 10px;
+    border-radius: 20px;
+}
+form h1{
+    color:var(--color1);
+    font-weight:bold;
+}

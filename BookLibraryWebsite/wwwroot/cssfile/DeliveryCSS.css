@@ -10,7 +10,7 @@
     height:170px;
 }
 .imgDelivery{
-    animation:drive 4s ease-in infinite; 
+    animation:drive 4s ease-in-out infinite; 
 }
 @keyframes drive{
     0%{

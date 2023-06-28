@@ -1,0 +1,124 @@
+﻿:root {
+    --color1: #1a1668;
+    --color2: #EAA451;
+    --color3: white;
+    --colorGray: #C5C5C5;
+    --gray: #f7f7f7;
+}
+
+.footer{
+    background:var(--color1);
+    color:var(--colorGray);
+}
+
+.socialMedia a {
+    width: 40px;
+    cursor: pointer;
+    height: 40px;
+    background: rgba(234, 164, 81, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.socialMedia a svg{
+    font-size:20px;
+    color:var(--color2);
+}
+.logoFooter{
+    color:var(--gray);
+}
+.footer2Box h5, .footer3Box h5{
+    color: var(--color3);
+}
+.footer2Box div a, .footer3Box div svg {
+    color: var(--colorGray);
+    transition: 0.5s;
+}
+    .footer2Box div a:hover {
+        color: var(--color2);
+    }
+.footer2Box div svg, .footer3Box div svg {
+    color: var(--color2);
+}
+.footer3Box div  {
+    margin:10px 0;
+    display:flex;
+    justify-content:start;
+    align-items:center;
+}
+.footer3Box div svg{
+    font-size:25px;
+    margin-right:5px;
+}
+@media (min-width:1200px) {
+    .footer1 {
+        justify-content: start;
+        align-items: start;
+    }
+}
+@media (max-width:1199px) {
+    .footer1 {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+    @media (max-width:1999px) {
+            .footer1 p {
+                text-align: center;
+            }
+
+        .footer2 {
+            margin: 0 auto;
+            margin-bottom: 25px;
+        }
+
+            .footer2 div {
+                margin-bottom: 15px;
+            }
+    }
+
+    @media (max-width:575px) {
+        .footer2 {
+            justify-content: center;
+        }
+
+            .footer2 div {
+                margin: 0 5px;
+            }
+
+        .footer2Box div a {
+            font-size: 14px;
+        }
+    }
+
+    .copyRight {
+        border-top: 1px solid #808080;
+    }
+
+        .copyRight p {
+            font-size: 15px;
+            margin: 0;
+        }
+
+            .copyRight p span {
+                color: var(--color2);
+            }
+.footer2 {
+    display: flex;
+}
+
+    .footer2 div {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+    }
+
+@media(max-width:767px) {
+    .footer2 {
+    }
+}

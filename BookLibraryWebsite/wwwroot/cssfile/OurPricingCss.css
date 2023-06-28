@@ -1,0 +1,113 @@
+﻿:root {
+    --color1: #1a1668;
+    --color2: #EAA451;
+    --color3: white;
+    --gray: #f7f7f7;
+    --colorGray: #C5C5C5;
+}
+.OurPricing{
+    background:var(--gray);
+}
+.BoxOurPricing{
+    flex-wrap:wrap;
+}
+@media (max-width:767px){
+    .BoxsOurPricing{
+        flex:0 0 auto;
+        width:100%;
+    }
+}
+@media (min-width:768px) {
+    .BoxsOurPricing {
+        flex: 0 0 auto;
+        width: 45%;
+    }
+}
+@media (min-width:1199px) {
+    .BoxsOurPricing {
+        flex: 0 0 auto;
+        width: 30%;
+    }
+}
+.BoxsOurPricing {
+    padding:25px;
+    background: white;
+    border-radius: 10px;
+    transition: 0.8s;
+    box-shadow: 1px 1.732px 60px 0px rgba(0, 0, 0, 0.1);
+    height:600px;
+}
+
+    .BoxsOurPricing h2 {
+        font-size:35px;
+        color: var(--color1);
+        font-weight: bold;
+    }
+.BoxsOurPricing h4{
+    font-size:65px;
+    color:var(--color2);
+}
+    .BoxsOurPricing h4 span {
+        color: var(--color1);
+        font-size: 15px;
+        font-weight:bold;
+    }
+    .BoxsOurPricing p{
+        color: gray;
+        font-size:16px;
+    }
+.ServicesSections{
+    width:100%;
+    display:flex;
+    justify-content:start;
+    align-items:start;
+    flex-direction:column;
+}
+.ServicesSections p {
+    display: flex;
+    margin:10px;
+}
+.ServicesSections p span {
+    background: wheat;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    margin-right:10px;
+}
+.ServicesSections p span svg{
+    color:var(--color2);
+}
+.BoxsOurPricing {
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    flex-direction:column;
+}
+.lines {
+    height: 1px;
+    width: 100%;
+    background: #DCDCDC;
+}
+.BoxsOurPricing > p{
+    margin-bottom:0;
+}
+.OurPricingBtn{
+    padding:10px 15px;
+}
+.BoxsOurPricing:hover {
+    transform: translate3d(0,-20px,0);
+    background:var(--color2);
+}
+    .BoxsOurPricing:hover h2{
+        color: white;
+    }
+    .BoxsOurPricing:hover h4, .BoxsOurPricing:hover h4 span, .BoxsOurPricing:hover p {
+        color: white;
+    }
+    .BoxsOurPricing:hover .OurPricingBtn{
+        background:white;
+        color:var(--color2);
+    }

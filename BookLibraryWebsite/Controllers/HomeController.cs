@@ -26,7 +26,17 @@ namespace BookLibraryWebsite.Controllers
             return View( listOfBooks );
             }
         /************************************/
-
+        [HttpGet]
+        public IActionResult AddBook(  )
+            {
+            return View();
+            }
+        [HttpPost]
+        public  IActionResult AddBook(HomeCreateViewModel model)
+            {           
+            return View(model);
+            }
         /************************************/
+    
         }
     }

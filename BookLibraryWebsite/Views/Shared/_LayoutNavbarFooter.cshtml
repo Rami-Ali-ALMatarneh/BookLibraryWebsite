@@ -1,4 +1,4 @@
-﻿@model ListOfBook
+﻿@model HomeDetailsViewModel
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,22 +7,10 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </environment>
     <link href="~/cssfile/navbarCss.css" rel="stylesheet" />
-    <link href="~/cssfile/AnimationCssFile.css" rel="stylesheet" />
     <link href="~/font-awesome/css/all.min.css" rel="stylesheet" />
-    <link href="~/splidejs/css/splide.min.css" rel="stylesheet" />
-    <link href="~/cssfile/landing.css" rel="stylesheet" />
-    <link href="~/cssfile/latestBook.css" rel="stylesheet" />
-    <link href="~/cssfile/ServiceCss.css" rel="stylesheet" />
-    <link href="~/cssfile/BestSellerCss.css" rel="stylesheet" />
-    <link href="~/cssfile/aboutCSS.css" rel="stylesheet" />
-    <link href="~/cssfile/ourMission.css" rel="stylesheet" />
-    <link href="~/cssfile/ourMission.css" rel="stylesheet" />
-    <link href="~/cssfile/CountNumberI.css" rel="stylesheet" />
-    <link href="~/cssfile/KindOfBooksCss.css" rel="stylesheet" />
-    <link href="~/cssfile/DeliveryCSS.css" rel="stylesheet" />
-    <link href="~/cssfile/OurPricingCss.css" rel="stylesheet" />
-    <link href="~/cssfile/ScheduleCalenderCSS.css" rel="stylesheet" />
     <link href="~/cssfile/FooterCss.css" rel="stylesheet" />
+    <link href="~/cssfile/AnimationCssFile.css" rel="stylesheet" />
+    <link href="~/cssfile/AddBookCSS.css" rel="stylesheet" />
     @* start font  *@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,8 +18,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-
-    @* end font  *@
 
     <title>@ViewBag.Title</title>
 </head>
@@ -127,7 +113,6 @@
     <div>
         @RenderBody()
     </div>
-    @* start footer *@
     <div class="footer pt-5">
         <div class="container">
             <div class="row footerSections">
@@ -179,7 +164,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="footer3Box col-xl-3 col-md-4 col-sm-12">
+                <div class="footer3Box col-xl-3 col-md-5 col-sm-12">
                     <h5>
                         Get in Touch With Us
                     </h5>
@@ -187,7 +172,7 @@
                     <div class="phone"><i class="fa-solid fa-phone"></i> +962776924478</div>
                     <div class="email"><i class="fa-solid fa-envelope"></i> ramimatarneh76@gmail.com</div>
                 </div>
-                </div>
+            </div>
         </div>
         <div class="copyRight  d-flex justify-content-center align-items-center pt-3 pb-3">
             <div class="container d-flex justify-content-between align-items-center">
@@ -206,50 +191,5 @@
     <script src="~/font-awesome/js/all.min.js"></script>
     <script src="~/jquery/jquery.js"></script>
     <script src="~/jsFile/dropDownJs.js"></script>
-    <script src="~/splidejs/js/splide.min.js"></script>
-    <script src="~/jsFile/AnimationJS.js"></script>
-    <script src="~/jsFile/ScheduleCalendarJs.js"></script>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            new Splide('#carousel1', {
-                type: 'fade',
-                rewind: true,
-            }).mount();
-
-            new Splide('#carousel2', {
-                type: 'loop',
-                drag: 'free',
-                focus: 'center',
-                perPage: 5,
-                autoplay: true,
-                interval: 3000,
-                speed: '1000',
-                breakpoints: {
-                    640: {
-                        perPage: 1,
-
-                    },
-                    767: {
-                        perPage: 2,
-
-                    },
-                    1024: {
-                        perPage: 3,
-
-                    },
-                },
-            }).mount();
-            new Splide('#carousel3', {
-                type: 'loop',
-                perPage: 1,
-                autoplay: true,
-                interval: 3000,
-                speed: 1500,
-                speed: '1500',
-                focus: 'center',
-            }).mount();
-        });
-
-    </script>
 </body>
 </html>
