@@ -16,6 +16,7 @@
         display: none;
     }
 .card-title, .card-price {
+    font-size:15px;
     color: var(--color1);
     font-weight: bold;
 }

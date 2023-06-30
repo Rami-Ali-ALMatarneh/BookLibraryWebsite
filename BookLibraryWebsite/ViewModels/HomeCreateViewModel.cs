@@ -21,6 +21,6 @@ namespace BookLibraryWebsite.ViewModels
         [Required]
         public IFormFile? filePath { get; set; }
         [Required]
-        public KindOfBooks? KindOfBooks { get; set; }
+        public KindOfBooks KindOfBooks { get; set; }
         }
     }

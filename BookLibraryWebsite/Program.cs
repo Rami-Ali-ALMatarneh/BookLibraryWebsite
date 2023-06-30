@@ -45,7 +45,7 @@ app.UseStaticFiles();
 app.UseMvcWithDefaultRoute();
 //app.UseMvc(route =>
 //{
-//    route.MapRoute("Default", template:"{controller=Home}/{action=Index}/{id?}");
+//    route.MapRoute("Default", template: "{controller=Home}/{action=Index}/{id}");
 //});
 app.Run();
 #endregion

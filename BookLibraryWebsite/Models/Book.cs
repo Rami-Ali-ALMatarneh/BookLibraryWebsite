@@ -21,6 +21,6 @@ namespace BookLibraryWebsite.Models
         [Required]
         public string filePath { get; set; }
         [Required]
-        public KindOfBooks? KindOfBooks { get; set; }
+        public KindOfBooks KindOfBooks { get; set; }
         }
     }

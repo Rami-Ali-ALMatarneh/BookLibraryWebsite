@@ -29,7 +29,7 @@
                             <h1>Digital</h1>
                             <h1>Book Store</h1>
                             <p>With KitaB, you can buy books or sell books you have written. Our website features a book borrow service</p>
-                            <a class="btn Btnborder" href="#">GET Started</a>
+                            <a class="btn Btnborder" asp-controller="Home" asp-action="Store">GET Started</a>
                         </div>
                         <div class="landingimg imgLanding">
                             <img src="~/ImagePage/17987-removebg-preview (1).png" />
@@ -206,19 +206,21 @@
                     <ul class="splide__list w-100">
                         @foreach (var newBook in Model.Books)
                             {
+                            if (newBook.Created.Year == DateTime.Now.Year)
+                                {
+                                var imgBook = "/ImagePage/" + (string.IsNullOrEmpty(newBook.photoPath) ? "images.png" : newBook.photoPath);
+                                <li class="splide__slide m-2">
+                                    <div class="BookImg d-flex justify-content-center align-items-center flex-column">
+                                        <img src="@imgBook" asp-append-version="true" class="card-img-top" alt="Alternate Text" style="max-height:225px;max-width:225px" />
+                                    </div>
+                                    <div class="BookInfo card-body d-flex justify-content-center align-items-center flex-column">
+                                        <h2 class="card-title">@newBook.Title</h2>
+                                        <h5 class="fw-bold card-price">$ @newBook.Price</h5>
+                                        <a href="#" class="btn p-2 shopping"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</a>
+                                    </div>
+                                </li>
+                                }
 
-                            var imgBook = "/ImagePage/" + (string.IsNullOrEmpty(newBook.photoPath) ? "images.png" : newBook.photoPath);
-
-                            <li class="splide__slide m-2">
-                                <div class="BookImg d-flex justify-content-center align-items-center flex-column">
-                                    <img src="@imgBook" asp-append-version="true" class="card-img-top" alt="Alternate Text" style="max-height:225px;max-width:225px"/>
-                                </div>
-                                <div class="BookInfo card-body d-flex justify-content-center align-items-center flex-column">
-                                    <h2 class="card-title">@newBook.Title</h2>
-                                    <h5 class="fw-bold card-price">$ @newBook.Price</h5>
-                                    <a href="#" class="btn p-2 shopping"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</a>
-                                </div>
-                            </li>
                             }
                     </ul>
                 </div>

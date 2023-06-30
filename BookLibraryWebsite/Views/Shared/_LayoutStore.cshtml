@@ -157,11 +157,11 @@
                                     {
                                     if (book.ToString() == "AllBooks")
                                         {
-                                        <a  class="col-lg-4 col-md-6 text-start p-2">@book.ToString().Replace("_", " ")</a>
+                                        <a asp-controller="Home" asp-action="BooksKind" asp-route-id="@book" class="col-lg-4 col-md-6 text-start p-2">@book.ToString().Replace("_", " ")</a>
                                         }
                                     else
                                         {
-                                        <a   class="col-lg-4 col-md-6 text-start p-2">@book.ToString().Replace("_", " ")</a>
+                                        <a  asp-controller="Home" asp-action="BooksKind" asp-route-id="@book" class="col-lg-4 col-md-6 text-start p-2">@book.ToString().Replace("_", " ")</a>
                                         }
                                     }
                             </div>

@@ -86,8 +86,25 @@ namespace BookLibraryWebsite.Controllers
             ViewBag.BooksKind = "All Book";
             return View(ListOfBooks);
             }
-  
+
         /************************************/
+        [Route("/home/Store/{id}")]
+        public IActionResult BooksKind(KindOfBooks id )
+            {
+            if(id == KindOfBooks.AllBooks)
+                {
+                return RedirectToAction("Store", "Home");
+                }
+            var bookByKind = _bookRepository.GetBookByKindOfBooks(id);
+            var kindsOfBooks=new KindOfBooks();
+            var ListOfBook = new ListOfBook()
+                {
+                Books = bookByKind,
+                KindOfBooks = kindsOfBooks
+                };
+            return View(ListOfBook);
+            }
+        /**********************************/
         private string proccessUploadFileImg(HomeCreateViewModel model) {
             string uniqueFileName = null;
             if (model.photo != null)
