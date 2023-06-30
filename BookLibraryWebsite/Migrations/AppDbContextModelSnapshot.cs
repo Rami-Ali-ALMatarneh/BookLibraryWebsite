@@ -24,8 +24,11 @@ namespace BookLibraryWebsite.Migrations
 
             modelBuilder.Entity("BookLibraryWebsite.Models.Book", b =>
                 {
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
@@ -39,6 +42,10 @@ namespace BookLibraryWebsite.Migrations
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("author")
                         .IsRequired()
@@ -55,18 +62,19 @@ namespace BookLibraryWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Title");
+                    b.HasKey("Id");
 
                     b.ToTable("Book");
 
                     b.HasData(
                         new
                         {
+                            Id = 1,
+                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            KindOfBooks = 1,
+                            Price = 0f,
                             Title = "Book 1",
-                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "",
-                            KindOfBooks = 0,
-                            Price = 0f,
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",
@@ -74,11 +82,12 @@ namespace BookLibraryWebsite.Migrations
                         },
                         new
                         {
+                            Id = 2,
+                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            KindOfBooks = 1,
+                            Price = 0f,
                             Title = "Book 2",
-                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "",
-                            KindOfBooks = 0,
-                            Price = 0f,
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",
@@ -86,11 +95,12 @@ namespace BookLibraryWebsite.Migrations
                         },
                         new
                         {
+                            Id = 3,
+                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            KindOfBooks = 1,
+                            Price = 0f,
                             Title = "Book 3",
-                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "",
-                            KindOfBooks = 0,
-                            Price = 0f,
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",
@@ -98,11 +108,12 @@ namespace BookLibraryWebsite.Migrations
                         },
                         new
                         {
+                            Id = 4,
+                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            KindOfBooks = 1,
+                            Price = 0f,
                             Title = "Book 4",
-                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "",
-                            KindOfBooks = 0,
-                            Price = 0f,
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",
@@ -110,11 +121,12 @@ namespace BookLibraryWebsite.Migrations
                         },
                         new
                         {
+                            Id = 5,
+                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            KindOfBooks = 1,
+                            Price = 0f,
                             Title = "Book 5",
-                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "",
-                            KindOfBooks = 0,
-                            Price = 0f,
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",
@@ -122,11 +134,12 @@ namespace BookLibraryWebsite.Migrations
                         },
                         new
                         {
-                            Title = "Book 6",
+                            Id = 6,
                             Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            KindOfBooks = 0,
+                            KindOfBooks = 1,
                             Price = 0f,
+                            Title = "Book 6",
                             author = "Rami Ali",
                             discount = 0f,
                             filePath = "",

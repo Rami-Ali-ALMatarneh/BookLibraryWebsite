@@ -1,0 +1,134 @@
+﻿:root {
+    --color1: #1a1668;
+    --color2: #EAA451;
+    --color3: white;
+    --gray: #f7f7f7;
+    --colorGray: #C5C5C5;
+} 
+.storeLabel{
+    background:var(--gray);
+}
+.storeLabelBox {
+    height:59px;
+    background: var(--color3);
+    font-size: 23px;
+    border-radius: .25rem;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 10px 20px;
+    color: var(--color1);
+    box-shadow: 1px 1.732px 60px 0px rgba(0, 0, 0, 0.1);
+}
+    .storeLabelBox svg {
+        font-size: 23px;
+    }
+    .storeLabelBox a, .accordion-button {
+        color: var(--color1);
+        transition: 0.5s;
+        font-size:23px;
+    }
+.storeLabel h1{
+    color:var(--color1);
+    font-weight:bold;
+}
+.storeLabelBox a:hover{
+    color:var(--color2);
+}
+.accordion-button {
+    padding: 10px 20px;
+}
+.accordion-button:hover{
+    color:var(--color2);
+}
+.accordion-body a{
+    color:var(--color1);
+    font-weight:500;
+    transition:0.5s;
+}
+    .accordion-body a:hover {
+        color: var(--color2);
+    }
+
+.btn2 {
+    background: var(--color1);
+    color: var(--color3);
+    border-color: var(--color1);
+    transition: 0.5s;
+}
+.btn2:hover {
+    background: var(--color2);
+    color: var(--color3);
+    border-color: var(--color2);
+}
+.btn1 {
+    background: var(--color3);
+    color: var(--color1);
+    border-color: var(--color1);
+    transition: 0.5s;
+}
+    .btn1:hover {
+        background: var(--color1);
+        color: var(--color3);
+    }
+    @media (max-width:991px){
+        .landingStoreBtn {
+            position:relative;
+            left:50%;
+            transform:translateX(-50%);
+        }
+    }
+.AllBooks{
+    background:var(--gray);
+}
+.books h1 {
+    color: var(--color1);
+    margin: 0px;
+}
+.allB {
+    display:flex;
+    justify-items:stretch;
+    align-items:stretch;
+}
+@media (min-width:1400px) {
+    .allB{
+        gap:60px;
+    }
+}
+@media (max-width:1199px) {
+    .allB {
+        gap: 52px;
+    }
+}
+@media (max-width:991px) {
+    .allB {
+        gap:130px;
+    }
+}
+@media (max-width:767px) {
+    .allB {
+        justify-content:center;
+        align-items:center;
+    }
+}
+.storeBtn a{
+    font-size:13px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:40px;
+}
+.card-text{
+    font-size:13px;
+}
+.storeBtn a{
+    width:150px;
+}
+.Price{
+    font-size:30px;
+}
+.card-title{
+    color:var(--color1);
+    font-weight:bold;
+}
+.card-price {
+    color: var(--color1);
+}

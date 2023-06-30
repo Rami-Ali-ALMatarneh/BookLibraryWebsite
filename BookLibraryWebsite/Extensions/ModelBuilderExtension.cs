@@ -10,6 +10,7 @@ namespace BookLibraryWebsite.Extensions
             {
             modelBuilder.Entity<Book>().HasData(new Book
                 {
+                Id = 1,
                 Title = "Book 1",
                 Description="",
                 Price = (float)0.0,
@@ -22,6 +23,7 @@ namespace BookLibraryWebsite.Extensions
                 });
             modelBuilder.Entity<Book>().HasData(new Book
                 {
+                Id = 2,
                 Title = "Book 2",
                 Description = "",
                 Price = (float)0.0,
@@ -35,6 +37,8 @@ namespace BookLibraryWebsite.Extensions
                 });
             modelBuilder.Entity<Book>().HasData(new Book
                 {
+
+                Id=3,
                 Title = "Book 3",
                 Description = "",
                 Price = (float)0.0,
@@ -48,6 +52,7 @@ namespace BookLibraryWebsite.Extensions
                 });
             modelBuilder.Entity<Book>().HasData(new Book
                 {
+                Id = 4,
                 Title = "Book 4",
                 Description = "",
                 Price = (float)0.0,
@@ -61,6 +66,8 @@ namespace BookLibraryWebsite.Extensions
                 });
             modelBuilder.Entity<Book>().HasData(new Book
                 {
+
+                Id = 5,
                 Title = "Book 5",
                 Description = "",
                 Price = (float)0.0,
@@ -74,6 +81,8 @@ namespace BookLibraryWebsite.Extensions
                 });
             modelBuilder.Entity<Book>().HasData(new Book
                 {
+
+                Id = 6,
                 Title = "Book 6",
                 Description = "",
                 Price = (float)0.0,

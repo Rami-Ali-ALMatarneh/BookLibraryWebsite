@@ -19,7 +19,7 @@
                             <a class="btn Btnborder" href="#">Go Library</a>
                         </div>
                         <div class="landingimg imgLanding">
-                            <img src="~/ImagePage/landing.png" />
+                            <img src="~/ImagePage/landing.png" asp-append-version="true"/>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
 
                         </div>
                         <div class="landingimg imgLanding">
-                            <img src="~/ImagePage/2012.i602.006_online_library_flat-removebg-preview (1).png" />
+                            <img src="~/ImagePage/2012.i602.006_online_library_flat-removebg-preview (1).png" asp-append-version="true"/>
                         </div>
                     </div>
                 </div>
@@ -121,18 +121,18 @@
                         int Count = 0;
                         foreach (var best in Model.Books)
                             {
-                            var imgBook = "/ImagePage/" + (string.IsNullOrEmpty(best.filePath) ? "images.png" : best.filePath);
+                            var imgBook = "/ImagePage/" + (string.IsNullOrEmpty(best.photoPath) ? "images.png" : best.photoPath);
                             if (Count < 5)
                                 {
                                 <li class="mt-3 splide__slide d-flex justify-content-center align-items-center">
                                     <div class="bestImg d-flex justify-content-center align-items-center">
-                                        <img src="@imgBook" alt="Alternate Text" />
+                                        <img src="@imgBook" alt="Alternate Text" asp-append-version="true"/>
                                     </div>
                                     <div class="bestInfo d-flex justify-content-between flex-column gap-3">
                                         <h1>@best.Title</h1>
                                         <div class="author_kind d-flex gap-4">
                                             <h6>@best.author</h6>
-                                            <h6>@best.KindOfBooks</h6>
+                                            <h6>@best.KindOfBooks.ToString().Replace("_"," ")</h6>
                                         </div>
                                         <p>
                                             @best.Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -162,14 +162,14 @@
     <div class="container pt-3 pb-3">
         <div class="aboutBox">
             <div class="about1">
-                <img src="~/ImagePage/about1.jpg" />
+                <img src="~/ImagePage/about1.jpg" asp-append-version="true"/>
                 <h6 class="d-flex flex-column">
                     <span class="numbersAbout"> 50+ </span>
                     <span> Years of Experience</span>
                 </h6>
             </div>
             <div class="about2 d-flex justify-content-between flex-column">
-                <img src="~/ImagePage/about2.jpg" />
+                <img src="~/ImagePage/about2.jpg" asp-append-version="true"/>
                 <div class="about2Point d-flex flex-column gap-2 mt-5">
                     <span><i class="fa-solid fa-check"></i> Action & Adventure</span>
                     <span><i class="fa-solid fa-check"></i> Science Fiction</span>
@@ -207,10 +207,11 @@
                         @foreach (var newBook in Model.Books)
                             {
 
-                            var imgBook = "/ImagePage/" + (string.IsNullOrEmpty(newBook.filePath) ? "images.png" : newBook.filePath);
+                            var imgBook = "/ImagePage/" + (string.IsNullOrEmpty(newBook.photoPath) ? "images.png" : newBook.photoPath);
+
                             <li class="splide__slide m-2">
                                 <div class="BookImg d-flex justify-content-center align-items-center flex-column">
-                                    <img src="@imgBook" asp-append-version="true" class="card-img-top" alt="Alternate Text" />
+                                    <img src="@imgBook" asp-append-version="true" class="card-img-top" alt="Alternate Text" style="max-height:225px;max-width:225px"/>
                                 </div>
                                 <div class="BookInfo card-body d-flex justify-content-center align-items-center flex-column">
                                     <h2 class="card-title">@newBook.Title</h2>
@@ -293,7 +294,7 @@
                         {
                         var img = "i" + (count++) + ".jpg";
                         <div class="card p-0 col-lg-4 col-md-6 col-sm-12" style="width: 18rem;">
-                            <img src="~/ImagePage/@img" class="card-img-top" alt="..." style="height: 16rem; width: 18rem; ">
+                            <img src="~/ImagePage/@img" class="card-img-top" alt="..." style="height: 16rem; width: 18rem;" asp-append-version="true">
                             <div class="card-body">
                                 <h5 class="card-title">@kindsbook.ToString().Replace("_", " ")</h5>
                                 <a href="#" class="btn">More <i class="fa-solid fa-angles-right fa-beat"></i></a>
@@ -376,7 +377,7 @@
     <div class="container">
         <div class="boxDelivery d-flex justify-content-center align-items-center gap-5 p-5">
             <div class="imgDelivery ">
-                <img src="~/ImagePage/PngItem_37779.png" />
+                <img src="~/ImagePage/PngItem_37779.png" asp-append-version="true"/>
             </div>
             <div class="infoDelivery">
                 <h2>Get Free Delivery</h2>

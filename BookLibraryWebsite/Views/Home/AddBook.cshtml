@@ -13,36 +13,55 @@
                     <div class="mb-3">
                         <label class="form-label" asp-for="Title">Title</label>
                         <input type="text" class="form-control" asp-for="Title">
+                        <span class="text-danger" asp-validation-for="Title"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" asp-for="author">Author</label>
                         <input type="text" class="form-control" asp-for="author">
+                        <span class="text-danger" asp-validation-for="author"></span>
+
                     </div>
                     <div class="mb-3">
                         <label class="form-label" asp-for="Created">Created</label>
                         <input type="date" asp-for="Created" class="form-control">
+                        <span class="text-danger" asp-validation-for="Created"></span>
+
                     </div>
                     <div class="SelectPrice d-flex justify-content-start gap-3">
                         <div class="mb-3 w-100">
-                            <label  class="form-label " asp-for="KindOfBooks">Kind Of Book</label>
+                            <label class="form-label " asp-for="KindOfBooks">Kind Of Book</label>
                             <select class="form-select" asp-for="KindOfBooks" asp-items="Html.GetEnumSelectList<KindOfBooks>()">
                                 <option selected>Select option menu</option>
                             </select>
+                            <span class="text-danger" asp-validation-for="KindOfBooks"></span>
+                        </div>
+                        <div class="mb-3 w-100">
+                            <label class="form-label" asp-for="discount">Discount</label>
+                            <input type="number" asp-for="discount" class="form-control">
+                            <span class="text-danger" asp-validation-for="discount"></span>
                         </div>
                         <div class="mb-3 w-100">
                             <label class="form-label" asp-for="Price">Price</label>
                             <input type="number" asp-for="Price" class="form-control">
+                            <span class="text-danger" asp-validation-for="Price"></span>
                         </div>
                     </div>
                     <div class="imgsFiles d-flex justify-content-start gap-3">
                         <div class="mb-3">
-                            <label class="form-label">Book Image</label>
-                            <input type="file" class="form-control">
+                            <label class="form-label" asp-for="photo">Book Image</label>
+                            <input type="file" class="form-control" asp-for="photo">
+                            <span class="text-danger" asp-validation-for="photo"></span>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Book File PDF</label>
-                            <input type="file" class="form-control">
+                            <label class="form-label" asp-for="filePath">Book File PDF</label>
+                            <input type="file" class="form-control" asp-for="filePath">
+                            <span class="text-danger" asp-validation-for="filePath"></span>
                         </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" asp-for="Description"></textarea>
+                        <label for="floatingTextarea">Description</label>
+                        <span class="text-danger" asp-validation-for="Description"></span>
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn formSubmit">Submit</button>

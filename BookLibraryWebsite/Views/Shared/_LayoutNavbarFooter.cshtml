@@ -1,4 +1,4 @@
-﻿@model HomeDetailsViewModel
+﻿@model ListOfBook
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +11,10 @@
     <link href="~/cssfile/FooterCss.css" rel="stylesheet" />
     <link href="~/cssfile/AnimationCssFile.css" rel="stylesheet" />
     <link href="~/cssfile/AddBookCSS.css" rel="stylesheet" />
+    <link href="~/splidejs/css/splide.min.css" rel="stylesheet" />
+    <link href="~/cssfile/landing.css" rel="stylesheet" />
+    <link href="~/cssfile/StoreCss.css" rel="stylesheet" />
+
     @* start font  *@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,7 +85,7 @@
             <div class="nav2 d-flex justify-content-between">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" asp-action="index" asp-controller="home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Store</a>
@@ -112,7 +116,7 @@
     </nav>
     <div>
         @RenderBody()
-    </div>
+    </div>    
     <div class="footer pt-5">
         <div class="container">
             <div class="row footerSections">
@@ -133,7 +137,7 @@
                     <div class="footer2Box col-xl-4 col-md-4 col-sm-4">
                         <h5>Our Links</h5>
                         <div class="ourLinks">
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Home</a>
+                            <a asp-action="index" asp-controller="home"><i class="fa-solid fa-angle-right"></i> Home</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Store</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Library</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Blog</a>
@@ -144,7 +148,7 @@
                     <div class="footer2Box col-xl-4 col-md-4 col-sm-4">
                         <h5>KitaB</h5>
                         <div class="KitaB">
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Home</a>
+                            <a asp-action="index" asp-controller="home"><i class="fa-solid fa-angle-right"></i> Home</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Services</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Book Details</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Our Pricing</a>
@@ -191,5 +195,12 @@
     <script src="~/font-awesome/js/all.min.js"></script>
     <script src="~/jquery/jquery.js"></script>
     <script src="~/jsFile/dropDownJs.js"></script>
+    <script src="~/splidejs/js/splide.min.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+           
+        });
+    </script>
 </body>
 </html>

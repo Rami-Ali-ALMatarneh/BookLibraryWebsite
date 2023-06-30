@@ -4,15 +4,13 @@ namespace BookLibraryWebsite.Models
     {
     public class Book
         {
+        public int Id { get; set; }
         [Required]
-        [Key]
         public string Title { get; set; }
         [Required]
-        public string Description { get; set; }
+        public string? Description { get; set; }
         [Required]
-
         public float Price { get; set; }
-
         public float discount { get; set; }
         [Required]
         public DateTime Created { get; set; }
@@ -23,6 +21,6 @@ namespace BookLibraryWebsite.Models
         [Required]
         public string filePath { get; set; }
         [Required]
-        public KindOfBooks KindOfBooks { get; set; }
+        public KindOfBooks? KindOfBooks { get; set; }
         }
     }

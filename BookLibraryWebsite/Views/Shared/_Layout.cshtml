@@ -41,7 +41,7 @@
 
             <div class="nav1Logo d-flex align-items-center justify-content-between">
                 <a class="logo navbar-brand d-flex" href="#">
-                    <img src="~/ImagePage/logo.png" /><span class="logoP1">Kita</span><span class="logoP2">B</span>
+                    <img src="~/ImagePage/logo.png" /><span class="logoP1">Kita</span><span class="logoP2" asp-append-version="true">B</span>
                 </a>
                 <div class="dropListIcon d-flex justify-content-evenly align-items-center flex-column" id="dropListIcon">
                     <span class=""></span>
@@ -65,7 +65,7 @@
                         <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
                     <a class="Admin d-flex justify-content-between" href="#">
-                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" />
+                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true"/>
                         <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
                             <span class="adminName">Name</span>
                             <span class="adminEmail">Email@gmail.com</span>
@@ -85,7 +85,7 @@
                     <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
                 <a class="Admin d-flex justify-content-between" href="#">
-                    <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" />
+                    <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true"/>
                     <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
                         <span class="adminName">Name</span>
                         <span class="adminEmail">Email@gmail.com</span>
@@ -95,10 +95,10 @@
             <div class="nav2 d-flex justify-content-between">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" asp-action="index" asp-controller="home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Store</a>
+                        <a class="nav-link" asp-action="Store" asp-controller="Home">Store</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -133,7 +133,7 @@
             <div class="row footerSections">
                 <div class="footer1 col-xl-3 col-md-12 col-sm-12 footer1 d-flex  flex-column gap-2">
                     <a class="logo navbar-brand d-flex" href="#">
-                        <img src="~/ImagePage/logo.png" /><span class="logoP1 logoFooter">Kita</span><span class="logoP2">B</span>
+                        <img src="~/ImagePage/logo.png" /><span class="logoP1 logoFooter">Kita</span><span class="logoP2" asp-append-version="true">B</span>
                     </a>
                     <p>KitaB is a Book Store Ecommerce Website Template by Rami Ali Matarneh (opsCode59)</p>
                     <div class="socialMedia d-flex justify-content-center align-items-center gap-3">
@@ -148,7 +148,7 @@
                     <div class="footer2Box col-xl-4 col-md-4 col-sm-4">
                         <h5>Our Links</h5>
                         <div class="ourLinks">
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Home</a>
+                            <a asp-action="index" asp-controller="home"><i class="fa-solid fa-angle-right"></i> Home</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Store</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Library</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Blog</a>
@@ -159,7 +159,7 @@
                     <div class="footer2Box col-xl-4 col-md-4 col-sm-4">
                         <h5>KitaB</h5>
                         <div class="KitaB">
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Home</a>
+                            <a asp-action="index" asp-controller="home"><i class="fa-solid fa-angle-right"></i> Home</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Services</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Book Details</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Our Pricing</a>

@@ -2,6 +2,8 @@
 using BookLibraryWebsite.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
+
+
 namespace BookLibraryWebsite.Controllers
     {
     public class HomeController : Controller
@@ -34,9 +36,101 @@ namespace BookLibraryWebsite.Controllers
         [HttpPost]
         public  IActionResult AddBook(HomeCreateViewModel model)
             {           
+            if (ModelState.IsValid)
+                {
+                string uniqueFileImg = string.IsNullOrEmpty(proccessUploadFileImg(model)) ? string.Empty : proccessUploadFileImg(model);
+                string uniqueFilePdf = string.IsNullOrEmpty(proccessUploadFilePdf(model)) ? string.Empty : proccessUploadFilePdf(model);
+                
+                Book books = new Book()
+                    {
+                    Title= model.Title,
+                    Description= model.Description,
+                    Price= model.Price,
+                    discount= model.discount,
+                    Created = model.Created,
+                    author = model.author,
+                    photoPath=uniqueFileImg,
+                    KindOfBooks= model.KindOfBooks,
+                    filePath= uniqueFilePdf
+                    };
+                _bookRepository.AddBook(books);
+                return RedirectToAction("Index","Home");
+                }
+       
             return View(model);
             }
         /************************************/
-    
+            [HttpGet]
+            public IActionResult Store()
+            {
+            var getAllBook = _bookRepository.getAllBooks();
+            var kindOfBook = new KindOfBooks();
+            var ListOfBooks = new ListOfBook()
+                {
+                Books = getAllBook,
+                KindOfBooks=kindOfBook
+                };
+            ViewBag.BooksKind = "All Book";
+            return View(ListOfBooks);
+            }
+        [HttpGet]
+        public IActionResult StoreList()
+            {
+            var getAllBook = _bookRepository.getAllBooks();
+            var kindOfBook = new KindOfBooks();
+            var ListOfBooks = new ListOfBook()
+                {
+                Books = getAllBook,
+                KindOfBooks = kindOfBook
+                };
+            ViewBag.BooksKind = "All Book";
+            return View(ListOfBooks);
+            }
+  
+        /************************************/
+        private string proccessUploadFileImg(HomeCreateViewModel model) {
+            string uniqueFileName = null;
+            if (model.photo != null)
+                {
+                string uniqueUpload = Path.Combine(_webHostEnvironment.WebRootPath, "ImagePage");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.photo.FileName;
+                string filePath=Path.Combine(uniqueUpload, uniqueFileName);
+                using(var fileStream= new FileStream(filePath, FileMode.Create))
+                    {
+                    model.photo.CopyTo(fileStream);
+                    }
+                }
+            return uniqueFileName;
+            }
+        /*****************************************/
+        private string proccessUploadFilePdf( HomeCreateViewModel model )
+            {
+            string uniqueFileName = null;
+            if (model.filePath != null )
+                {
+                string uniqueUpload = Path.Combine(_webHostEnvironment.WebRootPath, "FilePdf");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.filePath.FileName;
+                string filePath = Path.Combine(uniqueUpload, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                    model.filePath.CopyTo(fileStream);
+                    }
+                }
+            return uniqueFileName;
+            }
+        /*****************************************/
+        public IActionResult News()
+            {
+            DateTime Year = new DateTime();
+            var Books=_bookRepository.getAllBooks();
+            var KindOfBook = new KindOfBooks();
+            var list = new ListOfBook()
+                {
+                Books = Books,
+                KindOfBooks = KindOfBook,
+                };
+            return View(list);
+            }
+        /****************************************/
         }
     }

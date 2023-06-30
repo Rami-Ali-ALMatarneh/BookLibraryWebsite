@@ -1,0 +1,44 @@
+﻿@model ListOfBook
+@{
+    Layout = "~/Views/Shared/_LayoutStore.cshtml";
+    ViewBag.Title = "Store List";
+
+}
+@* start View Books *@
+<div class="AllBooks pt-5 pb-5">
+    <div class="container">
+        <div class="books">
+            <div>
+                <h1>@ViewBag.BooksKind</h1>
+                @foreach (var book in Model.Books)
+                    {
+                    var imgs = "/ImagePage/" + (string.IsNullOrEmpty(book.photoPath) ? "images.png" : book.photoPath);
+                    <div class="card mb-3" style="max-width: 100%;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                 <img src="@imgs" class="card-img-top" alt="..." asp-append-version="true" style="max-height: 514px; max-width: 514px ">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body h-100 d-flex justify-content-evenly flex-column">
+                                    <h2 class="card-title">@book.Title</h2>
+                                    <div class="d-flex gap-3">
+                                        <p class="card-text text-muted">@book.author</p>
+                                        <p class="card-text text-muted">@book.KindOfBooks.ToString().Replace("_", " ")</p>
+                                    </div>
+                                    <p class="card-text">@book.Description This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-price Price">$@book.Price</p>
+                                    <div class="d-flex gap-3 storeBtn">
+                                        <a href="#" class="btn btn1">Learn More</a>
+                                        <a href="#" class="btn btn2">Buy Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+            </div>
+
+        </div>
+    </div>
+</div>
+@* end View Books *@
