@@ -4,7 +4,6 @@ function setAnimation() {
 
     window.onscroll = function () {
 
-
         if (window.scrollY > 200) {
             toUp.classList.add("toLeft");
             toUp.classList.remove("toRight");
@@ -17,4 +16,8 @@ function setAnimation() {
         }
 
     }
+}
+
+toUp.onclick = function () {
+    window.scrollTo(0, 0, 0);    
 }

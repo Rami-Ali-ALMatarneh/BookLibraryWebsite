@@ -99,14 +99,8 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-action="Store" asp-controller="Home">Store</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Library
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">All Books</a></li>
-
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Store" asp-controller="Home">Library</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Blog</a>
@@ -115,7 +109,7 @@
                         <a class="nav-link" href="#">Schedule</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" asp-controller="home" asp-action="AboutUs">About Us</a>
                     </li>
 
                 </ul>
@@ -131,16 +125,16 @@
         <div class="container">
             <div class="row footerSections">
                 <div class="footer1 col-xl-3 col-md-12 col-sm-12 footer1 d-flex  flex-column gap-2">
-                    <a class="logo navbar-brand d-flex" href="#">
-                        <img src="~/ImagePage/logo.png" /><span class="logoP1 logoFooter">Kita</span><span class="logoP2" asp-append-version="true">B</span>
+                    <a class="logo navbar-brand d-flex" asp-controller="home" asp-action="index">
+                        <img asp-append-version="true" src="~/ImagePage/logo.png" /><span class="logoP1 logoFooter">Kita</span><span class="logoP2" asp-append-version="true">B</span>
                     </a>
                     <p>KitaB is a Book Store Ecommerce Website Template by Rami Ali Matarneh (opsCode59)</p>
                     <div class="socialMedia d-flex justify-content-center align-items-center gap-3">
-                        <a><i class="fa-brands fa-facebook-f"></i></a>
-                        <a><i class="fa-brands fa-youtube"></i></a>
-                        <a><i class="fa-brands fa-linkedin"></i></a>
-                        <a><i class="fa-brands fa-github"></i></a>
-                        <a><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100011794534248"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@@opscode59"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/in/rami-almatarneh/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/Rami-Ali-ALMatarneh"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.instagram.com/rami.ali.matarneh/?hl=en"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class=" row-cols-sm-4 footer2 col-xl-6 col-md-8 c-sm-12">
@@ -148,11 +142,11 @@
                         <h5>Our Links</h5>
                         <div class="ourLinks">
                             <a asp-action="index" asp-controller="home"><i class="fa-solid fa-angle-right"></i> Home</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Store</a>
+                            <a asp-controller="home" asp-action="store"><i class="fa-solid fa-angle-right"></i> Store</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Library</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Blog</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Schedule</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> About Us</a>
+                            <a asp-controller="home" asp-action="AboutUs"><i class="fa-solid fa-angle-right"></i> About Us</a>
                         </div>
                     </div>
                     <div class="footer2Box col-xl-4 col-md-4 col-sm-4">

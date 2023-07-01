@@ -14,6 +14,7 @@
     <link href="~/splidejs/css/splide.min.css" rel="stylesheet" />
     <link href="~/cssfile/landing.css" rel="stylesheet" />
     <link href="~/cssfile/StoreCss.css" rel="stylesheet" />
+    <link href="~/cssfile/DetailsCsscss.css" rel="stylesheet" />
     @* start font  *@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,14 +90,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Store</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Library
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">All Books</a></li>
-
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Store" asp-controller="Home">Library</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Blog</a>
@@ -133,7 +128,7 @@
         @* start label books *@
         <div class="storeLabel pt-5 pb-5">
             <div class="container">
-                <h1>KitaB Store</h1>
+                <h1>@ViewBag.Title</h1>
                 <div class="storeLabelBox d-flex justify-content-between align-items-center">
                     <div class="labelBox1 d-flex justify-content-center align-items-center gap-3">
                         <a asp-action="StoreList" asp-controller="Home"> <i class="fa-solid fa-bars"></i></a>
@@ -161,7 +156,7 @@
                                         }
                                     else
                                         {
-                                        <a  asp-controller="Home" asp-action="BooksKind" asp-route-id="@book" class="col-lg-4 col-md-6 text-start p-2">@book.ToString().Replace("_", " ")</a>
+                                        <a asp-controller="Home" asp-action="BooksKind" asp-route-id="@book" class="col-lg-4 col-md-6 text-start p-2">@book.ToString().Replace("_", " ")</a>
                                         }
                                     }
                             </div>
@@ -177,7 +172,7 @@
         <div class="container">
             <div class="row footerSections">
                 <div class="footer1 col-xl-3 col-md-12 col-sm-12 footer1 d-flex  flex-column gap-2">
-                    <a class="logo navbar-brand d-flex" href="#">
+                    <a class="logo navbar-brand d-flex" asp-controller="home" asp-action="index">
                         <img src="~/ImagePage/logo.png" /><span class="logoP1 logoFooter">Kita</span><span class="logoP2">B</span>
                     </a>
                     <p>KitaB is a Book Store Ecommerce Website Template by Rami Ali Matarneh (opsCode59)</p>
@@ -253,6 +248,7 @@
     <script src="~/jsFile/dropDownJs.js"></script>
     <script src="~/splidejs/js/splide.min.js"></script>
     <script src="~/jsFile/GoRightJS.js"></script>
+
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
 

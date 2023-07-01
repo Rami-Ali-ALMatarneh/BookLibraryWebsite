@@ -1,4 +1,5 @@
 ﻿using BookLibraryWebsite.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookLibraryWebsite.Models
     {
@@ -19,9 +20,9 @@ namespace BookLibraryWebsite.Models
 
         /***************************************************/
 
-        Book IBookRepository.DeleteBook( string title )
+        Book IBookRepository.DeleteBook( int id )
             {
-            var book = _context.Book.Find(title);
+            var book = _context.Book.Find(id);
             if (book != null)
                 {
                 _context.Book.Remove(book);
@@ -40,10 +41,9 @@ namespace BookLibraryWebsite.Models
 
         /***************************************************/
 
-        Book IBookRepository.GetBook( string title )
+        Book IBookRepository.GetBook( int id )
             {
-            return _context.Book.Find(title);
-
+            return _context.Book.Find(id);
             }
 
         /***************************************************/

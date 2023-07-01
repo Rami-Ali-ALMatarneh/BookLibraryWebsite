@@ -108,3 +108,10 @@
 .about2Info p{
     color:gray;
 }
+.accordion-collapse {
+    box-shadow: 1px 1.732px 60px 0px rgba(0, 0, 0, 0.3);
+}
+.accordion-button:focus{
+    border-color:transparent;
+    box-shadow:none;
+}

@@ -166,6 +166,31 @@ namespace BookLibraryWebsite.Controllers
                 }
             }
         /****************************************/
+        public IActionResult Details(int id )
+            {
+            Book book = _bookRepository.GetBook(id);
+            if (book != null)
+                {
+                ListOfBook ListOfBooks = new ListOfBook()
+                    {
+                    book = book,
+                    };
+                return View(ListOfBooks);
+                }
+            return View();
+            }
+        /****************************************/
 
+
+        public IActionResult AboutUs()
+            {
+            return View();
+            }    
+        /****************************************/
+        //public IActionResult Cart()
+        //    {
+        //    return View();
+
+        //    }
         }
     }

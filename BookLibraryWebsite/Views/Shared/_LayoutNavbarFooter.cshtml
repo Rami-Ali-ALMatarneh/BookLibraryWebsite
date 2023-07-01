@@ -12,9 +12,17 @@
     <link href="~/cssfile/AnimationCssFile.css" rel="stylesheet" />
     <link href="~/cssfile/AddBookCSS.css" rel="stylesheet" />
     <link href="~/splidejs/css/splide.min.css" rel="stylesheet" />
+    <link href="~/cssfile/ServiceCss.css" rel="stylesheet" />
     <link href="~/cssfile/landing.css" rel="stylesheet" />
     <link href="~/cssfile/StoreCss.css" rel="stylesheet" />
-
+    <link href="~/cssfile/aboutCSS.css" rel="stylesheet" />
+    <link href="~/cssfile/ourMission.css" rel="stylesheet" />
+    <link href="~/cssfile/latestBook.css" rel="stylesheet" />
+    <link href="~/cssfile/DeliveryCSS.css" rel="stylesheet" />
+    <link href="~/cssfile/CountNumberI.css" rel="stylesheet" />
+    <link href="~/cssfile/KindOfBooksCss.css" rel="stylesheet" />
+    <link href="~/cssfile/CartCss.css" rel="stylesheet" />
+    <link href="~/cssfile/DetailsCsscss.css" rel="stylesheet" />
     @* start font  *@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,10 +50,9 @@
             <div class="nav1Info d-flex align-items-center justify-content-between">
                 <form class="searchBox" asp-controller="home" asp-action="Search" method="post" enctype="multipart/form-data">
                     <select class="form-select" asp-for="@Model.KindOfBooks" asp-items="Html.GetEnumSelectList<KindOfBooks>()">
-                        <option></option>
                     </select>
 
-                    <input class="form-control me-2" type="search" asp-for="TitleBook"  placeholder="Search Books here" aria-label="Search">
+                    <input class="form-control me-2" type="search" asp-for="TitleBook" placeholder="Search Books here" aria-label="Search">
                     <button class="btn" type="submit">Search</button>
                 </form>
                 <div class="iconNav  iconNavAdmin1">
@@ -89,14 +96,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Store</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Library
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">All Books</a></li>
-
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Store" asp-controller="Home">Library</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Blog</a>
@@ -115,7 +116,7 @@
     </nav>
     <div>
         @RenderBody()
-    </div>    
+    </div>
     <div class="footer pt-5">
         <div class="container">
             <div class="row footerSections">
@@ -195,10 +196,10 @@
     <script src="~/jquery/jquery.js"></script>
     <script src="~/jsFile/dropDownJs.js"></script>
     <script src="~/splidejs/js/splide.min.js"></script>
-
+    <script src="~/jsFile/AnimationJS.js"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
-           
+
         });
     </script>
 </body>

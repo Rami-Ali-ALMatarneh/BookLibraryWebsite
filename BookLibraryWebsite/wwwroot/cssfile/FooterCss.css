@@ -67,9 +67,9 @@
 }
 
     @media (max-width:1999px) {
-            .footer1 p {
-                text-align: center;
-            }
+        .footer1 p {
+            text-align: center;
+        }
 
         .footer2 {
             margin: 0 auto;
@@ -107,18 +107,24 @@
             .copyRight p span {
                 color: var(--color2);
             }
-.footer2 {
-    display: flex;
-}
 
-    .footer2 div {
+    .footer2 {
         display: flex;
-        justify-content: start;
-        align-items: start;
-        flex-direction: column;
     }
 
-@media(max-width:767px) {
-    .footer2 {
+        .footer2 div {
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+        }
+
+    @media(max-width:767px) {
+        .footer2 {
+        }
+    }
+@media (min-width:1200px) {
+    .footer1 p {
+        text-align: start;
     }
 }

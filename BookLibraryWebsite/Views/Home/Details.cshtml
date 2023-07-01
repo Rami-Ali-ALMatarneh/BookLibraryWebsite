@@ -1,0 +1,53 @@
+﻿@model ListOfBook
+@{
+    Layout = "~/Views/Shared/_LayoutStore.cshtml";
+    ViewBag.Title = "Details Book";
+    var imgBook = "/ImagePage/" + (string.IsNullOrEmpty(Model.book.photoPath) ? "images.png" : Model.book.photoPath);
+}
+<div class="Detail pt-5 pb-5">
+    <div class="container mt-2 mb-2">
+        <div class="DetailBook d-flex">
+            <div class="imgBook">
+                    <img src="@imgBook" asp-append-version="true"/>
+            </div>
+            <div class="detailInfo">
+                <h2 class="">@Model.book.Title</h2>
+                <div class="detailInfos d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <p>Writen by</p>
+                        <h5>@Model.book.author</h5>
+                    </div>
+                    <div>
+                        <p>Genre of book</p>
+                        <h5>@Model.book.KindOfBooks.ToString().Replace("_"," ")</h5>
+                    </div>
+                    <div>
+                        <p class="">Created Date</p>
+                        <h5>@Model.book.Created.Day / @Model.book.Created.Month / @Model.book.Created.Year</h5>
+                    </div>
+                </div>
+                <p class="mb-3 bColor">@Model.book.Description</p>
+                <div class="d-flex justify-content-center align-items-center gap-5 mt-5 priceCart">
+                    @{
+                        float p1 = Model.book.discount / 100 * Model.book.Price;
+                        if (p1!=0)
+                            {
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                              <h1 class=" mb-0">$@p1</h1>
+                              <p class=" mb-0 text-decoration-line-through text-bg-secondary">$@Model.book.Price</p>
+                            </div>
+                            }
+                        else
+                            {
+                <div class="d-flex justify-content-center align-items-center gap-2">
+                    <h1 class="colorYallow mb-0">$@Model.book.Price</h1>
+                    <p class=" mb-0 text-decoration-line-through text-bg-secondary">$@p1</p>
+                </div>
+                            }
+                    }
+                    <a href="#" class="btn"><i class="fa-solid fa-cart-arrow-down"></i> Add To Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
