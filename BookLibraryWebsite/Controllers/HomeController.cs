@@ -148,6 +148,24 @@ namespace BookLibraryWebsite.Controllers
                 };
             return View(list);
             }
+        /****************************************/     
+        public IActionResult Search(ListOfBook model)
+            {
+            if (model.KindOfBooks == KindOfBooks.AllBooks && model.TitleBook == null)
+                {
+                return RedirectToAction("Store", "Home");
+                }
+            else
+                {
+                       ListOfBook listOfBook = new ListOfBook()
+                        {
+                        KindOfBooks = model.KindOfBooks,
+                        Books = _bookRepository.GetBookByKindOfBooks(model.KindOfBooks),
+                        };
+                    return View(listOfBook);
+                }
+            }
         /****************************************/
+
         }
     }

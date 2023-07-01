@@ -30,7 +30,7 @@
         <div class="container">
 
             <div class="nav1Logo d-flex align-items-center justify-content-between">
-                <a class="logo navbar-brand d-flex" href="#">
+                <a class="logo navbar-brand d-flex" asp-action="Index" asp-controller="Home">
                     <img src="~/ImagePage/logo.png" /><span class="logoP1">Kita</span><span class="logoP2">B</span>
                 </a>
                 <div class="dropListIcon d-flex justify-content-evenly align-items-center flex-column" id="dropListIcon">
@@ -40,13 +40,12 @@
                 </div>
             </div>
             <div class="nav1Info d-flex align-items-center justify-content-between">
-                <form class="searchBox">
-
+                <form class="searchBox" asp-controller="home" asp-action="Search" method="post" enctype="multipart/form-data">
                     <select class="form-select" asp-for="@Model.KindOfBooks" asp-items="Html.GetEnumSelectList<KindOfBooks>()">
                         <option></option>
                     </select>
 
-                    <input class="form-control me-2" type="search" placeholder="Search Books here" aria-label="Search">
+                    <input class="form-control me-2" type="search" asp-for="TitleBook"  placeholder="Search Books here" aria-label="Search">
                     <button class="btn" type="submit">Search</button>
                 </form>
                 <div class="iconNav  iconNavAdmin1">

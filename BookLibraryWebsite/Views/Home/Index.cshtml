@@ -299,7 +299,7 @@
                             <img src="~/ImagePage/@img" class="card-img-top" alt="..." style="height: 16rem; width: 18rem;" asp-append-version="true">
                             <div class="card-body">
                                 <h5 class="card-title">@kindsbook.ToString().Replace("_", " ")</h5>
-                                <a href="#" class="btn">More <i class="fa-solid fa-angles-right fa-beat"></i></a>
+                                <a  asp-controller="Home" asp-action="BooksKind" asp-route-id="@kindsbook" class="btn">More <i class="fa-solid fa-angles-right fa-beat"></i></a>
                             </div>
                         </div>
                         }
