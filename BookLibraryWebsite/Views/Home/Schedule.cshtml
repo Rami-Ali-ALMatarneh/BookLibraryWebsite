@@ -1,0 +1,144 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutNavbarFooter.cshtml";
+    ViewBag.Title = "About Us";
+}
+@* start landing *@
+<div class="landing pt-4 pb-4">
+    <div class=" d-flex justify-content-center align-items-center">
+        <div class="silde d-flex  align-items-center">
+            <div class="landingInfo  mb-2">
+                <h1>Schedule Time</h1>
+                <p>KitaB offers you high quality products. We are distinguished by honesty. Our library contains many famous books.</p>
+            </div>
+            <div class="landingimg imgLanding">
+                <img asp-append-version="true" src="~/ImagePage/20424690-removebg-preview.png" />
+            </div>
+        </div>
+    </div>
+</div>
+@* start Schedule *@
+<div class="Schedule pt-5 pb-5">
+    <div class="container pt-5 pb-5">
+        <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column mb-4">
+            <span class="fw-bold">SCHEDULE</span>
+            <h1 class="headerSection">
+                Event Calender
+            </h1>
+            <p class="text-center ">You can provide us with your experience while using the site and tell us if you encounter problems during use. We care about all your comments</p>
+        </div>
+        <div class="ScheduleBox align-items-center flex-sm-column flex-md-column">
+            <div class="Schedule1 d-flex justify-content-center gap-4 align-items-center flex-column">
+                <span class="fw-bold DaysOfWeek"></span>
+                <h1 class="DaysOfMonth "></h1>
+
+            </div>
+            <div class="Schedule2 text-center ">
+                <span class="fw-bold MonthYear mb-3"></span>
+                <div class="numberDay d-flex align-items-center flex-column">
+                    <div class="groupDay">
+                        <span class="grayColor">01</span>
+                        <span class=" grayColor">02</span>
+                        <span class=" grayColor">03</span>
+                        <span class=" grayColor">04</span>
+                        <span class=" grayColor">05</span>
+                        <span class=" grayColor">06</span>
+                        <span class=" grayColor">07</span>
+                    </div>
+                    <div class=" groupDay">
+                        <span class=" grayColor">08</span>
+                        <span class=" grayColor">09</span>
+                        <span class=" ">10</span>
+                        <span class="">11</span>
+                        <span class="">12</span>
+                        <span class="">13</span>
+                        <span class="">14</span>
+                    </div>
+                    <div class=" groupDay">
+                        <span class="">15</span>
+                        <span class="">16</span>
+                        <span class="">17</span>
+                        <span class="">18</span>
+                        <span class="">19</span>
+                        <span class="">20</span>
+                        <span class="">21</span>
+                    </div>
+                    <div class=" groupDay">
+                        <span class="">22</span>
+                        <span class="">23</span>
+                        <span class="">24</span>
+                        <span class="">25</span>
+                        <span class="">26</span>
+                        <span class="">27</span>
+                        <span class="">28</span>
+                    </div>
+                    <div class=" groupDay">
+                        <span class="">29</span>
+                        <span class="">30</span>
+                        <span class="">31</span>
+                        <span class=""></span>
+                        <span class=""></span>
+                        <span class=""></span>
+                        <span class=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* end Schedule *@
+<div class="setAlert pt-5 pb-5">
+    <div class="container">
+        <div class="formAlert">
+            <form method="post">
+                <h1>Set Alert</h1>
+                <div class="mb-3">
+                    <label class="form-label">Title Alert</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Start Alert</label>
+                    <input type="time" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">End Alert</label>
+                    <input type="time" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <input type="submit"
+                           class="btn">
+                </div>
+            </form>
+            <div class="alertImg"></div>
+        </div>
+    </div>
+</div>
+@* start table *@
+<div class="container pt-5 pb-5 mb-3">
+    <table class="table">
+        <thead>
+            <tr class="colorBlue">
+                <th scope="col">Number</th>
+                <th scope="col">Title</th>
+                <th scope="col">Start Alert</th>
+                <th scope="col">End Alert</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-secondary">
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@@fat</td>
+            </tr>
+         
+        </tbody>
+    </table>
+</div>
+@* end table *@

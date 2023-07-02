@@ -192,6 +192,22 @@ namespace BookLibraryWebsite.Controllers
             return View();
             }
         /****************************************/
+        public IActionResult Schedule()
+            {
+            return View();
+            }
+        /****************************************/
+        public IActionResult Login()
+            {
+            return View();
+            }       
+        /****************************************/
+
+        public IActionResult RestPassword()
+            {
+            return View();
+            }
+        /****************************************/
         //public IActionResult Cart()
         //    {
         //    return View();

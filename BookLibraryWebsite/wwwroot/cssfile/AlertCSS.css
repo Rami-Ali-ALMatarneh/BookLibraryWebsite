@@ -1,0 +1,55 @@
+﻿:root {
+    --color1: #1a1668;
+    --color2: #EAA451;
+    --color3: white;
+    --gray: #f7f7f7;
+    --colorGray: #C5C5C5;
+    --colorYallowGray: rgba(234, 164, 81, 0.1);
+}
+.ScheduleBox {
+    box-shadow: 1px 1.732px 60px 0px rgba(0, 0, 0, 0.1);
+}
+.formAlert {
+    display: flex;
+    flex-wrap: wrap;
+}
+    .formAlert form{
+        width:50%;
+        flex:0 0 auto;
+    }
+.alertImg {
+    flex: 0 0 auto;
+    width: 50%;
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+    background: url(../ImagePage/28422.jpg);
+    background-size: cover;
+    background-position:center;
+}
+.formAlert form h1{
+    color:var(--color1);
+
+}
+@media (max-width:991px) {
+    .formAlert form {
+        display:flex;
+        flex-direction:column;
+        width: 100%;
+        justify-content:center;
+        align-items:center;
+    }
+        .formAlert form div{
+            width:100%;
+        }
+        .formAlert form div input {
+            width: 100%;
+        }
+        .alertImg {
+            display: none;
+        }
+}
+.colorBlue{
+    background:var(--color1);
+    color:var(--color3);
+}
