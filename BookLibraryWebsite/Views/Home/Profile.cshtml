@@ -1,0 +1,135 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNavbarFooter.cshtml";
+    ViewBag.Title = "Profile";
+    //var imgBook = "/ImagePage/" + (string.IsNullOrEmpty(Model.book.photoPath) ? "images.png" : Model.book.photoPath);
+
+}
+<div class="Profile pt-5 pb-5">
+    <div class="container">
+        <div class="boxPorfile d-flex w-100">
+            <div class="boxPorfile1">
+                <div class="account mb-4 p-4 d-flex justify-content-center align-items-center flex-column">
+                    <div class="imgaccount">
+                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" />
+                    </div>
+                    <div class="infoAccount text-center">
+                        <h3>Name</h3>
+                        <p>Professional title</p>
+                    </div>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+                        <i class="fa-solid fa-user"></i> Profile
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-cart-shopping"></i> My Cart</a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-store"></i> Shop</a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+
+                </div>
+            </div>
+            <form class="boxPorfile2">
+                <div class="row BasicInfo mb-5">
+                    <h6>BASIC INFORMATION</h6>
+                    <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Full Name:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3 col-md-6 col-sm-12">
+                        <label class="form-label">Professional title:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3 col-md-6 col-sm-12">
+                        <label class="form-label">Languages:</label>
+                        <select class="form-select Languages" aria-label="Default select example">
+                        </select>
+                    </div>
+                    <div class="mb-3  gap-3 col-md-6 col-sm-12">
+                        <label class="form-label">Gender:</label>
+                        <div class="d-flex gap-4">
+                            <div class="form-check d-flex justify-content-center align-items-center gap-3">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check d-flex justify-content-center align-items-center gap-3">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6 col-sm-12">
+                        <label class="form-label">Image:</label>
+                        <input type="file" class="form-control">
+                    </div>
+                </div>
+                <div class="row ContactInfo mb-5">
+                    <h6 class="col-12">
+                        CONTACT INFORMATION
+                    </h6>
+                    <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Contact Number:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Email Address:</label>
+                        <input type="email" class="form-control">
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Country:</label>
+                        <select class="form-select Country" aria-label="Default select example">
+                        </select>
+                    </div>
+                </div>
+                <div class="row PrivacyInfo mb-5">
+                    <h6 class="col-12">
+                        PRIVACY INFORMATION
+                    </h6>
+                    <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Email Address:</label>
+                        <input type="email" class="form-control">
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
+                        <label  class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control">
+                    </div>
+                </div>
+                <a href="#" class="btn">Save Setting</a>
+            </form>
+        </div>
+
+    </div>
+</div>
+<div class="container  pb-5 ">
+    <div class="accordion mt-3 border-0" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    <i class="fa-solid fa-list p-2"></i> Categories
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse bg-light bg-gradient" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="row accordion-body">
+                    @foreach (var book in Enum.GetValues(typeof(KindOfBooks)))
+                        {
+                        if (book.ToString() == "AllBooks")
+                            {
+                            <a asp-controller="Home" asp-action="BooksKind" asp-route-id="@book" class="col-lg-4 col-md-6 text-start p-2">@book.ToString().Replace("_", " ")</a>
+                            }
+                        else
+                            {
+                            <a asp-controller="Home" asp-action="BooksKind" asp-route-id="@book" class="col-lg-4 col-md-6 text-start p-2">@book.ToString().Replace("_", " ")</a>
+                            }
+                        }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

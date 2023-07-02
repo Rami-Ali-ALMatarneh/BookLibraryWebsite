@@ -35,7 +35,7 @@ function setAnimation() {
                 });
             }
         }
-        if (window.scrollY >= numbersAbout.offsetTop) {
+        if (window.scrollY >= numbersAbout.offsetTop+350) {
             if (!flagCount1) {
                 countingNumber1(numbersAbout);
                 flagCount1 = true;
@@ -54,7 +54,7 @@ function countingNumber1(e) {
         else {
             clearInterval(count);
         }
-    }, goal/1.5 );
+    }, goal );
 }
 
 function countingNumber(e) {

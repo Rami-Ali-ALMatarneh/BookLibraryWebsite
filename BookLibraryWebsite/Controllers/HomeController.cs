@@ -185,7 +185,12 @@ namespace BookLibraryWebsite.Controllers
         public IActionResult AboutUs()
             {
             return View();
-            }    
+            }          
+        /****************************************/
+        public IActionResult Profile()
+            {
+            return View();
+            }
         /****************************************/
         //public IActionResult Cart()
         //    {
