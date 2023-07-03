@@ -81,7 +81,7 @@ padding:3px;
         align-items:center;
     }
     .BasicInfo h6, .ContactInfo h6, .PrivacyInfo h6 {
-        max-width: 90%;
+        max-width: 95%;
         left: 50%;
         position: relative;
         transform: translateX(-50%);

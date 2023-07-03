@@ -208,6 +208,24 @@ namespace BookLibraryWebsite.Controllers
             return View();
             }
         /****************************************/
+
+        public IActionResult CreateBasic()
+            {
+            return View();
+            }
+        /****************************************/
+
+        public IActionResult CreateContact()
+            {
+            return View();
+            }
+        /****************************************/
+
+        public IActionResult CreatePrivacy()
+            {
+            return View();
+            }
+        /****************************************/
         //public IActionResult Cart()
         //    {
         //    return View();
