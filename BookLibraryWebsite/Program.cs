@@ -1,7 +1,9 @@
 
 using BookLibraryWebsite.Data;
 using BookLibraryWebsite.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,11 +22,25 @@ builder.Services.AddMvc(options =>
 /*********DbContext Pool ConnectionString**********/
 builder.Services.AddDbContextPool<AppDbContext>(options =>
 {
+     
     options.UseSqlServer(builder.Configuration.GetConnectionString("BookLibraryWebsite"));
 });
-/*******************/
+/*********AddIdentity**********/
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>();
+/**********Identity Password*********/
+builder.Services.Configure<LockoutOptions>(options =>
+{
+options.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.AllowedForNewUsers = true;
+    options.MaxFailedAccessAttempts = 5;
+}
 
+);
+
+/*********************/
 /*********Dependency Injection**********/
+
 builder.Services.AddScoped<IBookRepository,SqlBookRepository>();
 builder.Services.AddScoped<IAlertRepository, SqlScheduleRepository>();
 
@@ -43,11 +59,14 @@ if(app.Environment.IsDevelopment())
     {
     app.UseDeveloperExceptionPage();
     }
-
-app.UseStatusCodePagesWithRedirects("Error/{0}");
-app.UseExceptionHandler("/Error");
+else
+    {
+    app.UseStatusCodePagesWithRedirects("Error/{0}");
+    app.UseExceptionHandler("/Error");
+    }
 
 app.UseStaticFiles();
+app.UseAuthentication();
 app.UseMvcWithDefaultRoute();
 //app.UseMvc(route =>
 //{

@@ -190,11 +190,7 @@ namespace BookLibraryWebsite.Controllers
             {
             return View();
             }          
-        /****************************************/
-        public IActionResult Profile()
-            {
-            return View();
-            }
+     
         /****************************************/
         [HttpGet]
         public IActionResult Schedule()
@@ -248,35 +244,13 @@ namespace BookLibraryWebsite.Controllers
                     }
             return RedirectToAction("Alert","Home");
             }
+  
         /****************************************/
-        public IActionResult Login()
-            {
-            return View();
-            }       
-        /****************************************/
-
         public IActionResult RestPassword()
             {
             return View();
             }
-        /****************************************/
-
-        public IActionResult CreateBasic()
-            {
-            return View();
-            }
-        /****************************************/
-
-        public IActionResult CreateContact()
-            {
-            return View();
-            }
-        /****************************************/
-
-        public IActionResult CreatePrivacy()
-            {
-            return View();
-            }
+       
 
         /****************************************/
         //public IActionResult Cart()

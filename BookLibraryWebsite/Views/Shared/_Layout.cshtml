@@ -1,4 +1,6 @@
 ﻿@model ListOfBook
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,6 +65,7 @@
                         <a href="#"><i class="fa-solid fa-heart"></i></a>
                         <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
+
                     <a class="Admin d-flex justify-content-between" href="#">
                         <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true"/>
                         <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
@@ -83,13 +86,29 @@
                     <a href="#"><i class="fa-solid fa-heart"></i></a>
                     <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
-                <a class="Admin d-flex justify-content-between" href="#">
-                    <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true"/>
-                    <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
-                        <span class="adminName">Name</span>
-                        <span class="adminEmail">Email@gmail.com</span>
-                    </div>
-                </a>
+
+                @if (signInManager.IsSignedIn(User))
+                    {
+                    <a class="Admin d-flex justify-content-between" href="#">
+                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
+                        <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
+                            <span class="adminName"></span>
+                            <span class="adminEmail"></span>
+                        </div>
+                        
+                    </a>
+                    }
+                else
+                    {
+                    <a class="Admin d-flex justify-content-between" href="#">
+                        asdsadadsad
+                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
+                        <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
+                            <span class="adminName">Name</span>
+                            <span class="adminEmail">Email@gmail.com</span>
+                        </div>
+                    </a>
+                    }
             </div>
             <div class="nav2 d-flex justify-content-between">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
