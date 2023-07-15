@@ -1,4 +1,4 @@
-﻿@model RegisterViewModel
+﻿@model LoginViewModel
 @{
     Layout = "~/Views/Account/_LayoutAccount.cshtml";
     ViewBag.Title = "Profile";
@@ -21,7 +21,7 @@
                 <h1>Login</h1>
                 <div class="mb-3">
                     <div id="emailHelp" class="form-text fs-6">
-                        If you have an account with us, please log in.                     
+                        If you have an account with us, please log in.
                     </div>
                     <label for="exampleInputEmail1" class="form-label" asp-for="Email">E-MAIL</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" asp-for="Email">
@@ -35,10 +35,8 @@
 
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label" asp-for="ConfirmPassword">CONFIRM PASSWORD</label>
-                    <input type="password" class="form-control" asp-for="ConfirmPassword" id="exampleInputPassword1">
-                    <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
-
+                    <label  class="form-label" asp-for="Rememberme">Remember Me</label>
+                    <input type="checkbox" class="w-auto" asp-for="Rememberme">
                 </div>
                 <div class="loginbtn d-flex gap-3 justify-content-start align-items-center">
                     <button type="submit" class="btn">Login</button>

@@ -19,21 +19,15 @@ namespace BookLibraryWebsite.Controllers
             return View();
             }
         /****************************************/
-        /****************************************/
         [HttpPost]
-        public async Task<IActionResult> login( RegisterViewModel model)
+        public async Task<IActionResult> login( LoginViewModel model)
             {
             if(ModelState.IsValid)
                 {
-                var user = new IdentityUser
-                    {
-                    Email = model.Email,
-                    };
-                var result=await _userManager.CreateAsync(user,model.Password);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password,model.Rememberme,false);
                 if(result.Succeeded)
                     {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("index", "home");
                     }
                 }
             return View(model);
