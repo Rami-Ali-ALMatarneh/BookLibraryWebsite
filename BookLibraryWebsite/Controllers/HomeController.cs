@@ -1,8 +1,8 @@
 ﻿using BookLibraryWebsite.Models;
 using BookLibraryWebsite.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-
+using System.Net;
 
 namespace BookLibraryWebsite.Controllers
     {
@@ -10,9 +10,11 @@ namespace BookLibraryWebsite.Controllers
         {
         //inject IBookRepository & IWebHostEnvironment
         private readonly IBookRepository _bookRepository;
+        private readonly IAlertRepository _alertRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public HomeController( IBookRepository _bookRepository, IWebHostEnvironment _webHostEnvironment )
+        public HomeController( IBookRepository _bookRepository, IWebHostEnvironment _webHostEnvironment,IAlertRepository alertRepository )
         {
+            this._alertRepository = alertRepository;
             this._bookRepository = _bookRepository;
             this._webHostEnvironment = _webHostEnvironment;
         }
@@ -55,8 +57,7 @@ namespace BookLibraryWebsite.Controllers
                     };
                 _bookRepository.AddBook(books);
                 return RedirectToAction("Index","Home");
-                }
-       
+                }       
             return View(model);
             }
         /************************************/
@@ -177,7 +178,10 @@ namespace BookLibraryWebsite.Controllers
                     };
                 return View(ListOfBooks);
                 }
-            return View();
+            else
+            {
+               return RedirectToAction("HttpStatusCodeHandler", "Error", new { statusCode= (int)HttpStatusCode.NotFound });
+                }
             }
         /****************************************/
 
@@ -192,9 +196,57 @@ namespace BookLibraryWebsite.Controllers
             return View();
             }
         /****************************************/
+        [HttpGet]
         public IActionResult Schedule()
             {
+            //var getAllAlert = _alertRepository.GetAllSchedule();
+            //ScheduleTimes scheduleTimes = new ScheduleTimes()
+            //    {
+            //    schedules = getAllAlert,
+            //    };
             return View();
+            }        
+        /****************************************/
+
+        [HttpPost]
+        public IActionResult Schedule(ScheduleTimes model)
+            {
+            if (ModelState.IsValid)
+                {
+                Schedule schedule = new Schedule()
+                    {
+                    Title = model.Title,
+                    start = model.start,
+                    end = model.end
+                    };
+                _alertRepository.Addschedule(schedule);
+                return RedirectToAction("Alert", "Home");
+                }
+            return View();
+            }
+        /****************************************/
+        public IActionResult Alert()
+            {
+            var allAlert = _alertRepository.GetAllSchedule();
+            ListOfBook listOfBook = new ListOfBook()
+                {
+                scheduleTimes = allAlert
+                };
+            return View(listOfBook);
+            }
+        /****************************************/
+        public IActionResult deleteAlert( int id)
+            {
+            var alert = _alertRepository.GetSchedule(id);
+            if (alert != null)
+                {
+                _alertRepository.deleteSchedule(id);
+                }
+                  else
+                    {
+                    return RedirectToAction("HttpStatusCodeHandler", "Error", new { statusCode = (int)HttpStatusCode.NotFound });
+                    }
+            return RedirectToAction("Alert","Home");
             }
         /****************************************/
         public IActionResult Login()
@@ -225,6 +277,7 @@ namespace BookLibraryWebsite.Controllers
             {
             return View();
             }
+
         /****************************************/
         //public IActionResult Cart()
         //    {

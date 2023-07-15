@@ -1,0 +1,41 @@
+﻿
+<div class="container pt-5 pb-5">
+    @* start table *@
+    <div class="container pt-5 pb-5 mb-3">
+        <table class="table">
+            <thead>
+                <tr class="colorBlue" style="background: #1a1668;color:white">
+                    <th scope="col">Number</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Start Alert</th>
+                    <th scope="col">End Alert</th>
+                    <th>Remove Alert</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+
+                    foreach (var alert in Model.scheduleTimes)
+                        {
+                        <tr class="table-secondary">
+                            <th scope="row" class="">@alert.Id</th>
+                            <td  scope="row" class="">@alert.Title</td>
+                            <td  scope="row" class="">@alert.start</td>
+                            <td  scope="row" class="">@alert.end</td>
+                            @if (alert.Id != 1)
+                                {
+                                <td  scope="row" class=""><a asp-action="deleteAlert" asp-controller="Home" asp-route-id="@alert.Id" class="btn">Delete</a></td>
+                                }
+                            else
+                                {
+                                <td  scope="row" class=""></td>
+                                }
+                        </tr>
+                        }
+                }
+            </tbody>
+        </table>
+    </div>
+    @* end table *@
+
+</div>

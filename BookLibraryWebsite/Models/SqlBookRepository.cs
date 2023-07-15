@@ -11,7 +11,7 @@ namespace BookLibraryWebsite.Models
             this._context = _context;
 
             }
-        Book IBookRepository.AddBook( Book book )
+        public Book AddBook( Book book )
             {
             _context.Book.Add(book);
             _context.SaveChanges();
@@ -20,7 +20,7 @@ namespace BookLibraryWebsite.Models
 
         /***************************************************/
 
-        Book IBookRepository.DeleteBook( int id )
+        public Book DeleteBook( int id )
             {
             var book = _context.Book.Find(id);
             if (book != null)

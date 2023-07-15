@@ -44,7 +44,7 @@
                                 How to Determine a Reading Schedule
                             </h3>
                             <p>You can organize your reading time by signing a schedule. Our website provides this service. We send you an alert message to remind you of the exact date.</p>
-                            <a class="btn Btnborder" href="#">Schedule Now</a>
+                            <a class="btn Btnborder" asp-controller="home" asp-action="Schedule">Schedule Now</a>
 
                         </div>
                         <div class="landingimg imgLanding">
@@ -141,7 +141,7 @@
                                         <p class="d-flex align-items-center gap-4"><span class="discount">$@best.discount</span><span class="Price text-decoration-line-through">$@best.Price</span></p>
                                         <div class="btnBest d-flex gap-3">
                                             <a href="#" class="btn p-2 "><i class="fa-solid fa-cart-shopping"></i> Buy Now</a>
-                                            <a href="#" class="btn p-2 shopping detailsColor">See Details</a>
+                                            <a asp-controller="home" asp-action="Details" asp-route-id="@best.Id" class="btn p-2 shopping detailsColor">See Details</a>
                                         </div>
                                     </div>
                                 </li>

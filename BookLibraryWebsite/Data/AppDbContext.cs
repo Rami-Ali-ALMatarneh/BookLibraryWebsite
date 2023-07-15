@@ -10,10 +10,12 @@ namespace BookLibraryWebsite.Data
             {
             }
         public DbSet<Book> Book { get; set; }
+        public DbSet<Schedule> Schedule { get; set; }   
         protected override void OnModelCreating( ModelBuilder modelBuilder )
             {
             base.OnModelCreating(modelBuilder);
             modelBuilder.SeedBook();
+          //  modelBuilder.seedAlert();
             }
         }
     }

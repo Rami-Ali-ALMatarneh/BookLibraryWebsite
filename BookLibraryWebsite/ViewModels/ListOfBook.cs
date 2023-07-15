@@ -10,5 +10,7 @@ namespace BookLibraryWebsite.ViewModels
         [Required]
         public KindOfBooks KindOfBooks { get; set; }
         public string TitleBook { get; set; }
+        public IEnumerable<Schedule> scheduleTimes { get; set; }
+
         }
     }

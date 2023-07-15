@@ -6,13 +6,13 @@ namespace BookLibraryWebsite.Extensions
     {
     public static class ModelBuilderExtension
         {
-        public static void SeedBook(this ModelBuilder modelBuilder)
+        public static void SeedBook( this ModelBuilder modelBuilder )
             {
             modelBuilder.Entity<Book>().HasData(new Book
                 {
                 Id = 1,
                 Title = "Book 1",
-                Description="",
+                Description = "",
                 Price = (float)0.0,
                 discount = (float)0.0,
                 Created = new DateTime(2023, 1, 1),
@@ -38,7 +38,7 @@ namespace BookLibraryWebsite.Extensions
             modelBuilder.Entity<Book>().HasData(new Book
                 {
 
-                Id=3,
+                Id = 3,
                 Title = "Book 3",
                 Description = "",
                 Price = (float)0.0,
@@ -91,7 +91,21 @@ namespace BookLibraryWebsite.Extensions
                 author = "Rami Ali",
                 KindOfBooks = KindOfBooks.Action_and_Adventure,
                 photoPath = "",
-                filePath=""
+                filePath = ""
+                });
+            }
+        public static void seedAlert( this ModelBuilder modelBuilder )
+            {
+            modelBuilder.Entity<Schedule>().HasData(new Schedule
+                {
+                Id = 1,
+                Title = "Alert Test 1",
+                start = new TimeSpan(
+                   0, 0, 0
+                    )
+                ,
+                end = new TimeSpan(0, 0, 0)
+
                 });
             }
         }

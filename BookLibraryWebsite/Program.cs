@@ -26,6 +26,8 @@ builder.Services.AddDbContextPool<AppDbContext>(options =>
 
 /*********Dependency Injection**********/
 builder.Services.AddScoped<IBookRepository,SqlBookRepository>();
+builder.Services.AddScoped<IAlertRepository, SqlScheduleRepository>();
+
 /*******************/
 
 #endregion
@@ -41,6 +43,10 @@ if(app.Environment.IsDevelopment())
     {
     app.UseDeveloperExceptionPage();
     }
+
+app.UseStatusCodePagesWithRedirects("Error/{0}");
+app.UseExceptionHandler("/Error");
+
 app.UseStaticFiles();
 app.UseMvcWithDefaultRoute();
 //app.UseMvc(route =>

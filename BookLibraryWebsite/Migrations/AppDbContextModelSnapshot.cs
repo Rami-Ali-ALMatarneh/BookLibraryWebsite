@@ -146,6 +146,38 @@ namespace BookLibraryWebsite.Migrations
                             photoPath = ""
                         });
                 });
+
+            modelBuilder.Entity("BookLibraryWebsite.Models.Schedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<TimeSpan>("end")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("start")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Schedule");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Title = "Alert Test 1",
+                            end = new TimeSpan(0, 0, 0, 0, 0),
+                            start = new TimeSpan(0, 0, 0, 0, 0)
+                        });
+                });
 #pragma warning restore 612, 618
         }
     }

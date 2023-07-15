@@ -97,10 +97,10 @@
                         <a class="nav-link" href="#">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Schedule</a>
+                        <a class="nav-link" asp-controller="home" asp-action="Schedule">Schedule</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" asp-controller="home" asp-action="AboutUs">About Us</a>
                     </li>
 
                 </ul>
@@ -189,11 +189,11 @@
                         <h5>Our Links</h5>
                         <div class="ourLinks">
                             <a asp-action="index" asp-controller="home"><i class="fa-solid fa-angle-right"></i> Home</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Store</a>
+                            <a  asp-controller="home" asp-action="store"><i class="fa-solid fa-angle-right"></i> Store</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Library</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Blog</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Schedule</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> About Us</a>
+                            <a asp-controller="home" asp-action="Schedule"><i class="fa-solid fa-angle-right"></i> Schedule</a>
+                            <a  asp-controller="home" asp-action="aboutus"><i class="fa-solid fa-angle-right"></i> About Us</a>
                         </div>
                     </div>
                     <div class="footer2Box col-xl-4 col-md-4 col-sm-4">
