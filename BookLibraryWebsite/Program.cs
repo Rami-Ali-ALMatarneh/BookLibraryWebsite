@@ -1,7 +1,9 @@
 
 using BookLibraryWebsite.Data;
 using BookLibraryWebsite.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -16,6 +18,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMvc(options =>
 {
     options.EnableEndpointRouting = false;
+    /******************Authorization*******************/
+    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+    options.Filters.Add(new AuthorizeFilter(policy));
+    /**************************************************/
+
 }).AddXmlSerializerFormatters();
 /*******************/
 
@@ -39,6 +46,9 @@ options.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
 );
 
 /*********************/
+
+
+
 /*********Dependency Injection**********/
 
 builder.Services.AddScoped<IBookRepository,SqlBookRepository>();

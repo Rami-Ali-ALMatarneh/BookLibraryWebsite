@@ -1,4 +1,4 @@
-﻿
+﻿@model ListOfBook
 @{
     Layout = "~/Views/Shared/_LayoutNavbarFooter.cshtml";
     ViewBag.Title = "Profile";
@@ -14,8 +14,8 @@
                         <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" />
                     </div>
                     <div class="infoAccount text-center">
-                        <h3>Name</h3>
-                        <p>Professional title</p>
+                        <h3>@Model.appUser.FullName</h3>
+                        <p>@Model.appUser.Major</p>
                     </div>
                 </div>
                 <div class="list-group">
@@ -24,41 +24,46 @@
                     </a>
                     <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-cart-shopping"></i> My Cart</a>
                     <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-heart"></i> Wishlist</a>
-                    <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-store"></i> Shop</a>
-                    <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+                    <a asp-controller="Home" asp-action="Store" class="list-group-item list-group-item-action"><i class="fa-solid fa-store"></i> Shop</a>
+                    <a asp-controller="Account" asp-action="Logout" class="list-group-item list-group-item-action"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
 
                 </div>
             </div>
-            <form class="boxPorfile2">
+            <form class="boxPorfile2" asp-controller="account" asp-action="profile" enctype="multipart/form-data" method="post">
                 <div class="row BasicInfo mb-5">
                     <h6>BASIC INFORMATION</h6>
                     <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
-                        <label class="form-label">Full Name:</label>
-                        <input type="text" class="form-control">
+                        <label class="form-label" asp-for="appUser.FullName">Full Name:</label>
+                        <input type="text" class="form-control" asp-for="appUser.FullName">
+                        <span class="text-danger" asp-validation-for="appUser.FullName"></span>
                     </div>
                     <div class="mb-3 col-md-6 col-sm-12">
-                        <label class="form-label">Professional title:</label>
-                        <input type="text" class="form-control">
+                        <label class="form-label" asp-for="appUser.Major">Professional title:</label>
+                        <input type="text" class="form-control" asp-for="appUser.Major">                 
+                        <span class="text-danger" asp-validation-for="appUser.Major"></span>
+
                     </div>
                     <div class="mb-3 col-md-6 col-sm-12">
-                        <label class="form-label">Languages:</label>
-                        <select class="form-select Languages" aria-label="Default select example">
+                        <label class="form-label" asp-for="appUser.Language">Languages:</label>
+                        <select class="form-select Languages" aria-label="Default select example" asp-for="appUser.Language" asp-items="Html.GetEnumSelectList<Language>()">
                         </select>
+                        <span class="text-danger" asp-validation-for="appUser.Language"></span>
                     </div>
                     <div class="mb-3  gap-3 col-md-6 col-sm-12">
-                        <label class="form-label">Gender:</label>
+                        <label class="form-label" asp-for="appUser.Gender">Gender:</label>
                         <div class="d-flex gap-4">
                             <div class="form-check d-flex justify-content-center align-items-center gap-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
+                                <input class="form-check-input" asp-for="appUser.Gender" type="radio"  value="Male" id="flexRadioDefault1">
+                                <label class="form-check-label" asp-for="appUser.Gender" for="flexRadioDefault1">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check d-flex justify-content-center align-items-center gap-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                <label class="form-check-label" for="flexRadioDefault2">
+                                <input class="form-check-input" type="radio"  asp-for="appUser.Gender" value="Female"  id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2" asp-for="appUser.Gender">
                                     Female
                                 </label>
+                                <span class="text-danger" asp-validation-for="appUser.Gender"></span>
                             </div>
                         </div>
                     </div>
@@ -72,17 +77,20 @@
                         CONTACT INFORMATION
                     </h6>
                     <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
-                        <label class="form-label">Contact Number:</label>
-                        <input type="text" class="form-control">
+                        <label class="form-label" asp-for="appUser.phone">Contact Number:</label>
+                        <input type="text" class="form-control" asp-for="appUser.phone">
+                        <span class="text-danger" asp-validation-for="appUser.phone"></span>
                     </div>
                     <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
-                        <label class="form-label">Email Address:</label>
-                        <input type="email" class="form-control">
+                        <label class="form-label" asp-for="appUser.UserName">Username:</label>
+                        <input type="text" class="form-control" asp-for="appUser.UserName">
+                        <span class="text-danger" asp-validation-for="appUser.UserName"></span>
                     </div>
                     <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
-                        <label class="form-label">Country:</label>
-                        <select class="form-select Country" aria-label="Default select example">
+                        <label class="form-label" asp-for="appUser.Country">Country:</label>
+                        <select class="form-select Country" asp-for="appUser.Country" asp-items="Html.GetEnumSelectList<Country>()" aria-label="Default select example">
                         </select>
+                        <span class="text-danger" asp-validation-for="appUser.Country"></span>
                     </div>
                 </div>
                 <div class="row PrivacyInfo mb-5">
@@ -90,19 +98,22 @@
                         PRIVACY INFORMATION
                     </h6>
                     <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
-                        <label class="form-label">Email Address:</label>
-                        <input type="email" class="form-control">
+                        <label class="form-label" asp-for="appUser.Email">Email Address:</label>
+                        <input type="email" class="form-control" asp-for="appUser.Email">
+                        <span class="text-danger" asp-validation-for="appUser.Email"></span>
                     </div>
                     <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <label class="form-label" asp-for="appUser.Password">Password</label>
+                        <input type="password" class="form-control" asp-for="appUser.Password" id="exampleInputPassword1">
+                        <span class="text-danger" asp-validation-for="appUser.Password"></span>
                     </div>
                     <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
-                        <label  class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control">
+                        <label class="form-label" asp-for="appUser.ConfirmPassword">Confirm Password</label>
+                        <input type="password" class="form-control" asp-for="appUser.ConfirmPassword">
+                        <span class="text-danger" asp-validation-for="appUser.ConfirmPassword"></span>
                     </div>
                 </div>
-                <a href="#" class="btn">Save Setting</a>
+                <button type="submit" class="btn">Save Setting</button>
             </form>
         </div>
 

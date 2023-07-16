@@ -1,11 +1,13 @@
 ﻿using BookLibraryWebsite.Models;
 using BookLibraryWebsite.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace BookLibraryWebsite.Controllers
     {
+    [Authorize]
     public class HomeController : Controller
         {
         //inject IBookRepository & IWebHostEnvironment
@@ -18,6 +20,7 @@ namespace BookLibraryWebsite.Controllers
             this._bookRepository = _bookRepository;
             this._webHostEnvironment = _webHostEnvironment;
         }
+        [AllowAnonymous]
         public IActionResult Index( )
             {
             var getAllBook =_bookRepository.getAllBooks();
@@ -62,7 +65,8 @@ namespace BookLibraryWebsite.Controllers
             }
         /************************************/
             [HttpGet]
-            public IActionResult Store()
+        [AllowAnonymous]
+        public IActionResult Store()
             {
             var getAllBook = _bookRepository.getAllBooks();
             var kindOfBook = new KindOfBooks();
@@ -90,6 +94,8 @@ namespace BookLibraryWebsite.Controllers
 
         /************************************/
         [Route("/home/Store/{id}")]
+        [AllowAnonymous]
+
         public IActionResult BooksKind(KindOfBooks id )
             {
             if(id == KindOfBooks.AllBooks)
@@ -149,7 +155,8 @@ namespace BookLibraryWebsite.Controllers
                 };
             return View(list);
             }
-        /****************************************/     
+        /****************************************/
+        [AllowAnonymous]
         public IActionResult Search(ListOfBook model)
             {
             if (model.KindOfBooks == KindOfBooks.AllBooks && model.TitleBook == null)
@@ -167,6 +174,7 @@ namespace BookLibraryWebsite.Controllers
                 }
             }
         /****************************************/
+        [AllowAnonymous]
         public IActionResult Details(int id )
             {
             Book book = _bookRepository.GetBook(id);
@@ -185,6 +193,7 @@ namespace BookLibraryWebsite.Controllers
             }
         /****************************************/
 
+        [AllowAnonymous]
 
         public IActionResult AboutUs()
             {
@@ -193,6 +202,8 @@ namespace BookLibraryWebsite.Controllers
      
         /****************************************/
         [HttpGet]
+        [AllowAnonymous]
+
         public IActionResult Schedule()
             {
             //var getAllAlert = _alertRepository.GetAllSchedule();

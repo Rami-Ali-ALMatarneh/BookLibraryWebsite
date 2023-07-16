@@ -56,16 +56,26 @@
                         <a href="#"><i class="fa-solid fa-heart"></i></a>
                         <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
-                    <a class="Admin d-flex justify-content-between" href="#">
-                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" />
-                        <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
-                            @if (_signInManager.IsSignedIn(User))
-                                {
-                                <span class="adminName">@User.Identity.Name</span>
-
-                                }
-                        </div>
-                    </a>
+                    @if (_signInManager.IsSignedIn(User))
+                        {
+                        <a class="Admin d-flex justify-content-between" asp-controller="Account" asp-action="Profile">
+                            <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
+                            <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
+                                <span class="adminName" style="font-size:17px">@User.Identity.Name</span>
+                                <span><a asp-controller="Account" asp-action="Logout">Logout</a></span>
+                            </div>
+                        </a>
+                        }
+                    else
+                        {
+                        <a class="Admin d-flex justify-content-between" asp-controller="Account" asp-action="Profile">
+                            <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
+                            <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
+                                <span class="adminName" style="font-size:13px">Name</span>
+                                <span class="adminEmail fw-bold"><a style="font-size:13px" asp-controller="Account" asp-action="Login">Login</a> <a style="font-size:13px" asp-controller="Account" asp-action="create">Register</a></span>
+                            </div>
+                        </a>
+                        }
                 </div>
             </div>
         </div>
@@ -79,13 +89,26 @@
                     <a href="#"><i class="fa-solid fa-heart"></i></a>
                     <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
-                <a class="Admin d-flex justify-content-between" href="#">
-                    <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" />
-                    <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
-                        <span class="adminName">Name</span>
-                        <span class="adminEmail">Email@gmail.com</span>
-                    </div>
-                </a>
+                @if (_signInManager.IsSignedIn(User))
+                    {
+                    <a class="Admin d-flex justify-content-between" asp-controller="Account" asp-action="Profile">
+                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
+                        <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
+                            <span class="adminName" style="font-size:17px">@User.Identity.Name</span>
+                            <span><a asp-controller="Account" asp-action="Logout">Logout</a></span>
+                        </div>
+                    </a>
+                    }
+                else
+                    {
+                    <a class="Admin d-flex justify-content-between" asp-controller="Account" asp-action="Profile">
+                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
+                        <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
+                            <span class="adminName" style="font-size:13px">Name</span>
+                            <span class="adminEmail fw-bold"><a style="font-size:13px" asp-controller="Account" asp-action="Login">Login</a> <a style="font-size:13px" asp-controller="Account" asp-action="create">Register</a></span>
+                        </div>
+                    </a>
+                    }
             </div>
             <div class="nav2 d-flex justify-content-between">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">

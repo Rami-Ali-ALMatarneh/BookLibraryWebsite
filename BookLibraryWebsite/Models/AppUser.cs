@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookLibraryWebsite.Models
     {
     public class AppUser : IdentityUser
         {
-        [Required]
 
+        [Required]
         public string FullName { get; set; }
         [Required]
         public string Major { get; set; }

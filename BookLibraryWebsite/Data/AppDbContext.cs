@@ -1,5 +1,6 @@
 ﻿using BookLibraryWebsite.Extensions;
 using BookLibraryWebsite.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +17,7 @@ namespace BookLibraryWebsite.Data
             {
             base.OnModelCreating(modelBuilder);
             modelBuilder.SeedBook();
-          //  modelBuilder.seedAlert();
+            //  modelBuilder.seedAlert();
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using BookLibraryWebsite.Models;
 using BookLibraryWebsite.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,27 +16,33 @@ namespace BookLibraryWebsite.Controllers
             this._signInManager = signInManager;
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login()
             {
             return View();
             }
         /****************************************/
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> login( LoginViewModel model)
             {
             if(ModelState.IsValid)
                 {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password,model.Rememberme,false);
-                if(result.Succeeded)
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
                     {
-                    return RedirectToAction("index", "home");
+                    // Login successful
+                    await _signInManager.SignInAsync(user, isPersistent: true);
+                    return RedirectToAction("Index", "Home");
                     }
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                return View(model);
+                //ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
                 }
             return View(model);
             }
         /****************************************/
-        [HttpPost]
+        [Route("logout")]
+        [Authorize]
         public async Task<IActionResult> logout()
             {
             await _signInManager.SignOutAsync();
@@ -43,12 +50,15 @@ namespace BookLibraryWebsite.Controllers
             }
         /****************************************/
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Create()
             {
             return View();
             }
         /****************************************/
         [HttpPost]
+        [AllowAnonymous]
+
         public async Task<IActionResult> Create(AppUser model)
             {
             if (ModelState.IsValid)
@@ -77,9 +87,79 @@ namespace BookLibraryWebsite.Controllers
             return View(model);
             }
         /****************************************/
-        public IActionResult Profile()
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Profile(string id)
             {
-            return View();
+            var user=await _userManager.FindByNameAsync(id);
+            if(user != null)
+                {
+                var ListOfBook = new ListOfBook
+                    {
+                    appUser=new AppUser
+                        {
+               
+                    FullName = user.FullName,
+                    Major = user.Major,
+                    Language = user.Language,
+                    Gender= user.Gender,
+                    phone=user.phone,
+                    Country=user.Country,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    Password = user.Password,
+                    ConfirmPassword= user.ConfirmPassword,
+                }
+                    };
+                return View(ListOfBook);
+                }
+            return RedirectToAction("HttpStatusCodeHandler", "Error",404);
+            }
+        /****************************************/
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Profile(AppUser appUser)
+            {
+            if(ModelState.IsValid)
+                {
+                var user = await _userManager.FindByEmailAsync(appUser.Email);
+                if(user != null)
+                    {
+                    user.FullName = appUser.FullName;
+                    user.Major = appUser.Major;
+                    user.Language = appUser.Language;
+                    user.Gender = appUser.Gender;
+                    user.phone = appUser.phone;
+                    user.Country = appUser.Country;
+                    user.UserName = appUser.UserName;
+                    user.Email = appUser.Email;
+                    user.Password = appUser.Password;
+                    user.ConfirmPassword = appUser.ConfirmPassword;
+                    var result = await _userManager.UpdateAsync(user);
+                    if(result.Succeeded)
+                        {
+                    return RedirectToAction("Index", "Home");
+                        }
+                    }
+                }
+            var ListOfBook = new ListOfBook
+                {
+                appUser = new AppUser
+                    {
+
+                    FullName = appUser.FullName,
+                    Major = appUser.Major,
+                    Language = appUser.Language,
+                    Gender = appUser.Gender,
+                    phone = appUser.phone,
+                    Country = appUser.Country,
+                    UserName = appUser.UserName,
+                    Email = appUser.Email,
+                    Password = appUser.Password,
+                    ConfirmPassword = appUser.ConfirmPassword,
+                    }
+                };
+            return View(ListOfBook);
             }
         }
     }
