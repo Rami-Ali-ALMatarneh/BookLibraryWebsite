@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BookLibraryWebsite.Migrations
 {
     /// <inheritdoc />
-    public partial class AddIdentity : Migration
+    public partial class AddAppUserIdentity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,6 +35,13 @@ namespace BookLibraryWebsite.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Major = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Language = table.Column<int>(type: "int", nullable: false),
+                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    phone = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Country = table.Column<int>(type: "int", nullable: false),
+                    ConfirmPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),

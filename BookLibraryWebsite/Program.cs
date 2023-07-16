@@ -26,7 +26,7 @@ builder.Services.AddDbContextPool<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BookLibraryWebsite"));
 });
 /*********AddIdentity**********/
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>();
 /**********Identity Password*********/
 builder.Services.Configure<LockoutOptions>(options =>

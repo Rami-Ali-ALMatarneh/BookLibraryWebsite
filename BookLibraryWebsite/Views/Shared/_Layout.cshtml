@@ -1,6 +1,7 @@
 ﻿@model ListOfBook
-@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> signInManager
+@inject Microsoft.AspNetCore.Identity.SignInManager<AppUser> _signInManager
+@inject Microsoft.AspNetCore.Identity.UserManager<AppUser> _UserManager
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,12 +53,12 @@
                 </div>
             </div>
             <div class="nav1Info d-flex align-items-center justify-content-between">
-                <form class="searchBox" asp-controller="home" asp-action="Search" method="post"  enctype="multipart/form-data">
+                <form class="searchBox" asp-controller="home" asp-action="Search" method="post" enctype="multipart/form-data">
 
-                    <select class="form-select" asp-for="@Model.KindOfBooks"  asp-items="Html.GetEnumSelectList<KindOfBooks>()">
+                    <select class="form-select" asp-for="@Model.KindOfBooks" asp-items="Html.GetEnumSelectList<KindOfBooks>()">
                     </select>
 
-                    <input class="form-control me-2" type="search" asp-for="TitleBook"  placeholder="Search Books here" aria-label="Search">
+                    <input class="form-control me-2" type="search" asp-for="TitleBook" placeholder="Search Books here" aria-label="Search">
                     <button class="btn" type="submit">Search</button>
                 </form>
                 <div class="iconNav  iconNavAdmin1">
@@ -67,7 +68,7 @@
                     </div>
 
                     <a class="Admin d-flex justify-content-between" href="#">
-                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true"/>
+                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
                         <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
                             <span class="adminName">Name</span>
                             <span class="adminEmail">Email@gmail.com</span>
@@ -87,28 +88,17 @@
                     <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
 
-                @if (signInManager.IsSignedIn(User))
-                    {
-                    <a class="Admin d-flex justify-content-between" href="#">
-                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
-                        <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
-                            <span class="adminName"></span>
-                            <span class="adminEmail"></span>
-                        </div>
-                        
-                    </a>
-                    }
-                else
-                    {
-                    <a class="Admin d-flex justify-content-between" href="#">
-                        asdsadadsad
-                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
-                        <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
-                            <span class="adminName">Name</span>
-                            <span class="adminEmail">Email@gmail.com</span>
-                        </div>
-                    </a>
-                    }
+
+                <a class="Admin d-flex justify-content-between" href="#">
+                    <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
+                    <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
+                        @if (_signInManager.IsSignedIn(User))
+                            {
+                            <span class="adminName">@User.Identity.Name</span>
+                            }
+                    </div>
+
+                </a>
             </div>
             <div class="nav2 d-flex justify-content-between">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -199,7 +189,7 @@
                     <div class="phone"><i class="fa-solid fa-phone"></i> +962776924478</div>
                     <div class="email"><i class="fa-solid fa-envelope"></i> ramimatarneh76@gmail.com</div>
                 </div>
-                </div>
+            </div>
         </div>
         <div class="copyRight  d-flex justify-content-center align-items-center pt-3 pb-3">
             <div class="container d-flex justify-content-between align-items-center">
