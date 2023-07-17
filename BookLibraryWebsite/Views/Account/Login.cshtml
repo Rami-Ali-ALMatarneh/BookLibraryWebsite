@@ -16,9 +16,12 @@
                     By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.
                 </p>
                 <a asp-action="Create" asp-controller="Account" class="btn">CREATE AN ACCOUNT</a>
-                <a asp-action="index" asp-controller="Home" class="btn text-decoration-underline">back to Home</a>
+                <a asp-action="index" asp-controller="Home" class="btn text-decoration-underline">back to Home</a>               
+                <a asp-action="restPassword" asp-controller="Account" class="text-bg-secondary text-decoration-underline">Rest Password</a>
+
+
             </div>
-            <form method="post" class="col-lg-6 col-md-6 col-sm-12" asp-action="login" asp-controller="Account" enctype="multipart/form-data">
+            <form method="post" class="col-lg-6 col-md-6 col-sm-12" asp-action="login" asp-controller="Account" enctype="multipart/form-data" asp-route-returnurl="@Context.Request.Query["returnurl"]">
                 <h1>Login</h1>
                 <div class="mb-3">
                     <div id="emailHelp" class="form-text fs-6">
@@ -43,7 +46,6 @@
                     <button type="submit" class="btn">Login</button>
                 </div>
             </form>
-            <a asp-action="restpassword" asp-controller="Home"><i class="fa-solid fa-unlock-keyhole"></i> Forget Password</a>
         </div>
     </div>
 </div>

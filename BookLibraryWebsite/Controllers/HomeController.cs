@@ -255,15 +255,19 @@ namespace BookLibraryWebsite.Controllers
                     }
             return RedirectToAction("Alert","Home");
             }
-  
         /****************************************/
-        public IActionResult RestPassword()
+        [HttpGet]
+        public IActionResult UpdateBook(int id)
             {
-            return View();
+            var bookk=_bookRepository.GetBook(id);
+            ListOfBook books = new ListOfBook()
+                {
+              book=bookk
+                };
+            return View(books);
             }
-       
-
         /****************************************/
+
         //public IActionResult Cart()
         //    {
         //    return View();

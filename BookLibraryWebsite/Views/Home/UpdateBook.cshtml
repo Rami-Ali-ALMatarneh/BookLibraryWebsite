@@ -1,0 +1,72 @@
+﻿@model ListOfBook
+@{
+    Layout = "~/Views/Shared/_LayoutNavbarFooter.cshtml";
+    ViewBag.Title = "Update Book";
+}
+<div class="addBook pt-5 pb-5">
+    <div class="container pt-5 pb-5">
+        <div class="row formBook">
+            <div class="col-6 imgAddbook">
+            </div>
+            <form class="col-6" method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="AddBook">
+                <h1>Add Book</h1>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="book.Title">Title</label>
+                    <input type="text" class="form-control" asp-for="book.Title">
+                    <span class="text-danger" asp-validation-for="book.Title"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="book.author">Author</label>
+                    <input type="text" class="form-control" asp-for="book.author">
+                    <span class="text-danger" asp-validation-for="book.author"></span>
+
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="book.Created">Created</label>
+                    <input type="date" asp-for="book.Created" class="form-control">
+                    <span class="text-danger" asp-validation-for="book.Created"></span>
+
+                </div>
+                <div class="SelectPrice d-flex justify-content-start gap-3">
+                    <div class="mb-3 w-100">
+                        <label class="form-label " asp-for="book.KindOfBooks">Kind Of Book</label>
+                        <select class="form-select" asp-for="book.KindOfBooks" asp-items="Html.GetEnumSelectList<KindOfBooks>()">
+                            <option selected>Select option menu</option>
+                        </select>
+                        <span class="text-danger" asp-validation-for="book.KindOfBooks"></span>
+                    </div>
+                    <div class="mb-3 w-100">
+                        <label class="form-label" asp-for="book.discount">Discount</label>
+                        <input type="number" asp-for="book.discount" class="form-control">
+                        <span class="text-danger" asp-validation-for="book.discount"></span>
+                    </div>
+                    <div class="mb-3 w-100">
+                        <label class="form-label" asp-for="book.Price">Price</label>
+                        <input type="number" asp-for="book.Price" class="form-control">
+                        <span class="text-danger" asp-validation-for="book.Price"></span>
+                    </div>
+                </div>
+                <div class="imgsFiles d-flex justify-content-start gap-3">
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="book.photoPath">Book Image</label>
+                        <input type="file" class="form-control" asp-for="book.photoPath">
+                        <span class="text-danger" asp-validation-for="book.photoPath"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="book.filePath">Book File PDF</label>
+                        <input type="file" class="form-control" asp-for="book.filePath">
+                        <span class="text-danger" asp-validation-for="book.filePath"></span>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" asp-for="book.Description"></textarea>
+                    <label for="floatingTextarea" asp-for="book.Description">Description</label>
+                    <span class="text-danger" asp-validation-for="book.Description"></span>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn formSubmit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
