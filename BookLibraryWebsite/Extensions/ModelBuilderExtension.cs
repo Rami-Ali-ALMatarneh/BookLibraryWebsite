@@ -6,6 +6,24 @@ namespace BookLibraryWebsite.Extensions
     {
     public static class ModelBuilderExtension
         {
+        public static void setUniqueId( this ModelBuilder modelBuilder )
+            {
+            modelBuilder.Entity<AppUser>()
+              .HasIndex(e => e.UserId).IsUnique();
+
+            modelBuilder.HasSequence<int>("UniqueUserId");
+            modelBuilder.Entity<AppUser>()
+                .Property(e => e.UserId)
+                .HasDefaultValueSql("NEXT VALUE FOR UniqueUserId");
+            }
+        public static void setFKBookAppUser( this ModelBuilder modelBuilder )
+            {
+            modelBuilder.Entity<Book>()
+                 .HasOne(e => e.AppUser)
+                 .WithMany(e => e.books)
+                 .HasPrincipalKey(e => e.UserId)
+                 .HasForeignKey(e => e.AppUserId);
+            }
         public static void SeedBook( this ModelBuilder modelBuilder )
             {
             modelBuilder.Entity<Book>().HasData(new Book
@@ -19,7 +37,8 @@ namespace BookLibraryWebsite.Extensions
                 author = "Rami Ali",
                 KindOfBooks = KindOfBooks.Action_and_Adventure,
                 photoPath = "",
-                filePath = ""
+                filePath = "",
+
                 });
             modelBuilder.Entity<Book>().HasData(new Book
                 {
@@ -32,7 +51,7 @@ namespace BookLibraryWebsite.Extensions
                 author = "Rami Ali",
                 KindOfBooks = KindOfBooks.Action_and_Adventure,
                 photoPath = "",
-                filePath = ""
+                filePath = "",
 
                 });
             modelBuilder.Entity<Book>().HasData(new Book
@@ -47,7 +66,7 @@ namespace BookLibraryWebsite.Extensions
                 author = "Rami Ali",
                 KindOfBooks = KindOfBooks.Action_and_Adventure,
                 photoPath = "",
-                filePath = ""
+                filePath = "",
 
                 });
             modelBuilder.Entity<Book>().HasData(new Book
@@ -76,7 +95,7 @@ namespace BookLibraryWebsite.Extensions
                 author = "Rami Ali",
                 KindOfBooks = KindOfBooks.Action_and_Adventure,
                 photoPath = "",
-                filePath = ""
+                filePath = "",
 
                 });
             modelBuilder.Entity<Book>().HasData(new Book
@@ -91,7 +110,7 @@ namespace BookLibraryWebsite.Extensions
                 author = "Rami Ali",
                 KindOfBooks = KindOfBooks.Action_and_Adventure,
                 photoPath = "",
-                filePath = ""
+                filePath = "",
                 });
             }
         public static void seedAlert( this ModelBuilder modelBuilder )

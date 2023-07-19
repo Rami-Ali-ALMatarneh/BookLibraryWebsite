@@ -32,6 +32,18 @@ namespace BookLibraryWebsite.Models
 
             }
 
+        public IEnumerable<Book> GetAllBooksByTitle( string title )
+            {
+            var books = _context.Book.Where(e => e.Title == title);
+            return books;
+            }
+
+        public IEnumerable<Book> GetBooksByUserId( int id )
+            {
+            var books = _context.Book.Where(e => e.AppUserId == id);
+            return books;
+            }
+
         /***************************************************/
 
         IEnumerable<Book> IBookRepository.getAllBooks()

@@ -6,7 +6,7 @@ namespace BookLibraryWebsite.Models
     {
     public class AppUser : IdentityUser
         {
-
+        public int UserId { get; set; }    
         [Required]
         public string FullName { get; set; }
         [Required]
@@ -30,5 +30,6 @@ namespace BookLibraryWebsite.Models
         [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+       public ICollection<Book> books { get; set;  } 
         }
     }

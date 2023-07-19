@@ -22,5 +22,7 @@ namespace BookLibraryWebsite.Models
         public string filePath { get; set; }
         [Required]
         public KindOfBooks KindOfBooks { get; set; }
+        public int AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
         }
     }

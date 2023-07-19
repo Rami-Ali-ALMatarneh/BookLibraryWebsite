@@ -31,9 +31,13 @@
                         <div class="mb-3 w-100">
                             <label class="form-label " asp-for="KindOfBooks">Kind Of Book</label>
                             <select class="form-select" asp-for="KindOfBooks" asp-items="Html.GetEnumSelectList<KindOfBooks>()">
-                                <option selected>Select option menu</option>
                             </select>
                             <span class="text-danger" asp-validation-for="KindOfBooks"></span>
+                        </div>
+                        <div class="mb-3 w-100">
+                            <label class="form-label" asp-for="UserId">User ID</label>
+                            <input type="number" asp-for="UserId" class="form-control">
+                            <span class="text-danger" asp-validation-for="UserId"></span>
                         </div>
                         <div class="mb-3 w-100">
                             <label class="form-label" asp-for="discount">Discount</label>

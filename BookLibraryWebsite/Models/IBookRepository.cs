@@ -10,5 +10,7 @@ namespace BookLibraryWebsite.Models
         public Book AddBook( Book book );
         public Book UpdateBook( Book book );
         public Book DeleteBook( int id );
+        public IEnumerable<Book> GetBooksByUserId(int id);
+        public IEnumerable<Book> GetAllBooksByTitle( string title );
         }
     }

@@ -16,8 +16,10 @@ namespace BookLibraryWebsite.Data
         protected override void OnModelCreating( ModelBuilder modelBuilder )
             {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.SeedBook();
-            //  modelBuilder.seedAlert();
+            modelBuilder.setUniqueId();
+            modelBuilder.setFKBookAppUser();
+               // modelBuilder.SeedBook();
+              //  modelBuilder.seedAlert();
             }
         }
     }

@@ -2,6 +2,7 @@
 using BookLibraryWebsite.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -14,8 +15,12 @@ namespace BookLibraryWebsite.Controllers
         private readonly IBookRepository _bookRepository;
         private readonly IAlertRepository _alertRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public HomeController( IBookRepository _bookRepository, IWebHostEnvironment _webHostEnvironment,IAlertRepository alertRepository )
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
+        public HomeController( IBookRepository _bookRepository, IWebHostEnvironment _webHostEnvironment,IAlertRepository alertRepository, UserManager<AppUser>userManager,SignInManager<AppUser>signInManager )
         {
+            this._signInManager=signInManager;
+            this._userManager=userManager;
             this._alertRepository = alertRepository;
             this._bookRepository = _bookRepository;
             this._webHostEnvironment = _webHostEnvironment;
@@ -45,18 +50,19 @@ namespace BookLibraryWebsite.Controllers
                 {
                 string uniqueFileImg = string.IsNullOrEmpty(proccessUploadFileImg(model)) ? string.Empty : proccessUploadFileImg(model);
                 string uniqueFilePdf = string.IsNullOrEmpty(proccessUploadFilePdf(model)) ? string.Empty : proccessUploadFilePdf(model);
-                
+
                 Book books = new Book()
                     {
-                    Title= model.Title,
-                    Description= model.Description,
-                    Price= model.Price,
-                    discount= model.discount,
+                    Title = model.Title,
+                    Description = model.Description,
+                    Price = model.Price,
+                    discount = model.discount,
                     Created = model.Created,
                     author = model.author,
-                    photoPath=uniqueFileImg,
-                    KindOfBooks= model.KindOfBooks,
-                    filePath= uniqueFilePdf
+                    photoPath = uniqueFileImg,
+                    KindOfBooks = model.KindOfBooks,
+                    filePath = uniqueFilePdf,
+                    AppUserId=model.UserId
                     };
                 _bookRepository.AddBook(books);
                 return RedirectToAction("Index","Home");
@@ -79,6 +85,8 @@ namespace BookLibraryWebsite.Controllers
             return View(ListOfBooks);
             }
         [HttpGet]
+        [AllowAnonymous]
+
         public IActionResult StoreList()
             {
             var getAllBook = _bookRepository.getAllBooks();
@@ -143,6 +151,8 @@ namespace BookLibraryWebsite.Controllers
             return uniqueFileName;
             }
         /*****************************************/
+        [AllowAnonymous]
+
         public IActionResult News()
             {
             DateTime Year = new DateTime();
@@ -165,12 +175,21 @@ namespace BookLibraryWebsite.Controllers
                 }
             else
                 {
-                       ListOfBook listOfBook = new ListOfBook()
+                if(model.TitleBook!=null)
+                    {
+                    ListOfBook listOfBook = new ListOfBook()
+                        {
+                        KindOfBooks = model.KindOfBooks,
+                        Books = _bookRepository.GetAllBooksByTitle(model.TitleBook),
+                        };
+                    return View(listOfBook);
+                    }
+                ListOfBook listOfBook1 = new ListOfBook()
                         {
                         KindOfBooks = model.KindOfBooks,
                         Books = _bookRepository.GetBookByKindOfBooks(model.KindOfBooks),
                         };
-                    return View(listOfBook);
+                    return View(listOfBook1);
                 }
             }
         /****************************************/
@@ -212,9 +231,9 @@ namespace BookLibraryWebsite.Controllers
             //    schedules = getAllAlert,
             //    };
             return View();
-            }        
+            }
         /****************************************/
-
+        [Authorize]
         [HttpPost]
         public IActionResult Schedule(ScheduleTimes model)
             {
@@ -267,7 +286,15 @@ namespace BookLibraryWebsite.Controllers
             return View(books);
             }
         /****************************************/
-
+        public IActionResult DeleteBook(int id)
+            {
+            var book=_bookRepository.GetBook(id);
+            if (book != null)
+                {
+                _bookRepository.DeleteBook(id);
+                }
+            return View();
+            }
         //public IActionResult Cart()
         //    {
         //    return View();

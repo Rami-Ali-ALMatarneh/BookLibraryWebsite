@@ -16,7 +16,7 @@
                             <p>
                                 Enjoy reading books from our amazing library that contains hundreds of books
                             </p>
-                            <a class="btn Btnborder" href="#">Go Library</a>
+                            <a class="btn Btnborder" asp-action="Library" asp-controller="Account" asp-route-id="@User.Identity.Name">Go Library</a>
                         </div>
                         <div class="landingimg imgLanding">
                             <img src="~/ImagePage/landing.png" asp-append-version="true"/>

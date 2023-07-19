@@ -10,10 +10,12 @@ namespace BookLibraryWebsite.Controllers
         {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        public AccountController(UserManager<AppUser>userManager,SignInManager<AppUser>signInManager)
+        private readonly IBookRepository bookRepository;
+        public AccountController(UserManager<AppUser>userManager,SignInManager<AppUser>signInManager, IBookRepository bookRepository )
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
+            this.bookRepository = bookRepository;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -32,11 +34,23 @@ namespace BookLibraryWebsite.Controllers
                 if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
                     {
                     // Login successful
-                    await _signInManager.SignInAsync(user, isPersistent: true);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
 
                     if (Url.IsLocalUrl(returnUrl) && !String.IsNullOrEmpty(returnUrl))
                         {
-                        return LocalRedirect(returnUrl);
+                        if(returnUrl== "/Account/Library")
+                            {
+                        return LocalRedirect(returnUrl+"/"+user.UserName);
+                            }
+                        else
+                          if (returnUrl == "/Account/Profile")
+                            {
+                            return LocalRedirect(returnUrl + "/" + user.UserName);
+                            }
+                        else
+                            {
+                            return LocalRedirect(returnUrl);
+                            }
                         }
                     else
                         {
@@ -83,6 +97,7 @@ namespace BookLibraryWebsite.Controllers
                     Gender = model.Gender,
                     ConfirmPassword=model.ConfirmPassword,
                     Major=model.Major,
+                   // UserId = model.UserId,
                     };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -176,6 +191,7 @@ namespace BookLibraryWebsite.Controllers
             {
             return View();
             }
+        /********************************************************/
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> RestPassword(RestPassword model)
@@ -200,6 +216,22 @@ namespace BookLibraryWebsite.Controllers
                             }
                         }
                 }
+                }
+            return View();
+            }
+        /********************************************************/
+        [Authorize]
+    public async Task<IActionResult> Library(string id )
+            {
+            var user = await _userManager.FindByNameAsync(id);
+            if (user!=null)
+                {
+                var book = bookRepository.GetBooksByUserId(user.UserId);
+                ListOfBook listOfBook = new ListOfBook
+                    {
+                    Books=book,
+                    };
+                return View(listOfBook);
                 }
             return View();
             }

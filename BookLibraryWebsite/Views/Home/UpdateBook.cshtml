@@ -36,6 +36,11 @@
                         <span class="text-danger" asp-validation-for="book.KindOfBooks"></span>
                     </div>
                     <div class="mb-3 w-100">
+                        <label class="form-label" asp-for="book.AppUserId">User ID</label>
+                        <input type="number" asp-for="book.AppUserId" class="form-control">
+                        <span class="text-danger" asp-validation-for="book.AppUserId"></span>
+                    </div>
+                    <div class="mb-3 w-100">
                         <label class="form-label" asp-for="book.discount">Discount</label>
                         <input type="number" asp-for="book.discount" class="form-control">
                         <span class="text-danger" asp-validation-for="book.discount"></span>

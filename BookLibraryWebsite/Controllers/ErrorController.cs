@@ -5,6 +5,7 @@ using System.Net;
 
 namespace BookLibraryWebsite.Controllers
     {
+    [AllowAnonymous]
     public class ErrorController : Controller
         {
         [AllowAnonymous]

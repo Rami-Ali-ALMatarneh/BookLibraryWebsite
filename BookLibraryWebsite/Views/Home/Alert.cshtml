@@ -22,14 +22,7 @@
                             <td  scope="row" class="">@alert.Title</td>
                             <td  scope="row" class="">@alert.start</td>
                             <td  scope="row" class="">@alert.end</td>
-                            @if (alert.Id != 1)
-                                {
-                                <td  scope="row" class=""><a asp-action="deleteAlert" asp-controller="Home" asp-route-id="@alert.Id" class="btn">Delete</a></td>
-                                }
-                            else
-                                {
-                                <td  scope="row" class=""></td>
-                                }
+                            <td  scope="row" class=""><a asp-action="deleteAlert" asp-controller="Home" asp-route-id="@alert.Id" class="btn">Delete</a></td>
                         </tr>
                         }
                 }

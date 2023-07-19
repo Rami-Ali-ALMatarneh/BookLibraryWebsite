@@ -22,6 +22,8 @@ namespace BookLibraryWebsite.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.HasSequence<int>("UniqueUserId");
+
             modelBuilder.Entity("BookLibraryWebsite.Models.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -96,6 +98,11 @@ namespace BookLibraryWebsite.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValueSql("NEXT VALUE FOR UniqueUserId");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -115,6 +122,9 @@ namespace BookLibraryWebsite.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
@@ -125,6 +135,9 @@ namespace BookLibraryWebsite.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
@@ -160,87 +173,9 @@ namespace BookLibraryWebsite.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Book");
+                    b.HasIndex("AppUserId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "",
-                            KindOfBooks = 1,
-                            Price = 0f,
-                            Title = "Book 1",
-                            author = "Rami Ali",
-                            discount = 0f,
-                            filePath = "",
-                            photoPath = ""
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "",
-                            KindOfBooks = 1,
-                            Price = 0f,
-                            Title = "Book 2",
-                            author = "Rami Ali",
-                            discount = 0f,
-                            filePath = "",
-                            photoPath = ""
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "",
-                            KindOfBooks = 1,
-                            Price = 0f,
-                            Title = "Book 3",
-                            author = "Rami Ali",
-                            discount = 0f,
-                            filePath = "",
-                            photoPath = ""
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "",
-                            KindOfBooks = 1,
-                            Price = 0f,
-                            Title = "Book 4",
-                            author = "Rami Ali",
-                            discount = 0f,
-                            filePath = "",
-                            photoPath = ""
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "",
-                            KindOfBooks = 1,
-                            Price = 0f,
-                            Title = "Book 5",
-                            author = "Rami Ali",
-                            discount = 0f,
-                            filePath = "",
-                            photoPath = ""
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "",
-                            KindOfBooks = 1,
-                            Price = 0f,
-                            Title = "Book 6",
-                            author = "Rami Ali",
-                            discount = 0f,
-                            filePath = "",
-                            photoPath = ""
-                        });
+                    b.ToTable("Book");
                 });
 
             modelBuilder.Entity("BookLibraryWebsite.Models.Schedule", b =>
@@ -399,6 +334,18 @@ namespace BookLibraryWebsite.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("BookLibraryWebsite.Models.Book", b =>
+                {
+                    b.HasOne("BookLibraryWebsite.Models.AppUser", "AppUser")
+                        .WithMany("books")
+                        .HasForeignKey("AppUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -448,6 +395,11 @@ namespace BookLibraryWebsite.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BookLibraryWebsite.Models.AppUser", b =>
+                {
+                    b.Navigation("books");
                 });
 #pragma warning restore 612, 618
         }
