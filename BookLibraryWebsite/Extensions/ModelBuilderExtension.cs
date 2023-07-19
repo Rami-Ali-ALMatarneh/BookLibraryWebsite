@@ -11,7 +11,9 @@ namespace BookLibraryWebsite.Extensions
             modelBuilder.Entity<AppUser>()
               .HasIndex(e => e.UserId).IsUnique();
 
-            modelBuilder.HasSequence<int>("UniqueUserId");
+            modelBuilder.HasSequence<int>("UniqueUserId")
+                .StartsAt(1)
+                .IncrementsBy(1);
             modelBuilder.Entity<AppUser>()
                 .Property(e => e.UserId)
                 .HasDefaultValueSql("NEXT VALUE FOR UniqueUserId");
@@ -20,112 +22,120 @@ namespace BookLibraryWebsite.Extensions
             {
             modelBuilder.Entity<Book>()
                  .HasOne(e => e.AppUser)
-                 .WithMany(e => e.books)
+                 .WithMany()
                  .HasPrincipalKey(e => e.UserId)
                  .HasForeignKey(e => e.AppUserId);
             }
-        public static void SeedBook( this ModelBuilder modelBuilder )
+        public static void setFK_Schedule( this ModelBuilder modelBuilder )
             {
-            modelBuilder.Entity<Book>().HasData(new Book
-                {
-                Id = 1,
-                Title = "Book 1",
-                Description = "",
-                Price = (float)0.0,
-                discount = (float)0.0,
-                Created = new DateTime(2023, 1, 1),
-                author = "Rami Ali",
-                KindOfBooks = KindOfBooks.Action_and_Adventure,
-                photoPath = "",
-                filePath = "",
-
-                });
-            modelBuilder.Entity<Book>().HasData(new Book
-                {
-                Id = 2,
-                Title = "Book 2",
-                Description = "",
-                Price = (float)0.0,
-                discount = (float)0.0,
-                Created = new DateTime(2023, 1, 1),
-                author = "Rami Ali",
-                KindOfBooks = KindOfBooks.Action_and_Adventure,
-                photoPath = "",
-                filePath = "",
-
-                });
-            modelBuilder.Entity<Book>().HasData(new Book
-                {
-
-                Id = 3,
-                Title = "Book 3",
-                Description = "",
-                Price = (float)0.0,
-                discount = (float)0.0,
-                Created = new DateTime(2023, 1, 1),
-                author = "Rami Ali",
-                KindOfBooks = KindOfBooks.Action_and_Adventure,
-                photoPath = "",
-                filePath = "",
-
-                });
-            modelBuilder.Entity<Book>().HasData(new Book
-                {
-                Id = 4,
-                Title = "Book 4",
-                Description = "",
-                Price = (float)0.0,
-                discount = (float)0.0,
-                Created = new DateTime(2023, 1, 1),
-                author = "Rami Ali",
-                KindOfBooks = KindOfBooks.Action_and_Adventure,
-                photoPath = "",
-                filePath = ""
-
-                });
-            modelBuilder.Entity<Book>().HasData(new Book
-                {
-
-                Id = 5,
-                Title = "Book 5",
-                Description = "",
-                Price = (float)0.0,
-                discount = (float)0.0,
-                Created = new DateTime(2023, 1, 1),
-                author = "Rami Ali",
-                KindOfBooks = KindOfBooks.Action_and_Adventure,
-                photoPath = "",
-                filePath = "",
-
-                });
-            modelBuilder.Entity<Book>().HasData(new Book
-                {
-
-                Id = 6,
-                Title = "Book 6",
-                Description = "",
-                Price = (float)0.0,
-                discount = (float)0.0,
-                Created = new DateTime(2023, 1, 1),
-                author = "Rami Ali",
-                KindOfBooks = KindOfBooks.Action_and_Adventure,
-                photoPath = "",
-                filePath = "",
-                });
+            modelBuilder.Entity<Schedule>()
+                 .HasOne(e => e.AppUser)
+                 .WithMany()
+                 .HasPrincipalKey(e => e.UserId)
+                 .HasForeignKey(e => e.AppUserId);
             }
-        public static void seedAlert( this ModelBuilder modelBuilder )
-            {
-            modelBuilder.Entity<Schedule>().HasData(new Schedule
-                {
-                Id = 1,
-                Title = "Alert Test 1",
-                start = new TimeSpan(
-                   0, 0, 0
-                    )
-                ,
-                end = new TimeSpan(0, 0, 0)
+        //public static void SeedBook( this ModelBuilder modelBuilder )
+        //    {
+        //    modelBuilder.Entity<Book>().HasData(new Book
+        //        {
+        //        Id = 1,
+        //        Title = "Book 1",
+        //        Description = "",
+        //        Price = (float)0.0,
+        //        discount = (float)0.0,
+        //        Created = new DateTime(2023, 1, 1),
+        //        author = "Rami Ali",
+        //        KindOfBooks = KindOfBooks.Action_and_Adventure,
+        //        photoPath = "",
+        //        filePath = "",
 
-                });
-            }
+        //        });
+        //    modelBuilder.Entity<Book>().HasData(new Book
+        //        {
+        //        Id = 2,
+        //        Title = "Book 2",
+        //        Description = "",
+        //        Price = (float)0.0,
+        //        discount = (float)0.0,
+        //        Created = new DateTime(2023, 1, 1),
+        //        author = "Rami Ali",
+        //        KindOfBooks = KindOfBooks.Action_and_Adventure,
+        //        photoPath = "",
+        //        filePath = "",
+
+        //        });
+        //    modelBuilder.Entity<Book>().HasData(new Book
+        //        {
+
+        //        Id = 3,
+        //        Title = "Book 3",
+        //        Description = "",
+        //        Price = (float)0.0,
+        //        discount = (float)0.0,
+        //        Created = new DateTime(2023, 1, 1),
+        //        author = "Rami Ali",
+        //        KindOfBooks = KindOfBooks.Action_and_Adventure,
+        //        photoPath = "",
+        //        filePath = "",
+
+        //        });
+        //    modelBuilder.Entity<Book>().HasData(new Book
+        //        {
+        //        Id = 4,
+        //        Title = "Book 4",
+        //        Description = "",
+        //        Price = (float)0.0,
+        //        discount = (float)0.0,
+        //        Created = new DateTime(2023, 1, 1),
+        //        author = "Rami Ali",
+        //        KindOfBooks = KindOfBooks.Action_and_Adventure,
+        //        photoPath = "",
+        //        filePath = ""
+
+        //        });
+        //    modelBuilder.Entity<Book>().HasData(new Book
+        //        {
+
+        //        Id = 5,
+        //        Title = "Book 5",
+        //        Description = "",
+        //        Price = (float)0.0,
+        //        discount = (float)0.0,
+        //        Created = new DateTime(2023, 1, 1),
+        //        author = "Rami Ali",
+        //        KindOfBooks = KindOfBooks.Action_and_Adventure,
+        //        photoPath = "",
+        //        filePath = "",
+
+        //        });
+        //    modelBuilder.Entity<Book>().HasData(new Book
+        //        {
+
+        //        Id = 6,
+        //        Title = "Book 6",
+        //        Description = "",
+        //        Price = (float)0.0,
+        //        discount = (float)0.0,
+        //        Created = new DateTime(2023, 1, 1),
+        //        author = "Rami Ali",
+        //        KindOfBooks = KindOfBooks.Action_and_Adventure,
+        //        photoPath = "",
+        //        filePath = "",
+        //        });
+        //    }
+        //public static void seedAlert( this ModelBuilder modelBuilder )
+        //    {
+        //    modelBuilder.Entity<Schedule>().HasData(new Schedule
+        //        {
+        //        Id = 1,
+        //        Title = "Alert Test 1",
+        //        start = new TimeSpan(
+        //           0, 0, 0
+        //            )
+        //        ,
+        //        end = new TimeSpan(0, 0, 0)
+
+        //        });
+        //  }
         }
     }

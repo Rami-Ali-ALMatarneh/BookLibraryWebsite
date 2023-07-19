@@ -90,7 +90,7 @@
 <div class="setAlert pt-5 pb-5">
     <div class="container">
         <div class="formAlert">
-            <form method="post" asp-action="Schedule" asp-controller="home" enctype="multipart/form-data">
+            <form method="post" asp-action="Schedule" asp-controller="home" asp-route-Name="@User.Identity.Name" enctype="multipart/form-data">
                 <h1>Set Alert</h1>
                 <div class="mb-3">
                     <label class="form-label" asp-for="Title">Title Alert</label>

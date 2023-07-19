@@ -6,11 +6,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BookLibraryWebsite.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateInitialBD : Migration
+    public partial class InitialCreateDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateSequence<int>(
+                name: "UniqueUserId");
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -30,6 +33,7 @@ namespace BookLibraryWebsite.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR UniqueUserId"),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Major = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Language = table.Column<int>(type: "int", nullable: false),
@@ -56,27 +60,7 @@ namespace BookLibraryWebsite.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Book",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<float>(type: "real", nullable: false),
-                    discount = table.Column<float>(type: "real", nullable: false),
-                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    author = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    photoPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    filePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    KindOfBooks = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Book", x => x.Id);
+                    table.UniqueConstraint("AK_AspNetUsers_UserId", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -200,6 +184,34 @@ namespace BookLibraryWebsite.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Book",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<float>(type: "real", nullable: false),
+                    discount = table.Column<float>(type: "real", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    author = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    photoPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    filePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    KindOfBooks = table.Column<int>(type: "int", nullable: false),
+                    AppUserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Book", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Book_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -233,11 +245,22 @@ namespace BookLibraryWebsite.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_UserId",
+                table: "AspNetUsers",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Book_AppUserId",
+                table: "Book",
+                column: "AppUserId");
         }
 
         /// <inheritdoc />
@@ -269,6 +292,9 @@ namespace BookLibraryWebsite.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropSequence(
+                name: "UniqueUserId");
         }
     }
 }

@@ -26,9 +26,8 @@
                     <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-heart"></i> Wishlist</a>
                     <a asp-controller="Home" asp-action="Store" class="list-group-item list-group-item-action"><i class="fa-solid fa-store"></i> Shop</a>
                     <a asp-action="RestPassword" asp-controller="Account" class="list-group-item list-group-item-action"><i class="fa-solid fa-unlock-keyhole"></i> Rest Password </a>
+                    <a asp-controller="Account" asp-action="DeleteUser" asp-route-Email="@Model.appUser.Email" class="list-group-item list-group-item-action"><i class="fa-solid fa-delete-left"></i> Delete Account</a>
                     <a asp-controller="Account" asp-action="Logout" class="list-group-item list-group-item-action"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
-
-
                 </div>
             </div>
             <form class="boxPorfile2" asp-controller="account" asp-action="profile" enctype="multipart/form-data" method="post">

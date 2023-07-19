@@ -235,5 +235,14 @@ namespace BookLibraryWebsite.Controllers
                 }
             return View();
             }
+        /********************************************************/
+        [Authorize]
+        public async Task<IActionResult> deleteUser( string Email )
+            {
+            var user = await _userManager.FindByEmailAsync(Email);
+            await _signInManager.SignOutAsync();
+            await _userManager.DeleteAsync(user);
+            return RedirectToAction("Index", "Home");
+            }
         }
     }

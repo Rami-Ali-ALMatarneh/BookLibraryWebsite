@@ -13,5 +13,7 @@ namespace BookLibraryWebsite.Models
         [Required]
 
         public TimeSpan end { get; set; }
+        public int AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
         }
     }

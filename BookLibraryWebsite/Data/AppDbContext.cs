@@ -18,8 +18,9 @@ namespace BookLibraryWebsite.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.setUniqueId();
             modelBuilder.setFKBookAppUser();
+            modelBuilder.setFK_Schedule();
                // modelBuilder.SeedBook();
-              //  modelBuilder.seedAlert();
+               //  modelBuilder.seedAlert();
             }
         }
     }

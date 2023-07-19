@@ -235,15 +235,17 @@ namespace BookLibraryWebsite.Controllers
         /****************************************/
         [Authorize]
         [HttpPost]
-        public IActionResult Schedule(ScheduleTimes model)
+        public async Task<IActionResult> Schedule(ScheduleTimes model,string Name )
             {
             if (ModelState.IsValid)
                 {
+                var user = await _userManager.FindByNameAsync(Name);
                 Schedule schedule = new Schedule()
                     {
                     Title = model.Title,
                     start = model.start,
-                    end = model.end
+                    end = model.end,
+                    AppUserId = user.UserId
                     };
                 _alertRepository.Addschedule(schedule);
                 return RedirectToAction("Alert", "Home");

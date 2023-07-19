@@ -186,6 +186,9 @@ namespace BookLibraryWebsite.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -197,6 +200,8 @@ namespace BookLibraryWebsite.Migrations
                         .HasColumnType("time");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Schedule");
                 });
@@ -337,7 +342,19 @@ namespace BookLibraryWebsite.Migrations
             modelBuilder.Entity("BookLibraryWebsite.Models.Book", b =>
                 {
                     b.HasOne("BookLibraryWebsite.Models.AppUser", "AppUser")
-                        .WithMany("books")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("BookLibraryWebsite.Models.Schedule", b =>
+                {
+                    b.HasOne("BookLibraryWebsite.Models.AppUser", "AppUser")
+                        .WithMany()
                         .HasForeignKey("AppUserId")
                         .HasPrincipalKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -395,11 +412,6 @@ namespace BookLibraryWebsite.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("BookLibraryWebsite.Models.AppUser", b =>
-                {
-                    b.Navigation("books");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,31 +5,26 @@
 namespace BookLibraryWebsite.Migrations
 {
     /// <inheritdoc />
-    public partial class SetsetFKBookAppUser : Migration
+    public partial class setFK_Schedule : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
                 name: "AppUserId",
-                table: "Book",
+                table: "Schedule",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
-            migrationBuilder.AddUniqueConstraint(
-                name: "AK_AspNetUsers_UserId",
-                table: "AspNetUsers",
-                column: "UserId");
-
             migrationBuilder.CreateIndex(
-                name: "IX_Book_AppUserId",
-                table: "Book",
+                name: "IX_Schedule_AppUserId",
+                table: "Schedule",
                 column: "AppUserId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Book_AspNetUsers_AppUserId",
-                table: "Book",
+                name: "FK_Schedule_AspNetUsers_AppUserId",
+                table: "Schedule",
                 column: "AppUserId",
                 principalTable: "AspNetUsers",
                 principalColumn: "UserId",
@@ -40,20 +35,16 @@ namespace BookLibraryWebsite.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Book_AspNetUsers_AppUserId",
-                table: "Book");
+                name: "FK_Schedule_AspNetUsers_AppUserId",
+                table: "Schedule");
 
             migrationBuilder.DropIndex(
-                name: "IX_Book_AppUserId",
-                table: "Book");
-
-            migrationBuilder.DropUniqueConstraint(
-                name: "AK_AspNetUsers_UserId",
-                table: "AspNetUsers");
+                name: "IX_Schedule_AppUserId",
+                table: "Schedule");
 
             migrationBuilder.DropColumn(
                 name: "AppUserId",
-                table: "Book");
+                table: "Schedule");
         }
     }
 }

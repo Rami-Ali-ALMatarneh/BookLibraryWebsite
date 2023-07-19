@@ -30,6 +30,6 @@ namespace BookLibraryWebsite.Models
         [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
-       public ICollection<Book> books { get; set;  } 
+       //public ICollection<Book> books { get; set;  } 
         }
     }
