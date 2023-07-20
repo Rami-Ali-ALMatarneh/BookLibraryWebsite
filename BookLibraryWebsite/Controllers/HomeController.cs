@@ -44,13 +44,13 @@ namespace BookLibraryWebsite.Controllers
             return View();
             }
         [HttpPost]
-        public  IActionResult AddBook(HomeCreateViewModel model)
+        public  async Task<IActionResult> AddBook(HomeCreateViewModel model,string name)
             {           
             if (ModelState.IsValid)
                 {
-                string uniqueFileImg = string.IsNullOrEmpty(proccessUploadFileImg(model)) ? string.Empty : proccessUploadFileImg(model);
-                string uniqueFilePdf = string.IsNullOrEmpty(proccessUploadFilePdf(model)) ? string.Empty : proccessUploadFilePdf(model);
-
+                //string uniqueFileImg = string.IsNullOrEmpty(proccessUploadFileImg(model)) ? string.Empty : proccessUploadFileImg(model);
+                //string uniqueFilePdf = string.IsNullOrEmpty(proccessUploadFilePdf(model)) ? string.Empty : proccessUploadFilePdf(model);
+                var user=await _userManager.FindByNameAsync(name);
                 Book books = new Book()
                     {
                     Title = model.Title,
@@ -59,10 +59,10 @@ namespace BookLibraryWebsite.Controllers
                     discount = model.discount,
                     Created = model.Created,
                     author = model.author,
-                    photoPath = uniqueFileImg,
+                    photoPath = string.IsNullOrEmpty(proccessUploadFileImg(model)) ? string.Empty : proccessUploadFileImg(model),
                     KindOfBooks = model.KindOfBooks,
-                    filePath = uniqueFilePdf,
-                    AppUserId=model.UserId
+                    filePath = string.IsNullOrEmpty(proccessUploadFilePdf(model)) ? string.Empty : proccessUploadFilePdf(model),
+                    AppUserId= user.UserId
                     };
                 _bookRepository.AddBook(books);
                 return RedirectToAction("Index","Home");
@@ -127,7 +127,7 @@ namespace BookLibraryWebsite.Controllers
                 string uniqueUpload = Path.Combine(_webHostEnvironment.WebRootPath, "ImagePage");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + model.photo.FileName;
                 string filePath=Path.Combine(uniqueUpload, uniqueFileName);
-                using(var fileStream= new FileStream(filePath, FileMode.Create))
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                     model.photo.CopyTo(fileStream);
                     }
