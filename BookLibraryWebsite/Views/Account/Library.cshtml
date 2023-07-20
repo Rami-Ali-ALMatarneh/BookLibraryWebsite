@@ -35,7 +35,7 @@
                             <td><p>@books.author</p></td>
                             <td><p>@books.Price</p></td>
                             <td> <a class="btn" asp-controller="Home" asp-action="UpdateBook" asp-route-id="@books.Id">Edit</a></td>
-                            <td><a class="btn " asp-controller="Home" asp-action="UpdateBook" asp-route-id="@books.Id">Delete</a></td>
+                            <td><a class="btn " asp-controller="Home" asp-action="DeleteBook" asp-route-id="@books.Id" asp-route-name="@User.Identity.Name">Delete</a></td>
                         </tr>
                         }
                     else
@@ -48,7 +48,7 @@
                             <td><p>@books.author</p></td>
                             <td><p>@books.Price</p></td>
                             <td> <a class="btn" asp-controller="Home" asp-action="UpdateBook" asp-route-id="@books.Id">Edit</a></td>
-                            <td><a class="btn " asp-controller="Home" asp-action="UpdateBook" asp-route-id="@books.Id">Delete</a></td>
+                            <td><a class="btn " asp-controller="Home" asp-action="DeleteBook" asp-route-id="@books.Id" asp-route-name="@User.Identity.Name">Delete</a></td>
                         </tr>
                         }
                     }

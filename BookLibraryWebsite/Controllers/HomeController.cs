@@ -288,14 +288,14 @@ namespace BookLibraryWebsite.Controllers
             return View(books);
             }
         /****************************************/
-        public IActionResult DeleteBook(int id)
+        public IActionResult DeleteBook(int id,string name)
             {
             var book=_bookRepository.GetBook(id);
             if (book != null)
                 {
                 _bookRepository.DeleteBook(id);
                 }
-            return View();
+            return RedirectToAction("Library", "Account", new {id=name});
             }
         //public IActionResult Cart()
         //    {
