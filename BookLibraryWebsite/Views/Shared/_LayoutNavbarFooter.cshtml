@@ -1,6 +1,33 @@
 ﻿@model ListOfBook
 @inject Microsoft.AspNetCore.Identity.SignInManager<AppUser> _signInManager
 @inject Microsoft.AspNetCore.Identity.UserManager<AppUser> _UserManager
+@{
+    var imgUser = "";
+    if (_signInManager.IsSignedIn(User))
+        {
+        var user = await _UserManager.FindByNameAsync(User.Identity.Name);
+        if (user.photoPath == null)
+            {
+            if (Model.appUser.Gender == "Male")
+                {
+                imgUser = "/ImagePage/img_avatar.png";
+                }
+            else
+                {
+                imgUser = "/ImagePage/avatarFemale.png";
+                }
+            }
+        else
+            {
+            imgUser = "/ImageUser/" + user.photoPath;
+            }
+        }
+    else
+        {
+        imgUser = "/ImagePage/img_avatar.png";
+        }
+
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +57,9 @@
     <link href="~/cssfile/ScheduleCalenderCSS.css" rel="stylesheet" />
     <link href="~/cssfile/AlertCSS.css" rel="stylesheet" />
     <link href="~/cssfile/LoginCss.css" rel="stylesheet" />
+    <link href="~/cssfile/contactus.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
 
     @* start font  *@
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,7 +100,7 @@
                     @if (_signInManager.IsSignedIn(User))
                         {
                         <a class="Admin d-flex justify-content-between" asp-controller="Account" asp-action="Profile" asp-route-id="@User.Identity.Name">
-                            <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
+                            <img src="@imgUser" alt="Alternate Text" asp-append-version="true" />
                             <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
                                 <span class="adminName" style="font-size:17px">@User.Identity.Name</span>
                                 <span><a class="btn" style="color:white" asp-controller="Account" asp-action="Logout">Logout</a></span>
@@ -103,7 +133,7 @@
                 @if (_signInManager.IsSignedIn(User))
                     {
                     <a class="Admin d-flex justify-content-between" asp-controller="Account" asp-action="Profile" asp-route-id="@User.Identity.Name">
-                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
+                        <img src="@imgUser" alt="Alternate Text" asp-append-version="true" />
                         <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
                             <span class="adminName" style="font-size:17px">@User.Identity.Name</span>
                             <span><a asp-controller="Account" asp-action="Logout">Logout</a></span>
@@ -133,9 +163,6 @@
                         <a class="nav-link" asp-action="Library" asp-controller="Account" asp-route-id="@User.Identity.Name">Library</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" asp-controller="home" asp-action="Schedule">Schedule</a>
                     </li>
                     <li class="nav-item">
@@ -154,16 +181,16 @@
         <div class="container">
             <div class="row footerSections">
                 <div class="footer1 col-xl-3 col-md-12 col-sm-12 footer1 d-flex  flex-column gap-2">
-                    <a class="logo navbar-brand d-flex" href="#">
-                        <img src="~/ImagePage/logo.png" /><span class="logoP1 logoFooter">Kita</span><span class="logoP2">B</span>
+                    <a class="logo navbar-brand d-flex" asp-controller="home" asp-action="index">
+                        <img asp-append-version="true" src="~/ImagePage/logo.png" /><span class="logoP1 logoFooter">Kita</span><span class="logoP2" asp-append-version="true">B</span>
                     </a>
                     <p>KitaB is a Book Store Ecommerce Website Template by Rami Ali Matarneh (opsCode59)</p>
                     <div class="socialMedia d-flex justify-content-center align-items-center gap-3">
-                        <a><i class="fa-brands fa-facebook-f"></i></a>
-                        <a><i class="fa-brands fa-youtube"></i></a>
-                        <a><i class="fa-brands fa-linkedin"></i></a>
-                        <a><i class="fa-brands fa-github"></i></a>
-                        <a><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100011794534248"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@@opscode59"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/in/rami-almatarneh/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/Rami-Ali-ALMatarneh"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.instagram.com/rami.ali.matarneh/?hl=en"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class=" row-cols-sm-4 footer2 col-xl-6 col-md-8 c-sm-12">
@@ -171,37 +198,32 @@
                         <h5>Our Links</h5>
                         <div class="ourLinks">
                             <a asp-action="index" asp-controller="home"><i class="fa-solid fa-angle-right"></i> Home</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Store</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Library</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Blog</a>
+                            <a asp-controller="home" asp-action="store"><i class="fa-solid fa-angle-right"></i> Store</a>
+                            <a asp-action="Library" asp-controller="Account" asp-route-id="@User.Identity.Name"><i class="fa-solid fa-angle-right"></i> Library</a>
                             <a asp-controller="home" asp-action="Schedule"><i class="fa-solid fa-angle-right"></i> Schedule</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> About Us</a>
+                            <a asp-controller="home" asp-action="AboutUs"><i class="fa-solid fa-angle-right"></i> About Us</a>
                         </div>
                     </div>
                     <div class="footer2Box col-xl-4 col-md-4 col-sm-4">
                         <h5>KitaB</h5>
                         <div class="KitaB">
-                            <a asp-action="index" asp-controller="home"><i class="fa-solid fa-angle-right"></i> Home</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Services</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Book Details</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Our Pricing</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Event Calender</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Free Delivery</a>
+                            <a href="#Service"><i class="fa-solid fa-angle-right"></i> Services</a>
+                            <a href="#CATEGORY"><i class="fa-solid fa-angle-right"></i> Books Category</a>
+                            <a href="#OursPricing"><i class="fa-solid fa-angle-right"></i> Our Pricing</a>
+                            <a href="#Calenders"><i class="fa-solid fa-angle-right"></i> Event Calender</a>
+                            <a href="#deliverys"><i class="fa-solid fa-angle-right"></i> Free Delivery</a>
                         </div>
                     </div>
                     <div class="footer2Box col-xl-4 col-md-4 col-sm-4">
                         <h5>Resources</h5>
                         <div class="Resources">
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> DownLoad</a>
                             <a href="#"><i class="fa-solid fa-angle-right"></i> Help Center</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Shop Cart</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Loign</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Parthner</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Upload Books</a>
+                            <a asp-controller="Account" asp-action="listCart" asp-route-id="@User.Identity.Name"><i class="fa-solid fa-angle-right"></i> Shop Cart</a>
+                            <a asp-action="Library" asp-controller="Account" asp-route-id="@User.Identity.Name"><i class="fa-solid fa-angle-right"></i> Upload Books</a>
                         </div>
                     </div>
                 </div>
-                <div class="footer3Box col-xl-3 col-md-5 col-sm-12">
+                <div class="footer3Box col-xl-3 col-md-4 col-sm-12">
                     <h5>
                         Get in Touch With Us
                     </h5>

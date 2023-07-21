@@ -1,0 +1,45 @@
+﻿@model ListOfBook
+
+@{
+    Layout = "~/Views/Shared/_LayoutNavbarFooter.cshtml";
+    ViewBag.Title = "Contact Us";
+}
+<div class="container p-5">
+    <div class="row">
+        <div class="col-md-7 p-4">
+            <h4 class="formContact fw-bold">Get in touch</h4>
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Name</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your name">
+            </div>
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Email</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter your email">
+            </div>
+           
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button class="btn">Submit</button>
+        </div>
+        <div class="col-md-5 bgcolor2  p-4">
+            <h4 >Contact us</h4><hr>
+            <div class="mt-4">
+                <div class="d-flex">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <p>Address:Amman-Jordan</p>
+                </div><hr>
+                <div class="d-flex">
+                    <i class="bi bi-telephone-fill"></i>
+                    <a style="color:white" href="tell:+9627769244"><p>Contact :+962776924478</p></a>
+                </div><hr>
+                      <div class="d-flex">
+                          <i class="bi bi-envelope-fill"></i>
+                          <a style="color:white" href="Mailto:ramimatarneh76@gmail.com"><p>Email:- ramimatarneh76@gmail.com</p></a>
+                          
+                      </div><hr>
+            </div>
+        </div>
+    </div>
+</div>

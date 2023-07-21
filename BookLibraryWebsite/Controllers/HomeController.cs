@@ -1,4 +1,5 @@
 ﻿using BookLibraryWebsite.Models;
+using BookLibraryWebsite.Models.Repository;
 using BookLibraryWebsite.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace BookLibraryWebsite.Controllers
-    {
+{
     [Authorize]
     public class HomeController : Controller
         {
@@ -26,7 +27,7 @@ namespace BookLibraryWebsite.Controllers
             this._webHostEnvironment = _webHostEnvironment;
         }
         [AllowAnonymous]
-        public IActionResult Index( )
+        public IActionResult Index()
             {
             var getAllBook =_bookRepository.getAllBooks();
             var kindOfBook = new KindOfBooks();
@@ -288,15 +289,22 @@ namespace BookLibraryWebsite.Controllers
             return View(books);
             }
         /****************************************/
-        public IActionResult DeleteBook(int id,string name)
+        public IActionResult DeleteBook( int id, string name )
             {
-            var book=_bookRepository.GetBook(id);
+            var book = _bookRepository.GetBook(id);
             if (book != null)
                 {
                 _bookRepository.DeleteBook(id);
                 }
-            return RedirectToAction("Library", "Account", new {id=name});
+            return RedirectToAction("Library", "Account", new { id = name });
             }
+        /****************************************/
+        [HttpGet]
+        public IActionResult ContactUs()
+            {
+            return View();
+            }
+        /****************************************/
         //public IActionResult Cart()
         //    {
         //    return View();

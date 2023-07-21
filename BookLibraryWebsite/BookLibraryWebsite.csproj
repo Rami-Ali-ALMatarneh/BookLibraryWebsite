@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\FilePdf\" />
     <Folder Include="wwwroot\ImageBook\" />
+    <Folder Include="wwwroot\ImageUser\" />
   </ItemGroup>
 
 </Project>

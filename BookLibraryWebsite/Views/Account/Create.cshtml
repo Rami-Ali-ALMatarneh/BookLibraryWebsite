@@ -1,4 +1,4 @@
-﻿@model AppUser
+﻿@model AccountUserCreateViewModel
 @{
     Layout = "~/Views/Account/_LayoutAccount.cshtml";
     ViewBag.Title = "Profile";
@@ -48,8 +48,9 @@
                     </div>
                 </div>
                 <div class="mb-3 col-md-6 col-sm-12">
-                    <label class="form-label">Image:</label>
-                    <input type="file" class="form-control">
+                    <label class="form-label" asp-for="photoPath">Image:</label>
+                    <input type="file" class="form-control" asp-for="photoPath">
+                    <span class="text-danger" asp-validation-for="photoPath"></span>    
                 </div>
             </div>
             <div class="row ContactInfo mb-5">

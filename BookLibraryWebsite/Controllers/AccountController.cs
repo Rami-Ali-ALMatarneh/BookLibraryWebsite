@@ -1,23 +1,27 @@
 ﻿using BookLibraryWebsite.Models;
+using BookLibraryWebsite.Models.Repository;
 using BookLibraryWebsite.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookLibraryWebsite.Controllers
-    {
+{
     public class AccountController : Controller
         {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IBookRepository bookRepository;
         private readonly ICartRepository cartRepository;
-        public AccountController(UserManager<AppUser>userManager,SignInManager<AppUser>signInManager, ICartRepository cartRepository, IBookRepository bookRepository )
+        private readonly IWebHostEnvironment webHostEnvironment;
+        public AccountController(UserManager<AppUser>userManager,SignInManager<AppUser>signInManager, ICartRepository cartRepository, IBookRepository bookRepository,IWebHostEnvironment webHostEnvironment )
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this.bookRepository = bookRepository;
             this.cartRepository = cartRepository;
+            this.webHostEnvironment= webHostEnvironment;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -83,10 +87,12 @@ namespace BookLibraryWebsite.Controllers
         [HttpPost]
         [AllowAnonymous]
 
-        public async Task<IActionResult> Create(AppUser model)
+        public async Task<IActionResult> Create(AccountUserCreateViewModel model)
             {
             if (ModelState.IsValid)
                 {
+         
+                var uniqueImg = string.IsNullOrEmpty(proccessUploadFileImg(model)) ? string.Empty : proccessUploadFileImg(model);
                 var user = new AppUser
                     {
                     UserName = model.UserName,
@@ -99,17 +105,34 @@ namespace BookLibraryWebsite.Controllers
                     Gender = model.Gender,
                     ConfirmPassword=model.ConfirmPassword,
                     Major=model.Major,
-                   // UserId = model.UserId,
+                    photoPath= uniqueImg
+                    // UserId = model.UserId,
                     };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                     {
-                    await _signInManager.SignInAsync(user, isPersistent: true);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                     }
                 
                 }
             return View(model);
+            }
+        /******************************************/
+        private string proccessUploadFileImg( AccountUserCreateViewModel model )
+            {
+            string uniqueFileName = null;
+            if (model.photoPath != null)
+                {
+                string uniqueUpload = Path.Combine(webHostEnvironment.WebRootPath, "ImageUser");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.photoPath.FileName;
+                string filePath = Path.Combine(uniqueUpload, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                    model.photoPath.CopyTo(fileStream);
+                    }
+                }
+            return uniqueFileName;
             }
         /****************************************/
         [Authorize]
@@ -134,6 +157,7 @@ namespace BookLibraryWebsite.Controllers
                     Email = user.Email,
                     Password = user.Password,
                     ConfirmPassword= user.ConfirmPassword,
+                    photoPath=user.photoPath,   
                  }
                     };
                 return View(ListOfBook);
@@ -160,6 +184,7 @@ namespace BookLibraryWebsite.Controllers
                     user.Email = appUser.Email;
                     user.Password=appUser.Password;
                     user.ConfirmPassword = appUser.ConfirmPassword;
+                    user.photoPath=appUser.photoPath;
                     var result = await _userManager.UpdateAsync(user);
                     if(result.Succeeded)
                         {
@@ -284,5 +309,6 @@ namespace BookLibraryWebsite.Controllers
             cartRepository.deleteCart(Id);
             return RedirectToAction("listCart", "Account",new {id= user.UserName });
             }
+        /********************************************************/
         }
     }

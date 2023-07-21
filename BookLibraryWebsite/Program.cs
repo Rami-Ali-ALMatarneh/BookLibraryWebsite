@@ -1,6 +1,8 @@
 
 using BookLibraryWebsite.Data;
 using BookLibraryWebsite.Models;
+using BookLibraryWebsite.Models.Repository;
+using BookLibraryWebsite.Models.SqlRepository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;

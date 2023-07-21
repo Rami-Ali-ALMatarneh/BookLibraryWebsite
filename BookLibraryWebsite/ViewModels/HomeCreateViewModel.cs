@@ -23,5 +23,6 @@ namespace BookLibraryWebsite.ViewModels
         [Required]
         public KindOfBooks KindOfBooks { get; set; }
         public int UserId { get; set; }
+
         }
     }

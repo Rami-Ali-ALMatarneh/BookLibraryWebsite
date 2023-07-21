@@ -2,7 +2,35 @@
 @inject Microsoft.AspNetCore.Identity.SignInManager<AppUser> _signInManager
 @inject Microsoft.AspNetCore.Identity.UserManager<AppUser> _UserManager
 @using Microsoft.AspNetCore.Identity
+@{
+    var imgUser = "";
+    if (_signInManager.IsSignedIn(User))
+        {
+        var user = await _UserManager.FindByNameAsync(User.Identity.Name);
 
+        if (user.photoPath == null)
+            {
+            if (Model.appUser.Gender == "Male")
+                {
+                imgUser = "/ImagePage/img_avatar.png";
+                }
+            else
+                {
+                imgUser = "/ImagePage/avatarFemale.png";
+                }
+            }
+        else
+            {
+            imgUser = "/ImageUser/" + user.photoPath;
+            }
+        }
+    else
+        {
+        imgUser = "/ImagePage/img_avatar.png";
+        }
+
+
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +96,7 @@
                     @if (_signInManager.IsSignedIn(User))
                         {
                         <a class="Admin d-flex justify-content-between" asp-controller="Account" asp-action="Profile" asp-route-id="@User.Identity.Name">
-                            <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
+                            <img src="@imgUser" alt="Alternate Text" asp-append-version="true" />
                             <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
                                 <span class="adminName" style="font-size:17px">@User.Identity.Name</span>
                                 <span><a class="btn" style="color:white" asp-controller="Account" asp-action="Logout">Logout</a></span>
@@ -81,7 +109,7 @@
                             <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
                             <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
                                 <span class="adminName" style="font-size:13px">Name</span>
-                                <span class="adminEmail fw-bold"><a  style="font-size:13px" asp-controller="Account" asp-action="Login">Login</a> <a  style="font-size:13px" asp-controller="Account" asp-action="create">Register</a></span>
+                                <span class="adminEmail fw-bold"><a style="font-size:13px" asp-controller="Account" asp-action="Login">Login</a> <a style="font-size:13px" asp-controller="Account" asp-action="create">Register</a></span>
                             </div>
                         </a>
                         }
@@ -103,7 +131,7 @@
                 @if (_signInManager.IsSignedIn(User))
                     {
                     <a class="Admin d-flex justify-content-between" asp-controller="Account" asp-action="Profile" asp-route-id="@User.Identity.Name">
-                        <img src="~/ImagePage/img_avatar.png" alt="Alternate Text" asp-append-version="true" />
+                        <img src="@imgUser" alt="Alternate Text" asp-append-version="true" />
                         <div class="AdminInfo d-flex justify-content-between align-items-start flex-column">
                             <span class="adminName" style="font-size:17px">@User.Identity.Name</span>
                             <span><a asp-controller="Account" asp-action="Logout">Logout</a></span>
@@ -131,9 +159,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-action="Library" asp-controller="Account" asp-route-id="@User.Identity.Name">Library</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="home" asp-action="Schedule">Schedule</a>
@@ -173,8 +198,7 @@
                         <div class="ourLinks">
                             <a asp-action="index" asp-controller="home"><i class="fa-solid fa-angle-right"></i> Home</a>
                             <a asp-controller="home" asp-action="store"><i class="fa-solid fa-angle-right"></i> Store</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Library</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Blog</a>
+                            <a asp-action="Library" asp-controller="Account" asp-route-id="@User.Identity.Name"><i class="fa-solid fa-angle-right"></i> Library</a>
                             <a asp-controller="home" asp-action="Schedule"><i class="fa-solid fa-angle-right"></i> Schedule</a>
                             <a asp-controller="home" asp-action="AboutUs"><i class="fa-solid fa-angle-right"></i> About Us</a>
                         </div>
@@ -182,23 +206,19 @@
                     <div class="footer2Box col-xl-4 col-md-4 col-sm-4">
                         <h5>KitaB</h5>
                         <div class="KitaB">
-                            <a asp-action="index" asp-controller="home"><i class="fa-solid fa-angle-right"></i> Home</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Services</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Book Details</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Our Pricing</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Event Calender</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Free Delivery</a>
+                            <a href="#Service"><i class="fa-solid fa-angle-right"></i> Services</a>
+                            <a href="#CATEGORY"><i class="fa-solid fa-angle-right"></i> Books Category</a>
+                            <a href="#OursPricing"><i class="fa-solid fa-angle-right"></i> Our Pricing</a>
+                            <a href="#Calenders"><i class="fa-solid fa-angle-right"></i> Event Calender</a>
+                            <a href="#deliverys"><i class="fa-solid fa-angle-right"></i> Free Delivery</a>
                         </div>
                     </div>
                     <div class="footer2Box col-xl-4 col-md-4 col-sm-4">
                         <h5>Resources</h5>
                         <div class="Resources">
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> DownLoad</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Help Center</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Shop Cart</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Loign</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Parthner</a>
-                            <a href="#"><i class="fa-solid fa-angle-right"></i> Upload Books</a>
+                            <a asp-controller="Home" asp-action="ContactUs"><i class="fa-solid fa-angle-right"></i> Contact Us</a>
+                            <a asp-controller="Account" asp-action="listCart" asp-route-id="@User.Identity.Name"><i class="fa-solid fa-angle-right"></i> Shop Cart</a>
+                            <a  asp-action="Library" asp-controller="Account" asp-route-id="@User.Identity.Name"><i class="fa-solid fa-angle-right"></i> Upload Books</a>
                         </div>
                     </div>
                 </div>
