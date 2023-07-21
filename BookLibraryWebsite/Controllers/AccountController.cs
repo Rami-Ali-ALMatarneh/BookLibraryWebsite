@@ -248,14 +248,16 @@ namespace BookLibraryWebsite.Controllers
             }
         /********************************************************/
         [Authorize]
-        public async Task<IActionResult> Cart(int BookId)
+        public async Task<IActionResult> Cart(int BookId,string UserName)
             {
+            var user = await _userManager.FindByNameAsync(UserName);
             var cartt = cartRepository.getCartById(BookId);
             if (cartt == null)
                 {
                 Cart cart = new Cart()
                     {
-                    BookId = BookId
+                    BookId = BookId,
+                    UserId=user.UserId
                     };
                 cartRepository.AddCart(cart);
                 }
@@ -263,21 +265,24 @@ namespace BookLibraryWebsite.Controllers
             }
         /********************************************************/
         [Authorize]
-        public async Task<IActionResult> listCart()
+        public async Task<IActionResult> listCart(string id)
             {
+            var user =await _userManager.FindByNameAsync(id);   
             ListOfBook listOfBook = new ListOfBook
                 {
                 Books = bookRepository.getAllBooks(),
-                carts = cartRepository.getAllCart()
+                carts = cartRepository.getAllCart(),
+                carrentUser=user
                 };
             return View(listOfBook);
             }
         /********************************************************/
         [Authorize]
-        public async Task<IActionResult> deleteCart(int id)
+        public async Task<IActionResult> deleteCart(int Id,string userName )
             {
-            cartRepository.deleteCart(id);
-            return RedirectToAction("listCart", "Account");
+            var user = await _userManager.FindByNameAsync(userName);
+            cartRepository.deleteCart(Id);
+            return RedirectToAction("listCart", "Account",new {id= user.UserName });
             }
         }
     }

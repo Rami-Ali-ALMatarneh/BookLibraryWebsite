@@ -17,7 +17,7 @@
             {
             for (int i = 0; i < Model.Books.Count(); i++)
                 {
-                if (Model.Books.ElementAt(i).Id == Model.carts.ElementAt(j).BookId)
+                if ((Model.Books.ElementAt(i).Id == Model.carts.ElementAt(j).BookId)&&(Model.carts.ElementAt(j).UserId==Model.carrentUser.UserId))
                     {
                     var imgBook = "/ImageBook/" + (string.IsNullOrEmpty(Model.Books.ElementAt(i).photoPath) ? "images.png" : Model.Books.ElementAt(i).photoPath);
                     <div class="card w-75 mb-3">
@@ -33,7 +33,7 @@
                                     <h4 >$@Model.Books.ElementAt(i).Price</h4>
                                     <div >
                                         <a asp-controller="home" asp-action="Details" asp-route-id="@Model.Books.ElementAt(i).Id" class="btn p-2 shopping detailsColor">See Details</a>
-                                        <a asp-controller="Account" asp-action="deleteCart" asp-route-id="@Model.carts.ElementAt(i).Id" class="btn p-2 shopping detailsColor">Remove</a>
+                                        <a asp-controller="Account" asp-action="deleteCart" asp-route-Id="@Model.carts.ElementAt(i).Id" asp-route-userName="@User.Identity.Name" class="btn p-2 shopping detailsColor">Remove</a>
                                     </div>
                                 </div>
                             </div>

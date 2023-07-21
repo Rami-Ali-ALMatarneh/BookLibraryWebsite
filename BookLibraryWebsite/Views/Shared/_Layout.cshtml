@@ -63,7 +63,7 @@
                 </form>
                 <div class="iconNav  iconNavAdmin1">
                     <div class="iconNavs d-flex">
-                        <a asp-controller="Account" asp-action="listCart"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <a asp-controller="Account" asp-action="listCart" asp-route-id="@User.Identity.Name"><i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
                     @if (_signInManager.IsSignedIn(User))
                         {

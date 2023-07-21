@@ -45,7 +45,7 @@
                 </div>
                             }
                     }
-                    <a asp-controller="Account" asp-action="Cart" asp-route-BookId="@Model.book.Id" class="btn"><i class="fa-solid fa-cart-arrow-down"></i> Add To Cart</a>
+                    <a asp-controller="Account" asp-action="Cart" asp-route-BookId="@Model.book.Id" asp-route-UserName="@User.Identity.Name"  class="btn"><i class="fa-solid fa-cart-arrow-down"></i> Add To Cart</a>
                 </div>
             </div>
         </div>

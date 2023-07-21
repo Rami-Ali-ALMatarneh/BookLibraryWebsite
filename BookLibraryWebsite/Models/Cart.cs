@@ -6,7 +6,9 @@ namespace BookLibraryWebsite.Models
         {
         public int Id { get; set; }
         [Required]
-        public int BookId { get; set; } 
+        public int BookId { get; set; }
+        [Required]
+        public int UserId { get; set; } 
 
         }
     }

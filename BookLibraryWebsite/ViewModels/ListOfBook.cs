@@ -13,6 +13,7 @@ namespace BookLibraryWebsite.ViewModels
         public string TitleBook { get; set; }
         public IEnumerable<Schedule> scheduleTimes { get; set; }
         public AppUser appUser { get; set; }
+        public AppUser carrentUser { get; set; }    
         public Cart Cart { get; set; }  
         public IEnumerable<Cart> carts { get; set; }
         }
