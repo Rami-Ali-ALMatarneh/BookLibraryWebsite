@@ -12,7 +12,7 @@
                 <h1>@ViewBag.BooksKind</h1>
                 @foreach (var book in Model.Books)
                     {
-                    var imgs = "/ImagePage/" + (string.IsNullOrEmpty(book.photoPath) ? "images.png" : book.photoPath);
+                    var imgs = "/ImageBook/" + (string.IsNullOrEmpty(book.photoPath) ? "images.png" : book.photoPath);
                     <div class="col-xl-2 p-0 card" style="width: 285px;">
                         <img src="@imgs" class="card-img-top" alt="..." asp-append-version="true" style="max-height: 283px; max-width: 283px">
                         <div class="card-body">
@@ -24,7 +24,7 @@
                             <p class="card-price">$@book.Price</p>
                             <div class="d-flex gap-3 storeBtn">
                                 <a href="#" class="btn btn1 w-50">Learn More</a>
-                                <a href="#" class="btn btn2 w-50">Buy Now</a>
+                                <a asp-controller="Account" asp-action="Cart" asp-route-BookId="@book.Id" class="btn btn2 w-50">Buy Now</a>
                             </div>
                         </div>
                     </div>

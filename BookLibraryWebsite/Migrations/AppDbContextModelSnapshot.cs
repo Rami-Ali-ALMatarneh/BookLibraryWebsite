@@ -178,6 +178,22 @@ namespace BookLibraryWebsite.Migrations
                     b.ToTable("Book");
                 });
 
+            modelBuilder.Entity("BookLibraryWebsite.Models.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cart");
+                });
+
             modelBuilder.Entity("BookLibraryWebsite.Models.Schedule", b =>
                 {
                     b.Property<int>("Id")

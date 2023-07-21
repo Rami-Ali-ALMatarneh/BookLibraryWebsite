@@ -24,7 +24,7 @@
 
                 @foreach (var books in Model.Books)
                     {
-                    var imgs = "/ImagePage/" + (string.IsNullOrEmpty(books.photoPath) ? "images.png" : books.photoPath);
+                    var imgs = "/ImageBook/" + (string.IsNullOrEmpty(books.photoPath) ? "images.png" : books.photoPath);
                     if (books.AppUserId % 2 == 1)
                         {
                         <tr class="librarybook table-light">

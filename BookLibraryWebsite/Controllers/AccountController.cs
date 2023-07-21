@@ -11,11 +11,13 @@ namespace BookLibraryWebsite.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IBookRepository bookRepository;
-        public AccountController(UserManager<AppUser>userManager,SignInManager<AppUser>signInManager, IBookRepository bookRepository )
+        private readonly ICartRepository cartRepository;
+        public AccountController(UserManager<AppUser>userManager,SignInManager<AppUser>signInManager, ICartRepository cartRepository, IBookRepository bookRepository )
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this.bookRepository = bookRepository;
+            this.cartRepository = cartRepository;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -243,6 +245,39 @@ namespace BookLibraryWebsite.Controllers
             await _signInManager.SignOutAsync();
             await _userManager.DeleteAsync(user);
             return RedirectToAction("Index", "Home");
+            }
+        /********************************************************/
+        [Authorize]
+        public async Task<IActionResult> Cart(int BookId)
+            {
+            var cartt = cartRepository.getCartById(BookId);
+            if (cartt == null)
+                {
+                Cart cart = new Cart()
+                    {
+                    BookId = BookId
+                    };
+                cartRepository.AddCart(cart);
+                }
+            return RedirectToAction("Index","Home");
+            }
+        /********************************************************/
+        [Authorize]
+        public async Task<IActionResult> listCart()
+            {
+            ListOfBook listOfBook = new ListOfBook
+                {
+                Books = bookRepository.getAllBooks(),
+                carts = cartRepository.getAllCart()
+                };
+            return View(listOfBook);
+            }
+        /********************************************************/
+        [Authorize]
+        public async Task<IActionResult> deleteCart(int id)
+            {
+            cartRepository.deleteCart(id);
+            return RedirectToAction("listCart", "Account");
             }
         }
     }

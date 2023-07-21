@@ -124,7 +124,7 @@ namespace BookLibraryWebsite.Controllers
             string uniqueFileName = null;
             if (model.photo != null)
                 {
-                string uniqueUpload = Path.Combine(_webHostEnvironment.WebRootPath, "ImagePage");
+                string uniqueUpload = Path.Combine(_webHostEnvironment.WebRootPath, "ImageBook");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + model.photo.FileName;
                 string filePath=Path.Combine(uniqueUpload, uniqueFileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))

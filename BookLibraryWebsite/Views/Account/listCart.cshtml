@@ -1,0 +1,52 @@
+﻿@model ListOfBook
+@{
+    Layout = "~/Views/Shared/_LayoutNavbarFooter.cshtml";
+    ViewBag.Title = "Cart";
+    //var imgBook = "/ImagePage/" + (string.IsNullOrEmpty(Model.book.photoPath) ? "images.png" : Model.book.photoPath);
+    float totalPrice = 0;
+}
+<div class="CartShop pt-5 pb-5">
+    <div class="container pt-5 pb-5 d-flex justify-content-center align-items-center flex-column">
+        <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column mb-3">
+            <span class="fw-bold">SHOPPING CART</span>
+            <h1 class="headerSection">
+                My Cart
+            </h1>
+        </div>
+        @for (int j = 0; j < Model.carts.Count(); j++)
+            {
+            for (int i = 0; i < Model.Books.Count(); i++)
+                {
+                if (Model.Books.ElementAt(i).Id == Model.carts.ElementAt(j).BookId)
+                    {
+                    var imgBook = "/ImageBook/" + (string.IsNullOrEmpty(Model.Books.ElementAt(i).photoPath) ? "images.png" : Model.Books.ElementAt(i).photoPath);
+                    <div class="card w-75 mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4 imgCarts">
+                                <img src="@imgBook" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body cart-List h-100 d-flex justify-content-between align-items-start flex-column">
+                                    <h2>@Model.Books.ElementAt(i).Title</h2>
+                                    <h6 >@Model.Books.ElementAt(i).author</h6>
+                                    <h6>@Model.Books.ElementAt(i).KindOfBooks</h6>
+                                    <h4 >$@Model.Books.ElementAt(i).Price</h4>
+                                    <div >
+                                        <a asp-controller="home" asp-action="Details" asp-route-id="@Model.Books.ElementAt(i).Id" class="btn p-2 shopping detailsColor">See Details</a>
+                                        <a asp-controller="Account" asp-action="deleteCart" asp-route-id="@Model.carts.ElementAt(i).Id" class="btn p-2 shopping detailsColor">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    totalPrice += Model.Books.ElementAt(i).Price;
+                    }
+                }
+            }
+    <div class="mt-2 mb-2 lines"></div>
+    <div class="totalprice row w-75">
+        <h5 class="col-8 totalTitle">Total Price</h5>
+        <h5 class="col-4 totalNumber">$@totalPrice</h5>
+    </div>
+    </div>
+</div>

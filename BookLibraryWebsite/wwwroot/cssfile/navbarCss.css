@@ -257,3 +257,45 @@ body {
 .toRight{
     right:-100%;
 }
+.imgCarts img{
+    width:233px;
+    height:257px;
+}
+@media(max-width:991px){
+    .imgCarts img {
+        width:100%;
+    }
+}
+.cart-List h2{
+    color:var(--color1);
+}
+.cart-List h6 {
+    color: gray;
+}
+.cart-List h4 {
+    color: var(--color2);
+}
+.lines{
+    width:75%;
+    height:1px;
+    background:gray;
+}
+.totalprice{
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+    .totalprice h5 {
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:var(--color3);
+        }
+.totalTitle {
+    background: var(--color1);
+}
+.totalNumber {
+    background: var(--color2);
+}

@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\FilePdf\" />
+    <Folder Include="wwwroot\ImageBook\" />
   </ItemGroup>
 
 </Project>

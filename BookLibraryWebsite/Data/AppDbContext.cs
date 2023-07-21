@@ -13,13 +13,14 @@ namespace BookLibraryWebsite.Data
             }
         public DbSet<Book> Book { get; set; }
         public DbSet<Schedule> Schedule { get; set; }   
+        public DbSet<Cart> Cart { get; set; }
         protected override void OnModelCreating( ModelBuilder modelBuilder )
             {
             base.OnModelCreating(modelBuilder);
             modelBuilder.setUniqueId();
             modelBuilder.setFKBookAppUser();
             modelBuilder.setFK_Schedule();
-               // modelBuilder.SeedBook();
+               // modelBuilder.setFK_Cart();
                //  modelBuilder.seedAlert();
             }
         }
