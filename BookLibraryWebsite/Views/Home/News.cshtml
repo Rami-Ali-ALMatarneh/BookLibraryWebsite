@@ -8,11 +8,19 @@
 <div class="AllBooks pt-5 pb-5">
     <div class="container">
         <div class="books">
+            <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column">
+                <span class="fw-bold " style="color: #1a1668">READ NEW</span>
+                <h1 class="headerSection fw-bold">
+                    New Arrivals
+                </h1>
+                <p class="text-center" style="color:gray">We present to you a group that contains the  New Arrivals Books and most requested books in the world</p>
+            </div>
             <div class="row allB " id="splide1" role="group">
                 <h1>@ViewBag.BooksKind</h1>
                 @foreach (var book in Model.Books)
                     {
-                    if (book.Created.Year==DateTime.Now.Year){
+                    if (book.Created.Year == DateTime.Now.Year)
+                        {
 
                         var imgs = "/ImageBook/" + (string.IsNullOrEmpty(book.photoPath) ? "images.png" : book.photoPath);
                         <div class="col-xl-2 p-0 card" style="width: 285px;">
@@ -25,8 +33,8 @@
                                 </div>
                                 <p class="card-price">$@book.Price</p>
                                 <div class="d-flex gap-3 storeBtn">
-                                    <a href="#" class="btn btn1 w-50">Learn More</a>
-                                    <a href="#" class="btn btn2 w-50">Buy Now</a>
+                                    <a asp-controller="home" asp-action="Details" asp-route-id="@book.Id" class="btn btn1 w-50">Learn More</a>
+                                    <a asp-controller="Account" asp-action="Cart" asp-route-BookId="@book.Id" asp-route-UserName="@User.Identity.Name" class="btn btn2 w-50">Buy Now</a>
                                 </div>
                             </div>
                         </div>

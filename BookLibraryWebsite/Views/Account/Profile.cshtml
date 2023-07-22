@@ -34,11 +34,10 @@
                     </div>
                 </div>
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+                    <a asp-controller="account" asp-action="profile" asp-route-id="@User.Identity.Name" class="list-group-item list-group-item-action " aria-current="true">
                         <i class="fa-solid fa-user"></i> Profile
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-cart-shopping"></i> My Cart</a>
-                    <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                    <a  asp-controller="Account" asp-action="listCart" asp-route-id="@User.Identity.Name" class="list-group-item list-group-item-action"><i class="fa-solid fa-cart-shopping"></i> My Cart</a>
                     <a asp-controller="Home" asp-action="Store" class="list-group-item list-group-item-action"><i class="fa-solid fa-store"></i> Shop</a>
                     <a asp-action="RestPassword" asp-controller="Account" class="list-group-item list-group-item-action"><i class="fa-solid fa-unlock-keyhole"></i> Rest Password </a>
                     <a asp-action="ViewMassages" asp-controller="Account" class="list-group-item list-group-item-action"><i class="fa-solid fa-eye"></i> View Massages </a>
