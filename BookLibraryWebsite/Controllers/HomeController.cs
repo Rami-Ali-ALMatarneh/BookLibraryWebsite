@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Net;
 
 namespace BookLibraryWebsite.Controllers
@@ -18,13 +19,15 @@ namespace BookLibraryWebsite.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        public HomeController( IBookRepository _bookRepository, IWebHostEnvironment _webHostEnvironment,IAlertRepository alertRepository, UserManager<AppUser>userManager,SignInManager<AppUser>signInManager )
+        private readonly IContactUsRepository _contactUsRepository;
+        public HomeController( IBookRepository _bookRepository, IWebHostEnvironment _webHostEnvironment,IAlertRepository alertRepository, UserManager<AppUser>userManager,SignInManager<AppUser>signInManager,IContactUsRepository _contactUsRepository )
         {
             this._signInManager=signInManager;
             this._userManager=userManager;
             this._alertRepository = alertRepository;
             this._bookRepository = _bookRepository;
             this._webHostEnvironment = _webHostEnvironment;
+            this._contactUsRepository = _contactUsRepository;
         }
         [AllowAnonymous]
         public IActionResult Index()
@@ -302,6 +305,26 @@ namespace BookLibraryWebsite.Controllers
         [HttpGet]
         public IActionResult ContactUs()
             {
+            return View();
+            }
+        /****************************************/
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ContactUs(ContactUs model)
+            {          
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            model.Name = user.FullName;
+            model.Email = user.Email;            
+                if (ModelState.IsValid)
+                {
+                ContactUs contactUs = new ContactUs()
+                    {
+                    Name = model.Name,
+                    Email = model.Email,
+                    Descrption = model.Descrption,
+                    };
+                _contactUsRepository.AddMassage(contactUs);
+                }
             return View();
             }
         /****************************************/

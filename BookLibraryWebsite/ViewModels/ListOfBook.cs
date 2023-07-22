@@ -17,5 +17,6 @@ namespace BookLibraryWebsite.ViewModels
         public Cart Cart { get; set; }  
         public IEnumerable<Cart> carts { get; set; }
         public Schedule Schedule { get; set; }
+        public IEnumerable<ContactUs> ContactUs { get; set; }
         }
     }

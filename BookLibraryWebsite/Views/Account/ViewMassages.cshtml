@@ -1,0 +1,18 @@
+﻿@model ListOfBook
+<div class="container pt-5 pb-5 d-flex justify-content-center align-items-center flex-column">
+    <div class="boxLatestInfo mt-5 mb-5 d-flex justify-content-center align-items-center flex-column">
+        <span class="fw-bold">VIEW MASSAGES</span>
+        <h1 class="headerSection">Massages From Users</h1>
+    </div>
+    @foreach (var massge in Model.ContactUs)
+        {
+        <div class="card w-75 mt-4 mb-4">
+            <h5 class="card-header fw-bold">@massge.Name</h5>
+            <div class="card-body">
+                <h5 class="card-title">@massge.Email</h5>
+                <p class="card-text">@massge.Descrption</p>
+                <a asp-controller="account" asp-action="DeleteMassage" asp-route-id="@massge.Id" class="btn">Remove Massage</a>
+            </div>
+        </div>
+        }
+</div>

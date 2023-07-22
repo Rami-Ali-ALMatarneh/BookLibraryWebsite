@@ -14,14 +14,17 @@ namespace BookLibraryWebsite.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IBookRepository bookRepository;
         private readonly ICartRepository cartRepository;
-        private readonly IWebHostEnvironment webHostEnvironment;
-        public AccountController(UserManager<AppUser>userManager,SignInManager<AppUser>signInManager, ICartRepository cartRepository, IBookRepository bookRepository,IWebHostEnvironment webHostEnvironment )
+        private readonly IWebHostEnvironment webHostEnvironment; 
+        private readonly IContactUsRepository _contactUsRepository;
+
+        public AccountController(UserManager<AppUser>userManager,SignInManager<AppUser>signInManager, ICartRepository cartRepository, IBookRepository bookRepository,IWebHostEnvironment webHostEnvironment, IContactUsRepository _contactUsRepository )
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this.bookRepository = bookRepository;
             this.cartRepository = cartRepository;
             this.webHostEnvironment= webHostEnvironment;
+            this._contactUsRepository = _contactUsRepository;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -105,6 +108,7 @@ namespace BookLibraryWebsite.Controllers
                     Gender = model.Gender,
                     ConfirmPassword=model.ConfirmPassword,
                     Major=model.Major,
+                    userType=model.userType,
                     photoPath= uniqueImg
                     // UserId = model.UserId,
                     };
@@ -157,6 +161,7 @@ namespace BookLibraryWebsite.Controllers
                     Email = user.Email,
                     Password = user.Password,
                     ConfirmPassword= user.ConfirmPassword,
+                    userType=user.userType,
                     photoPath=user.photoPath,   
                  }
                     };
@@ -184,6 +189,7 @@ namespace BookLibraryWebsite.Controllers
                     user.Email = appUser.Email;
                     user.Password=appUser.Password;
                     user.ConfirmPassword = appUser.ConfirmPassword;
+                    user.userType = appUser.userType;
                     user.photoPath=appUser.photoPath;
                     var result = await _userManager.UpdateAsync(user);
                     if(result.Succeeded)
@@ -207,6 +213,8 @@ namespace BookLibraryWebsite.Controllers
                     Email = appUser.Email,
                     Password = appUser.Password,
                     ConfirmPassword = appUser.ConfirmPassword,
+                    userType = appUser.userType,
+                    photoPath=appUser.photoPath,
                     }
                 };
             return View(ListOfBook);
@@ -310,5 +318,22 @@ namespace BookLibraryWebsite.Controllers
             return RedirectToAction("listCart", "Account",new {id= user.UserName });
             }
         /********************************************************/
+        [Authorize]
+        public async Task<IActionResult> ViewMassages()
+            {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            ListOfBook contactUs = new ListOfBook
+                {
+                ContactUs = _contactUsRepository.GetMassageByEmail(user.Email),
+                };
+            return View( contactUs);
+            }
+        /********************************************************/
+        [Authorize]
+        public async Task<IActionResult> DeleteMassage(int id)
+            {
+            _contactUsRepository.DeleteMassage(id);
+            return RedirectToAction("ViewMassages","Account"); 
+            }
         }
     }

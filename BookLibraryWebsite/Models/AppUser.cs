@@ -31,6 +31,8 @@ namespace BookLibraryWebsite.Models
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
         public string photoPath { get; set; }
-       //public ICollection<Book> books { get; set;  } 
+        [Required]
+        public UserType userType { get; set; }
+        //public ICollection<Book> books { get; set;  } 
         }
     }

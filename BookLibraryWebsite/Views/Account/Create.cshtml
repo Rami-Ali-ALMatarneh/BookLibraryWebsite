@@ -20,6 +20,7 @@
                     <span class="text-danger" asp-validation-for="Major"></span>
 
                 </div>
+              
                 <div class="mb-3 col-md-6 col-sm-12">
                     <label class="form-label" asp-for="Language">Languages:</label>
                     <select class="form-select Languages" aria-label="Default select example" asp-for="Language" asp-items="Html.GetEnumSelectList<Language>()">
@@ -50,7 +51,7 @@
                 <div class="mb-3 col-md-6 col-sm-12">
                     <label class="form-label" asp-for="photoPath">Image:</label>
                     <input type="file" class="form-control" asp-for="photoPath">
-                    <span class="text-danger" asp-validation-for="photoPath"></span>    
+                    <span class="text-danger" asp-validation-for="photoPath"></span>
                 </div>
             </div>
             <div class="row ContactInfo mb-5">
@@ -73,6 +74,12 @@
                     <select class="form-select Country" aria-label="Default select example" asp-for="Country" asp-items="Html.GetEnumSelectList<Country>()">
                     </select>
                     <span class="text-danger" asp-validation-for="Country"></span>
+                </div>
+                <div class="mb-3 col-md-6 col-sm-12">
+                    <label class="form-label" asp-for="userType">User Type:</label>
+                    <select class="form-select Languages" aria-label="Default select example" asp-for="userType" asp-items="Html.GetEnumSelectList<UserType>()">
+                    </select>
+                    <span class="text-danger" asp-validation-for="userType"></span>
                 </div>
             </div>
             <div class="row PrivacyInfo mb-5">

@@ -1,4 +1,4 @@
-﻿@model ListOfBook
+﻿@model ContactUs
 
 @{
     Layout = "~/Views/Shared/_LayoutNavbarFooter.cshtml";
@@ -6,23 +6,17 @@
 }
 <div class="container p-5">
     <div class="row">
-        <div class="col-md-7 p-4">
+        <form class="col-md-7 p-4" asp-action="ContactUs" asp-controller="Home" enctype="multipart/form-data" method="post"> 
             <h4 class="formContact fw-bold">Get in touch</h4>
-            <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Name</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your name">
-            </div>
-            <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Email</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter your email">
-            </div>
            
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="exampleFormControlTextarea1" class="form-label" asp-for="Descrption">Message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="Descrption"></textarea>
+                <span class="text-danger" asp-validation-for="Descrption"></span>
+
             </div>
             <button class="btn">Submit</button>
-        </div>
+        </form>
         <div class="col-md-5 bgcolor2  p-4">
             <h4 >Contact us</h4><hr>
             <div class="mt-4">

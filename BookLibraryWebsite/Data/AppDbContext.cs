@@ -14,6 +14,7 @@ namespace BookLibraryWebsite.Data
         public DbSet<Book> Book { get; set; }
         public DbSet<Schedule> Schedule { get; set; }   
         public DbSet<Cart> Cart { get; set; }
+        public DbSet<ContactUs> ContactUs { get; set; }
         //public DbSet<Blog> Blog { get; set; }
         protected override void OnModelCreating( ModelBuilder modelBuilder )
             {

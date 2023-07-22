@@ -23,6 +23,8 @@ namespace BookLibraryWebsite.ViewModels
         [Required]
         public KindOfBooks KindOfBooks { get; set; }
         public int UserId { get; set; }
+        [Required]
+        public UserType userType { get; set; }
 
         }
     }

@@ -41,6 +41,8 @@
                     <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-heart"></i> Wishlist</a>
                     <a asp-controller="Home" asp-action="Store" class="list-group-item list-group-item-action"><i class="fa-solid fa-store"></i> Shop</a>
                     <a asp-action="RestPassword" asp-controller="Account" class="list-group-item list-group-item-action"><i class="fa-solid fa-unlock-keyhole"></i> Rest Password </a>
+                    <a asp-action="ViewMassages" asp-controller="Account" class="list-group-item list-group-item-action"><i class="fa-solid fa-eye"></i> View Massages </a>
+
                     <a asp-controller="Account" asp-action="DeleteUser" asp-route-Email="@Model.appUser.Email" class="list-group-item list-group-item-action"><i class="fa-solid fa-delete-left"></i> Delete Account</a>
                     <a asp-controller="Account" asp-action="Logout" class="list-group-item list-group-item-action"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
                 </div>
@@ -57,7 +59,6 @@
                         <label class="form-label" asp-for="appUser.Major">Professional title:</label>
                         <input type="text" class="form-control" asp-for="appUser.Major">
                         <span class="text-danger" asp-validation-for="appUser.Major"></span>
-
                     </div>
                     <div class="mb-3 col-md-6 col-sm-12">
                         <label class="form-label" asp-for="appUser.Language">Languages:</label>
@@ -87,7 +88,6 @@
                         <label class="form-label" asp-for="appUser.photoPath">Image:</label>
                         <input type="file" class="form-control" asp-for="appUser.photoPath">
                         <span class="text-danger" asp-validation-for="appUser.photoPath"></span>
-
                     </div>
                 </div>
                 <div class="row ContactInfo mb-5">
@@ -109,6 +109,12 @@
                         <select class="form-select Country" asp-for="appUser.Country" asp-items="Html.GetEnumSelectList<Country>()" aria-label="Default select example">
                         </select>
                         <span class="text-danger" asp-validation-for="appUser.Country"></span>
+                    </div>
+                    <div class="mb-3 col-md-6 col-sm-12">
+                        <label class="form-label" asp-for="appUser.userType">User Type:</label>
+                        <select class="form-select Languages" aria-label="Default select example" asp-for="appUser.userType" asp-items="Html.GetEnumSelectList<UserType>()">
+                        </select>
+                        <span class="text-danger" asp-validation-for="appUser.userType"></span>
                     </div>
                 </div>
                 <div class="row PrivacyInfo mb-5">

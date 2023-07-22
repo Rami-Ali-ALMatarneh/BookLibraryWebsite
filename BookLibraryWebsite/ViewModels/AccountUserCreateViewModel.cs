@@ -34,5 +34,7 @@ namespace BookLibraryWebsite.ViewModels
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
         public IFormFile? photoPath { get; set; }
+        [Required]
+        public UserType userType { get; set; }
         }
     }

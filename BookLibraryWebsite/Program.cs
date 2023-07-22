@@ -56,6 +56,8 @@ options.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
 builder.Services.AddScoped<IBookRepository,SqlBookRepository>();
 builder.Services.AddScoped<IAlertRepository, SqlScheduleRepository>();
 builder.Services.AddScoped<ICartRepository, SqlCartRepository>();
+builder.Services.AddScoped<IContactUsRepository, SqlContactUsRepository>();
+
 
 
 /*******************/
