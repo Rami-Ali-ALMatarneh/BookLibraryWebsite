@@ -7,9 +7,9 @@
         {
         var user = await _UserManager.FindByNameAsync(User.Identity.Name);
 
-        if (user.photoPath == null)
+        if (user.photoPath == "")
             {
-            if (Model.appUser.Gender == "Male")
+            if (user.Gender == "Male")
                 {
                 imgUser = "/ImagePage/img_avatar.png";
                 }
@@ -60,7 +60,7 @@
         <div class="container">
 
             <div class="nav1Logo d-flex align-items-center justify-content-between">
-                <a class="logo navbar-brand d-flex" href="#">
+                <a class="logo navbar-brand d-flex" asp-action="Index" asp-controller="Home">
                     <img src="~/ImagePage/logo.png" /><span class="logoP1">Kita</span><span class="logoP2">B</span>
                 </a>
                 <div class="dropListIcon d-flex justify-content-evenly align-items-center flex-column" id="dropListIcon">
@@ -277,12 +277,12 @@
                 </div>
             </div>
         </div>
-        <div class="copyRight  d-flex justify-content-center align-items-center pt-3 pb-3">
+        <div class="mt-3 copyRight  d-flex justify-content-center align-items-center pt-3 pb-3">
             <div class="container d-flex justify-content-between align-items-center">
                 <p>
                     KitaB Book Store Ecommerce Website - © 2023 All Rights Reserved
                 </p>
-                <p>Made with <i class="fa-solid fa-heart fa-beat grayColor"></i> by <span>Rami Ali Matarneh</span></p>
+                <p>Made with <i class="fa-solid fa-heart fa-beat grayColor"></i> by <span><a style="color: #EAA451" href="MailTo:+962776924478">Rami Ali Matarneh</a></span></p>
             </div>
         </div>
     </div>

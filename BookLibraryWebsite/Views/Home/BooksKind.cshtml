@@ -12,7 +12,7 @@
                 <h1>@ViewBag.BooksKind</h1>
                 @foreach (var book in Model.Books)
                     {
-                    var imgs = "/ImagePage/" + (string.IsNullOrEmpty(book.photoPath) ? "images.png" : book.photoPath);
+                    var imgs = "/ImageBook/" + (string.IsNullOrEmpty(book.photoPath) ? "images.png" : book.photoPath);
                     <div class="col-xl-2 p-0 card" style="width: 285px;">
                         <img src="@imgs" class="card-img-top" alt="..." asp-append-version="true" style="max-height: 283px; max-width: 283px">
                         <div class="card-body">

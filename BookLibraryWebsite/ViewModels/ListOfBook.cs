@@ -18,5 +18,6 @@ namespace BookLibraryWebsite.ViewModels
         public IEnumerable<Cart> carts { get; set; }
         public Schedule Schedule { get; set; }
         public IEnumerable<ContactUs> ContactUs { get; set; }
+        public IEnumerable <AppUser> appUsers { get; set; }
         }
     }

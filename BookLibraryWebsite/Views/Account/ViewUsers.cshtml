@@ -1,0 +1,71 @@
+﻿@model ListOfBook
+@{ 
+    Layout = "~/Views/Shared/_LayoutNavbarFooter.cshtml";
+    ViewBag.Title = "View Users";
+}
+<div class="viewUser pt-5 pb-5">
+    <div class="container pt-5 pb-5">
+        <div class="boxLatestInfo d-flex justify-content-center align-items-center flex-column mb-4">
+            <span class="fw-bold">VIEW USERS</span>
+            <h1 class="headerSection">
+                List Of Users
+            </h1>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">User</th>
+                    <th scope="col">Major</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var users in Model.appUsers)
+                    {
+                    var imgs ="";
+                    if (users.photoPath != "")
+                        {
+                        imgs = "/ImageUser/" + users.photoPath;
+                        }
+                    else
+                        {
+                        if(users.Gender=="Male")
+                            {
+                            imgs = "/ImagePage/img_avatar.png";
+                            }
+                        else
+                            {
+                            imgs = "/ImagePage/avatarFemale.png";
+
+                            }
+
+                        }
+                    <tr>
+                        <th scope="row">
+                            <div class="d-flex justify-content-start align-items-start gap-2">
+                                <img style="width:50px;height:50px" src="@imgs" asp-append-version="true" alt="Alternate Text" />
+                                <div class=" d-flex justify-content-start align-items-start flex-column">
+                                    <h6 class="mb-1">@users.FullName</h6>
+                                    <p class="text-muted p-0" style="font-size:10px">@@@users.UserName</p>
+                                </div>
+                            </div>
+
+
+                        </th>
+                        <td><div><p style="height: 50px" class="d-flex justify-content-start align-items-center gap-2 mb-0">@users.Major</p></div></td>
+                        <td><div><p style="height: 50px" class="d-flex justify-content-start align-items-center gap-2 mb-0">@users.userType</p></div></td>
+                        <td><div><p style="height: 50px" class="d-flex justify-content-start align-items-center gap-2 mb-0">@users.Country</p></div></td>
+                        <td><div><p style="height: 50px" class="d-flex justify-content-start align-items-center gap-2 mb-0">+962-@users.phone</p></div></td>
+                        <td><div><p style="height: 50px; color:red" class="d-flex justify-content-start align-items-center gap-2 mb-0"><a asp-controller="Account" asp-action="profile" asp-route-id="@users.UserName" class="btn"><i class="fa-solid fa-user-pen"></i></a></p></div></td>
+                        <td><div><p style="height: 50px; color:red" class="d-flex justify-content-start align-items-center gap-2 mb-0"><a asp-controller="Account" asp-action="DeleteUser" asp-route-Email="@users.Email" class="btn"><i class="fa-solid fa-user-slash"></i></a></p></div></td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+</div>

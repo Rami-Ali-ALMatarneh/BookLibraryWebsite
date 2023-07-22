@@ -39,14 +39,20 @@ flex-wrap:wrap;
     }
 }
 .bestImg img {
-    width: 75%;
+    width: 350px;
+    height: 450px;
 }
-.bestInfo a{
-    width:120px;
+.splide__slide{
+    margin-left:20px;
+    margin-right:20px;
+}
+.bestInfo a {
+    width: 120px;
 }
 .bestInfo p{
     border-left:1px solid var(--colorGray);
     padding :5px 15px;
+    font-size:12px;
 }
 .detailsColor{
     background:white;

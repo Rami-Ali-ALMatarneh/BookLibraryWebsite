@@ -9,8 +9,10 @@ namespace BookLibraryWebsite.ViewModels
         public string Title { get; set; }
         [Required]
         public string Description { get; set; }
+        [Range(0, 100)]
         public float discount { get; set; }
         [Required]
+        [Range(1, 100)]
         public float Price { get; set; }
         [Required]
         public DateTime Created { get; set; }

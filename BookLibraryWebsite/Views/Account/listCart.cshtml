@@ -33,7 +33,7 @@
                                     <h4 >$@Model.Books.ElementAt(i).Price</h4>
                                     <div >
                                         <a asp-controller="home" asp-action="Details" asp-route-id="@Model.Books.ElementAt(i).Id" class="btn p-2 shopping detailsColor">See Details</a>
-                                        <a asp-controller="Account" asp-action="deleteCart" asp-route-Id="@Model.carts.ElementAt(i).Id" asp-route-userName="@User.Identity.Name" class="btn p-2 shopping detailsColor">Remove</a>
+                                        <a asp-controller="Account" asp-action="deleteCart" asp-route-Id="@Model.carts.ElementAt(j).Id" asp-route-userName="@User.Identity.Name" class="btn p-2 shopping detailsColor">Remove</a>
                                     </div>
                                 </div>
                             </div>

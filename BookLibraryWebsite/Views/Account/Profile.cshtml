@@ -19,7 +19,7 @@
         {
         img = "/ImageUser/" + Model.appUser.photoPath;
         }
-}s
+}
 <div class="Profile pt-5 pb-5">
     <div class="container">
         <div class="boxPorfile d-flex w-100">
@@ -42,7 +42,11 @@
                     <a asp-controller="Home" asp-action="Store" class="list-group-item list-group-item-action"><i class="fa-solid fa-store"></i> Shop</a>
                     <a asp-action="RestPassword" asp-controller="Account" class="list-group-item list-group-item-action"><i class="fa-solid fa-unlock-keyhole"></i> Rest Password </a>
                     <a asp-action="ViewMassages" asp-controller="Account" class="list-group-item list-group-item-action"><i class="fa-solid fa-eye"></i> View Massages </a>
+                    @if (Model.appUser.UserName == "admin")
+                        {
+                        <a asp-controller="Account" asp-action="viewUsers" class="list-group-item list-group-item-action"><i class="fa-solid fa-eye"></i> View Users</a>
 
+                        }
                     <a asp-controller="Account" asp-action="DeleteUser" asp-route-Email="@Model.appUser.Email" class="list-group-item list-group-item-action"><i class="fa-solid fa-delete-left"></i> Delete Account</a>
                     <a asp-controller="Account" asp-action="Logout" class="list-group-item list-group-item-action"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
                 </div>

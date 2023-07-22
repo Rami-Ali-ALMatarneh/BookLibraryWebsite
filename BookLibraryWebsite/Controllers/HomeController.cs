@@ -55,6 +55,11 @@ namespace BookLibraryWebsite.Controllers
                 //string uniqueFileImg = string.IsNullOrEmpty(proccessUploadFileImg(model)) ? string.Empty : proccessUploadFileImg(model);
                 //string uniqueFilePdf = string.IsNullOrEmpty(proccessUploadFilePdf(model)) ? string.Empty : proccessUploadFilePdf(model);
                 var user=await _userManager.FindByNameAsync(name);
+                float finalPrice = 0;
+                if (model.discount > 0)
+                    {
+                    model.Price = model.Price - ( (model.discount / 100) * model.Price);
+                    }
                 Book books = new Book()
                     {
                     Title = model.Title,

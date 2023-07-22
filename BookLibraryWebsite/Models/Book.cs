@@ -10,7 +10,9 @@ namespace BookLibraryWebsite.Models
         [Required]
         public string? Description { get; set; }
         [Required]
+        [Range(1,100)]
         public float Price { get; set; }
+        [Range(0, 100)]
         public float discount { get; set; }
         [Required]
         public DateTime Created { get; set; }

@@ -124,7 +124,7 @@
                             var imgBook = "/ImageBook/" + (string.IsNullOrEmpty(best.photoPath) ? "images.png" : best.photoPath);
                             if (Count < 5)
                                 {
-                                <li class="mt-3 splide__slide d-flex justify-content-center align-items-center">
+                                <li class="mt-3  splide__slide d-flex justify-content-center align-items-center">
                                     <div class="bestImg d-flex justify-content-center align-items-center">
                                         <img src="@imgBook" alt="Alternate Text" asp-append-version="true"/>
                                     </div>
@@ -132,13 +132,14 @@
                                         <h1>@best.Title</h1>
                                         <div class="author_kind d-flex gap-4">
                                             <h6>@best.author</h6>
-                                            <h6>@best.KindOfBooks.ToString().Replace("_"," ")</h6>
+                                            <h6>@best.KindOfBooks.ToString().Replace("_", " ")</h6>
                                         </div>
                                         <p>
                                             @best.Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
 
                                         </p>
-                                        <p class="d-flex align-items-center gap-4"><span class="discount">$@best.discount</span><span class="Price text-decoration-line-through">$@best.Price</span></p>
+                                            <p class="d-flex align-items-center gap-4"><span class="discount">$@best.Price</span></p>
+                                            
                                         <div class="btnBest d-flex gap-3">
                                             <a asp-controller="Account" asp-action="Cart" asp-route-BookId="@best.Id" asp-route-UserName="@User.Identity.Name" class="btn p-2 "><i class="fa-solid fa-cart-shopping"></i> Buy Now</a>
                                             <a asp-controller="home" asp-action="Details" asp-route-id="@best.Id" class="btn p-2 shopping detailsColor">See Details</a>

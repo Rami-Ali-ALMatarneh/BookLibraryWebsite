@@ -10,7 +10,6 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Image</th>
                     <th scope="col">Title</th>
                     <th scope="col">Categorie</th>
@@ -28,7 +27,6 @@
                     if (books.AppUserId % 2 == 1)
                         {
                         <tr class="librarybook table-light">
-                            <th scope="row"><p>@books.AppUserId</p> </th>
                             <td><img src="@imgs" alt="Alternate Text" style="width:50px;height:50px" /></td>
                             <td><p>@books.Title</p></td>
                             <td><p>@books.KindOfBooks</p></td>
@@ -41,12 +39,11 @@
                     else
                         {
                         <tr class="librarybook table-secondary">
-                            <th scope="row"><p>@books.AppUserId</p> </th>
                             <td><img src="@imgs" alt="Alternate Text" style="width:50px;height:50px" /></td>
                             <td><p>@books.Title</p></td>
                             <td><p>@books.KindOfBooks</p></td>
                             <td><p>@books.author</p></td>
-                            <td><p>@books.Price</p></td>
+                            <td><p>$@books.Price</p></td>
                             <td> <a class="btn" asp-controller="Home" asp-action="UpdateBook" asp-route-id="@books.Id">Edit</a></td>
                             <td><a class="btn " asp-controller="Home" asp-action="DeleteBook" asp-route-id="@books.Id" asp-route-name="@User.Identity.Name">Delete</a></td>
                         </tr>

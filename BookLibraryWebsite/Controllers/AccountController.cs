@@ -335,5 +335,21 @@ namespace BookLibraryWebsite.Controllers
             _contactUsRepository.DeleteMassage(id);
             return RedirectToAction("ViewMassages","Account"); 
             }
+        /********************************************************/
+        [Authorize]
+        public async Task<IActionResult> ViewUsers()
+            {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if(user.userType==UserType.Premium)
+                {
+                
+                ListOfBook listOfBook = new ListOfBook
+                    {
+                    appUsers = _userManager.Users,
+                    };
+                return View(listOfBook);
+                }
+            return RedirectToAction("Profile","Account",new {id=user.UserName});
+            }
         }
     }
