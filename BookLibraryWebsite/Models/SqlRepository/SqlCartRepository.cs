@@ -18,6 +18,16 @@ namespace BookLibraryWebsite.Models.SqlRepository
             return cart;
         }
 
+        public void deleteAllCartByUserId( int userId )
+            {
+            IEnumerable<Cart> carts = getAllByUserId(userId);
+            foreach(Cart cart in carts)
+                {
+                _appDbContext.Cart.Remove(cart);
+                _appDbContext.SaveChanges();
+                }
+            }
+
         public Cart deleteCart(int id)
         {
             var cart = _appDbContext.Cart.Find(id);
@@ -29,6 +39,11 @@ namespace BookLibraryWebsite.Models.SqlRepository
             return cart;
         }
 
+        public IEnumerable<Cart> getAllByUserId( int userId )
+            {
+            return _appDbContext.Cart.Where(e => e.UserId == userId);
+            }
+
         public IEnumerable<Cart> getAllCart()
         {
             return _appDbContext.Cart;
@@ -38,5 +53,6 @@ namespace BookLibraryWebsite.Models.SqlRepository
         {
             return _appDbContext.Cart.SingleOrDefault(e => e.BookId == id);
         }
+       
     }
 }

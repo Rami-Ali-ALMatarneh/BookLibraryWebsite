@@ -275,7 +275,11 @@ namespace BookLibraryWebsite.Controllers
         public async Task<IActionResult> deleteUser( string Email )
             {
             var user = await _userManager.FindByEmailAsync(Email);
-            await _signInManager.SignOutAsync();
+            if(Email=="admin1@gmail.com")
+                {
+                await _signInManager.SignOutAsync();
+                }
+            cartRepository.deleteAllCartByUserId(user.UserId);
             await _userManager.DeleteAsync(user);
             return RedirectToAction("Index", "Home");
             }
@@ -304,7 +308,7 @@ namespace BookLibraryWebsite.Controllers
             ListOfBook listOfBook = new ListOfBook
                 {
                 Books = bookRepository.getAllBooks(),
-                carts = cartRepository.getAllCart(),
+                carts = cartRepository.getAllByUserId(user.UserId),
                 carrentUser=user
                 };
             return View(listOfBook);

@@ -29,19 +29,18 @@
                 <p class="mb-3 bColor">@Model.book.Description</p>
                 <div class="d-flex justify-content-center align-items-center gap-5 mt-5 priceCart">
                     @{
-                        float p1 = Model.book.discount / 100 * Model.book.Price;
-                        if (p1!=0)
+                        if (Model.book.discount > 0)
                             {
                             <div class="d-flex justify-content-center align-items-center gap-2">
-                              <h1 class=" mb-0">$@p1</h1>
-                              <p class=" mb-0 text-decoration-line-through text-bg-secondary">$@Model.book.Price</p>
+                              <h1 class=" mb-0">$@Model.book.Price</h1>
+                              <p class=" mb-0 text-decoration-line-through text-bg-secondary">$@Model.book.oldPrice</p>
                             </div>
                             }
                         else
                             {
                 <div class="d-flex justify-content-center align-items-center gap-2">
                     <h1 class="colorYallow mb-0">$@Model.book.Price</h1>
-                    <p class=" mb-0 text-decoration-line-through text-bg-secondary">$@p1</p>
+                    <p class=" mb-0 text-decoration-line-through text-bg-secondary">$0</p>
                 </div>
                             }
                     }

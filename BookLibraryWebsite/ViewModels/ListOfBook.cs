@@ -19,5 +19,8 @@ namespace BookLibraryWebsite.ViewModels
         public Schedule Schedule { get; set; }
         public IEnumerable<ContactUs> ContactUs { get; set; }
         public IEnumerable <AppUser> appUsers { get; set; }
+       
+        public IFormFile? photo { get; set; }
+        public IFormFile? filePath { get; set; }
         }
     }

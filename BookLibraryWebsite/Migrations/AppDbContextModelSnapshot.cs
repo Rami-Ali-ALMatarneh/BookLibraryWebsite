@@ -174,6 +174,9 @@ namespace BookLibraryWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<float>("oldPrice")
+                        .HasColumnType("real");
+
                     b.Property<string>("photoPath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

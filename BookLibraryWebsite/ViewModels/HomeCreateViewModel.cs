@@ -18,6 +18,8 @@ namespace BookLibraryWebsite.ViewModels
         public DateTime Created { get; set; }
         [Required]
         public string author { get; set; }
+        public float oldPrice { get; set; }
+
         [Required]
         public IFormFile? photo { get; set; }
         [Required]

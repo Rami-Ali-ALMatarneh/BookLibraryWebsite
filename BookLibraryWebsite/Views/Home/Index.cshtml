@@ -138,8 +138,17 @@
                                             @best.Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
 
                                         </p>
-                                            <p class="d-flex align-items-center gap-4"><span class="discount">$@best.Price</span></p>
-                                            
+                                        @if (best.discount != 0)
+                                            {
+                                            <p class="d-flex align-items-center gap-4"><span class="discount">$@best.Price</span> <span class="text-decoration-line-through Price">$@best.oldPrice</span></p>
+
+                                            }
+                                        else
+                                            {
+                                            <p class="d-flex align-items-center gap-4"><span class="discount">$@best.Price</span> <span class="text-decoration-line-through Price">$0</span></p>
+
+                                            }
+
                                         <div class="btnBest d-flex gap-3">
                                             <a asp-controller="Account" asp-action="Cart" asp-route-BookId="@best.Id" asp-route-UserName="@User.Identity.Name" class="btn p-2 "><i class="fa-solid fa-cart-shopping"></i> Buy Now</a>
                                             <a asp-controller="home" asp-action="Details" asp-route-id="@best.Id" class="btn p-2 shopping detailsColor">See Details</a>

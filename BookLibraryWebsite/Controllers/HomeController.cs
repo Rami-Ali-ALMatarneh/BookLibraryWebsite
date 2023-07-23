@@ -58,19 +58,25 @@ namespace BookLibraryWebsite.Controllers
                 float finalPrice = 0;
                 if (model.discount > 0)
                     {
-                    model.Price = model.Price - ( (model.discount / 100) * model.Price);
+                    model.oldPrice = model.Price;
+                    model.Price =model.Price-( model.Price - ( (model.discount / 100) * model.Price));
+                    }
+                else
+                    {
+                    model.oldPrice = 0;
                     }
                 Book books = new Book()
                     {
+                    oldPrice= model.oldPrice,
                     Title = model.Title,
                     Description = model.Description,
                     Price = model.Price,
                     discount = model.discount,
                     Created = model.Created,
                     author = model.author,
-                    photoPath = string.IsNullOrEmpty(proccessUploadFileImg(model)) ? string.Empty : proccessUploadFileImg(model),
+                    photoPath = string.IsNullOrEmpty(proccessUploadFileImg(model.photo)) ? string.Empty : proccessUploadFileImg(model.photo),
                     KindOfBooks = model.KindOfBooks,
-                    filePath = string.IsNullOrEmpty(proccessUploadFilePdf(model)) ? string.Empty : proccessUploadFilePdf(model),
+                    filePath = string.IsNullOrEmpty(proccessUploadFilePdf(model.filePath)) ? string.Empty : proccessUploadFilePdf(model.filePath),
                     AppUserId= user.UserId
                     };
                 _bookRepository.AddBook(books);
@@ -129,32 +135,32 @@ namespace BookLibraryWebsite.Controllers
             return View(ListOfBook);
             }
         /**********************************/
-        private string proccessUploadFileImg(HomeCreateViewModel model) {
+        private string proccessUploadFileImg(IFormFile model) {
             string uniqueFileName = null;
-            if (model.photo != null)
+            if (model != null)
                 {
                 string uniqueUpload = Path.Combine(_webHostEnvironment.WebRootPath, "ImageBook");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.photo.FileName;
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.FileName;
                 string filePath=Path.Combine(uniqueUpload, uniqueFileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
-                    model.photo.CopyTo(fileStream);
+                    model.CopyTo(fileStream);
                     }
                 }
             return uniqueFileName;
             }
         /*****************************************/
-        private string proccessUploadFilePdf( HomeCreateViewModel model )
+        private string proccessUploadFilePdf( IFormFile model )
             {
             string uniqueFileName = null;
-            if (model.filePath != null )
+            if (model != null )
                 {
                 string uniqueUpload = Path.Combine(_webHostEnvironment.WebRootPath, "FilePdf");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.filePath.FileName;
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.FileName;
                 string filePath = Path.Combine(uniqueUpload, uniqueFileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
-                    model.filePath.CopyTo(fileStream);
+                    model.CopyTo(fileStream);
                     }
                 }
             return uniqueFileName;
@@ -244,7 +250,7 @@ namespace BookLibraryWebsite.Controllers
         /****************************************/
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Schedule(ScheduleTimes model,string Name )
+        public async Task<IActionResult> Schedule( Alrets model,string Name )
             {
             if (ModelState.IsValid)
                 {
@@ -295,6 +301,38 @@ namespace BookLibraryWebsite.Controllers
               book=bookk
                 };
             return View(books);
+            }
+        /****************************************/
+        [HttpPost]
+        public async Task<IActionResult> UpdateBook( ListOfBook model)
+            {
+            model.book.photoPath = model.photo.Name;
+            model.book.filePath = model.filePath.Name;
+         
+                //string uniqueFileImg = string.IsNullOrEmpty(proccessUploadFileImg(model)) ? string.Empty : proccessUploadFileImg(model);
+                //string uniqueFilePdf = string.IsNullOrEmpty(proccessUploadFilePdf(model)) ? string.Empty : proccessUploadFilePdf(model);
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                float finalPrice = 0;
+                if (model.book.discount > 0)
+                    {
+                    model.book.Price = model.book.Price - ((model.book.discount / 100) * model.book.Price);
+                    }
+                Book books = new Book()
+                    {
+                    Id=model.book.Id,
+                    Title = model.book.Title,
+                    Description = model.book.Description,
+                    Price = model.book.Price,
+                    discount = model.book.discount,
+                    Created = model.book.Created,
+                    author = model.book.author,
+                    photoPath = string.IsNullOrEmpty(proccessUploadFileImg(model.photo)) ? string.Empty : proccessUploadFileImg(model.photo),
+                    KindOfBooks = model.KindOfBooks,
+                    filePath = string.IsNullOrEmpty(proccessUploadFilePdf(model.filePath)) ? string.Empty : proccessUploadFilePdf(model.filePath),
+                    AppUserId = user.UserId
+                    };
+                _bookRepository.UpdateBook(books);
+                return RedirectToAction("Index", "Home");
             }
         /****************************************/
         public IActionResult DeleteBook( int id, string name )

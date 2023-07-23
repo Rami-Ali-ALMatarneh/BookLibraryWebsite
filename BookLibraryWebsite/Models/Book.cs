@@ -4,6 +4,7 @@ namespace BookLibraryWebsite.Models
     {
     public class Book
         {
+        [Key]
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }
@@ -12,6 +13,7 @@ namespace BookLibraryWebsite.Models
         [Required]
         [Range(1,100)]
         public float Price { get; set; }
+        public float oldPrice { get; set; }
         [Range(0, 100)]
         public float discount { get; set; }
         [Required]
